@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mlt LC_NUMERIC="es_ES.UTF-8" version="6.5.0" title="Shotcut version 17.11.07" producer="main bin">
+  <profile description="automatic" width="512" height="382" progressive="1" sample_aspect_num="1" sample_aspect_den="1" display_aspect_num="512" display_aspect_den="382" frame_rate_num="30" frame_rate_den="1" colorspace="709"/>
+  <producer id="producer0" title="Anonymous Submission" in="00:00:00,000" out="00:01:34,833">
+    <property name="length">00:01:34,867</property>
+    <property name="eof">pause</property>
+    <property name="resource">J Subtitles.mp4</property>
+    <property name="audio_index">-1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">6e8fc0ba1eaffc985c96934525712a20</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer1" title="Anonymous Submission" in="00:00:00,000" out="00:01:26,467">
+    <property name="length">00:01:26,500</property>
+    <property name="eof">pause</property>
+    <property name="resource">Jaime first edit.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">fbf54df3a6d09730fcdc013035c86c59</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <playlist id="main bin">
+    <property name="xml_retain">1</property>
+    <entry producer="producer0" in="00:00:00,000" out="00:01:34,833"/>
+    <entry producer="producer1" in="00:00:00,000" out="00:01:26,467"/>
+  </playlist>
+  <producer id="black" in="00:00:00,000" out="00:01:28,867">
+    <property name="length">00:01:28,900</property>
+    <property name="eof">pause</property>
+    <property name="resource">black</property>
+    <property name="aspect_ratio">1</property>
+    <property name="mlt_service">color</property>
+    <property name="set.test_audio">0</property>
+  </producer>
+  <playlist id="background">
+    <entry producer="black" in="00:00:00,000" out="00:01:28,867"/>
+  </playlist>
+  <producer id="producer2" title="Anonymous Submission" in="00:00:00,000" out="00:01:26,467">
+    <property name="length">00:01:26,500</property>
+    <property name="eof">pause</property>
+    <property name="resource">Jaime first edit.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">fbf54df3a6d09730fcdc013035c86c59</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">Jaime first edit.mp4</property>
+    <property name="shotcut:detail">Jaime first edit.mp4</property>
+    <property name="shotcut:comment"></property>
+    <filter id="filter0" in="00:01:25,500" out="00:01:26,467">
+      <property name="start">1</property>
+      <property name="level">0=1; 29=0</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeOutBrightness</property>
+      <property name="alpha">1</property>
+    </filter>
+  </producer>
+  <playlist id="playlist0">
+    <property name="shotcut:video">1</property>
+    <property name="shotcut:name">V1</property>
+    <blank length="00:00:01,433"/>
+    <entry producer="producer2" in="00:00:00,000" out="00:01:26,467"/>
+  </playlist>
+  <producer id="producer3" title="Anonymous Submission" in="00:00:00,000" out="00:01:28,867">
+    <property name="length">00:01:28,900</property>
+    <property name="eof">pause</property>
+    <property name="resource">J Subtitles.mp4</property>
+    <property name="audio_index">-1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">ed47f7c71f1559d8a6777d28161ac898</property>
+    <property name="ignore_points">0</property>
+    <property name="shotcut:caption">J Subtitles.mp4</property>
+    <property name="shotcut:detail">J Subtitles.mp4</property>
+    <property name="shotcut:comment"></property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <filter id="filter1">
+      <property name="version">0,3</property>
+      <property name="mlt_service">frei0r.bluescreen0r</property>
+      <property name="0">#01b051</property>
+      <property name="1">0,288</property>
+    </filter>
+    <filter id="filter2">
+      <property name="mlt_service">crop</property>
+      <property name="center">0</property>
+      <property name="center_bias">60</property>
+      <property name="top">90</property>
+      <property name="bottom">3</property>
+      <property name="left">0</property>
+      <property name="right">0</property>
+    </filter>
+  </producer>
+  <playlist id="playlist1">
+    <property name="shotcut:video">1</property>
+    <property name="shotcut:name">V2</property>
+    <entry producer="producer3" in="00:00:00,000" out="00:01:28,867"/>
+  </playlist>
+  <tractor id="tractor0" title="Shotcut version 17.11.07" global_feed="1" in="00:00:00,000" out="00:01:28,867">
+    <property name="shotcut">1</property>
+    <property name="shotcut:scaleFactor">0,246768</property>
+    <property name="shotcut:trackHeight">30</property>
+    <track producer="background"/>
+    <track producer="playlist0"/>
+    <track producer="playlist1"/>
+    <transition id="transition0">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="mlt_service">mix</property>
+      <property name="always_active">1</property>
+      <property name="sum">1</property>
+    </transition>
+    <transition id="transition1">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="version">0,9</property>
+      <property name="mlt_service">frei0r.cairoblend</property>
+      <property name="disable">0</property>
+    </transition>
+    <transition id="transition2">
+      <property name="a_track">0</property>
+      <property name="b_track">2</property>
+      <property name="mlt_service">mix</property>
+      <property name="always_active">1</property>
+      <property name="sum">1</property>
+    </transition>
+    <transition id="transition3">
+      <property name="a_track">0</property>
+      <property name="b_track">2</property>
+      <property name="version">0,9</property>
+      <property name="mlt_service">frei0r.cairoblend</property>
+      <property name="disable">0</property>
+    </transition>
+  </tractor>
+</mlt>

@@ -1,0 +1,776 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mlt LC_NUMERIC="es_ES.UTF-8" version="6.5.0" title="Shotcut version 17.09.04" producer="main bin">
+  <profile description="automatic" width="640" height="352" progressive="1" sample_aspect_num="1" sample_aspect_den="1" display_aspect_num="640" display_aspect_den="352" frame_rate_num="31279" frame_rate_den="1000" colorspace="601"/>
+  <producer id="producer0" title="Anonymous Submission" in="00:00:00,000" out="00:00:01,343">
+    <property name="length">00:00:01,375</property>
+    <property name="eof">pause</property>
+    <property name="resource">a rock.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">19d07feee498ee58433dc5eec14039cf</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer1" title="Anonymous Submission" in="00:00:00,000" out="00:00:01,343">
+    <property name="length">00:00:01,375</property>
+    <property name="eof">pause</property>
+    <property name="resource">a rock 2.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">1505ecd9ea4b16e8c071936f7a40ddce</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer2" title="Anonymous Submission" in="00:00:00,000" out="00:00:01,247">
+    <property name="length">00:00:01,279</property>
+    <property name="eof">pause</property>
+    <property name="resource">a rock 3.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">bb459b57be0a01336677787ef9dbbf78</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer3" title="Anonymous Submission" in="00:00:00,000" out="00:00:01,151">
+    <property name="length">00:00:01,183</property>
+    <property name="eof">pause</property>
+    <property name="resource">a rock 4.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">272c4f625f156d1430bc398dd47a0521</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer4" title="Anonymous Submission" in="00:00:00,000" out="00:00:01,503">
+    <property name="length">00:00:01,535</property>
+    <property name="eof">pause</property>
+    <property name="resource">a rock 5.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">ee01374c318589239691a87e88e812bf</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer5" title="Anonymous Submission" in="00:00:00,000" out="00:00:01,343">
+    <property name="length">00:00:01,375</property>
+    <property name="eof">pause</property>
+    <property name="resource">a rock 6.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">19d07feee498ee58433dc5eec14039cf</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer6" title="Anonymous Submission" in="00:00:00,000" out="00:00:04,572">
+    <property name="length">00:00:04,604</property>
+    <property name="eof">pause</property>
+    <property name="resource">autro.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">0cb0dcd66c8f43552c721f7e154a2813</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer7" title="Anonymous Submission" in="00:00:00,000" out="00:00:01,215">
+    <property name="length">00:00:01,247</property>
+    <property name="eof">pause</property>
+    <property name="resource">Buy a rock.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">5fc31df7b8f8c32b60393cf5d93c6316</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer8" title="Anonymous Submission" in="00:00:00,000" out="00:00:03,261">
+    <property name="length">00:00:03,293</property>
+    <property name="eof">pause</property>
+    <property name="resource">do they have other tipes of rocks.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">b06f8f64be0d57caadfe89e9d3050e96</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer9" title="Anonymous Submission" in="00:00:00,000" out="00:30:44,950">
+    <property name="length">00:30:44,982</property>
+    <property name="eof">pause</property>
+    <property name="resource">Happy instrumental music.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">446aefb012c6fd747229af89743c4234</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer10" title="Anonymous Submission" in="00:00:00,000" out="00:00:03,389">
+    <property name="length">00:00:03,421</property>
+    <property name="eof">pause</property>
+    <property name="resource">I bougth it in rock stone sa.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">5d6860269f73ce414be8e8b8503baafa</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer11" title="Anonymous Submission" in="00:00:00,000" out="00:00:02,494">
+    <property name="length">00:00:02,526</property>
+    <property name="eof">pause</property>
+    <property name="resource">I have it because I bought it.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">962f7dbf05ee977101288ae6ddab664d</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer12" title="Anonymous Submission" in="00:00:00,000" out="00:00:14,674">
+    <property name="length">00:00:14,706</property>
+    <property name="eof">pause</property>
+    <property name="resource">it is dtrong big epick thow it buy a rock.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">df1282b3e9b134b7c32fdd4d4fbecc9d</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer13" title="Anonymous Submission" in="00:00:00,000" out="00:00:02,334">
+    <property name="length">00:00:02,366</property>
+    <property name="eof">pause</property>
+    <property name="resource">I will buy a rock.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">0c0a2fbd36b6b8042431c515a8412215</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer14" title="Anonymous Submission" in="00:00:00,000" out="00:00:05,723">
+    <property name="length">00:00:05,755</property>
+    <property name="eof">pause</property>
+    <property name="resource">small big and every type.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">a286f78c646ff18c399d6a0c5687eb34</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer15" title="Anonymous Submission" in="00:00:00,000" out="00:00:02,622">
+    <property name="length">00:00:02,654</property>
+    <property name="eof">pause</property>
+    <property name="resource">well this is a rock.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">1ddc67c1f0052905c28d328a463c98d7</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer16" title="Anonymous Submission" in="00:00:00,000" out="00:00:02,845">
+    <property name="length">00:00:02,877</property>
+    <property name="eof">pause</property>
+    <property name="resource">what is that you have there.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">6aa6a8fa15820bc8b18cf2559dd81b64</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer17" title="Anonymous Submission" in="00:00:00,000" out="00:00:01,758">
+    <property name="length">00:00:01,790</property>
+    <property name="eof">pause</property>
+    <property name="resource">where did you bougth it.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">24e10cb23f1b348d5708485742770a7b</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer18" title="Anonymous Submission" in="00:00:00,000" out="00:00:01,662">
+    <property name="length">00:00:01,694</property>
+    <property name="eof">pause</property>
+    <property name="resource">why do you have it.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">849fafa86814508e7025de6fe8cf9a88</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer19" title="Anonymous Submission" in="00:00:00,000" out="00:00:01,279">
+    <property name="length">00:00:01,311</property>
+    <property name="eof">pause</property>
+    <property name="resource">you are very fast.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">7046691a96f827ffdf0fd0d62cdb6b83</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <playlist id="main bin" title="Shotcut version 17.09.04">
+    <property name="xml_retain">1</property>
+    <entry producer="producer0" in="00:00:00,000" out="00:00:01,343"/>
+    <entry producer="producer1" in="00:00:00,000" out="00:00:01,343"/>
+    <entry producer="producer2" in="00:00:00,000" out="00:00:01,247"/>
+    <entry producer="producer3" in="00:00:00,000" out="00:00:01,151"/>
+    <entry producer="producer4" in="00:00:00,000" out="00:00:01,503"/>
+    <entry producer="producer5" in="00:00:00,000" out="00:00:01,343"/>
+    <entry producer="producer6" in="00:00:00,000" out="00:00:04,572"/>
+    <entry producer="producer7" in="00:00:00,000" out="00:00:01,215"/>
+    <entry producer="producer8" in="00:00:00,000" out="00:00:03,261"/>
+    <entry producer="producer9" in="00:00:00,000" out="00:30:44,950"/>
+    <entry producer="producer10" in="00:00:00,000" out="00:00:03,389"/>
+    <entry producer="producer11" in="00:00:00,000" out="00:00:02,494"/>
+    <entry producer="producer12" in="00:00:00,000" out="00:00:14,674"/>
+    <entry producer="producer13" in="00:00:00,000" out="00:00:02,334"/>
+    <entry producer="producer14" in="00:00:00,000" out="00:00:05,723"/>
+    <entry producer="producer15" in="00:00:00,000" out="00:00:02,622"/>
+    <entry producer="producer16" in="00:00:00,000" out="00:00:02,845"/>
+    <entry producer="producer17" in="00:00:00,000" out="00:00:01,758"/>
+    <entry producer="producer18" in="00:00:00,000" out="00:00:01,662"/>
+    <entry producer="producer19" in="00:00:00,000" out="00:00:01,279"/>
+  </playlist>
+  <producer id="black" in="00:00:00,000" out="00:00:45,686">
+    <property name="length">00:00:45,718</property>
+    <property name="eof">pause</property>
+    <property name="resource">black</property>
+    <property name="aspect_ratio">1</property>
+    <property name="mlt_service">color</property>
+    <property name="set.test_audio">0</property>
+  </producer>
+  <playlist id="background">
+    <entry producer="black" in="00:00:00,000" out="00:00:45,686"/>
+  </playlist>
+  <playlist id="playlist0">
+    <property name="shotcut:video">1</property>
+    <property name="shotcut:name">V1</property>
+    <blank length="00:00:00,032"/>
+  </playlist>
+  <producer id="producer20" title="Anonymous Submission" in="00:00:00,000" out="00:00:02,845">
+    <property name="length">00:00:02,877</property>
+    <property name="eof">pause</property>
+    <property name="resource">what is that you have there.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">6aa6a8fa15820bc8b18cf2559dd81b64</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">what is that you have there.mp4</property>
+    <property name="shotcut:detail">what is that you have there.mp4</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <producer id="producer21" title="Anonymous Submission" in="00:00:00,000" out="00:00:02,622">
+    <property name="length">00:00:02,654</property>
+    <property name="eof">pause</property>
+    <property name="resource">well this is a rock.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">1ddc67c1f0052905c28d328a463c98d7</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">well this is a rock.mp4</property>
+    <property name="shotcut:detail">well this is a rock.mp4</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <producer id="producer22" title="Anonymous Submission" in="00:00:00,000" out="00:00:01,662">
+    <property name="length">00:00:01,694</property>
+    <property name="eof">pause</property>
+    <property name="resource">why do you have it.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">849fafa86814508e7025de6fe8cf9a88</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">why do you have it.mp4</property>
+    <property name="shotcut:detail">why do you have it.mp4</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <producer id="producer23" title="Anonymous Submission" in="00:00:00,000" out="00:00:02,494">
+    <property name="length">00:00:02,526</property>
+    <property name="eof">pause</property>
+    <property name="resource">I have it because I bought it.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">962f7dbf05ee977101288ae6ddab664d</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">I have it because I bought it.mp4</property>
+    <property name="shotcut:detail">I have it because I bought it.mp4</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <producer id="producer24" title="Anonymous Submission" in="00:00:00,000" out="00:00:01,758">
+    <property name="length">00:00:01,790</property>
+    <property name="eof">pause</property>
+    <property name="resource">where did you bougth it.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">24e10cb23f1b348d5708485742770a7b</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">where did you bougth it.mp4</property>
+    <property name="shotcut:detail">where did you bougth it.mp4</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <producer id="producer25" title="Anonymous Submission" in="00:00:00,000" out="00:00:03,389">
+    <property name="length">00:00:03,421</property>
+    <property name="eof">pause</property>
+    <property name="resource">I bougth it in rock stone sa.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">5d6860269f73ce414be8e8b8503baafa</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">I bougth it in rock stone sa.mp4</property>
+    <property name="shotcut:detail">I bougth it in rock stone sa.mp4</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <producer id="producer26" title="Anonymous Submission" in="00:00:00,000" out="00:00:03,261">
+    <property name="length">00:00:03,293</property>
+    <property name="eof">pause</property>
+    <property name="resource">do they have other tipes of rocks.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">b06f8f64be0d57caadfe89e9d3050e96</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">do they have other tipes of rocks.mp4</property>
+    <property name="shotcut:detail">do they have other tipes of rocks.mp4</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <producer id="producer27" title="Anonymous Submission" in="00:00:00,000" out="00:00:05,723">
+    <property name="length">00:00:05,755</property>
+    <property name="eof">pause</property>
+    <property name="resource">small big and every type.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">a286f78c646ff18c399d6a0c5687eb34</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">small big and every type.mp4</property>
+    <property name="shotcut:detail">small big and every type.mp4</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <producer id="producer28" title="Anonymous Submission" in="00:00:00,000" out="00:00:05,723">
+    <property name="length">00:00:05,755</property>
+    <property name="eof">pause</property>
+    <property name="resource">small big and every type.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">a286f78c646ff18c399d6a0c5687eb34</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">small big and every type.mp4</property>
+    <property name="shotcut:detail">small big and every type.mp4</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <producer id="producer29" title="Anonymous Submission" in="00:00:00,000" out="00:00:02,334">
+    <property name="length">00:00:02,366</property>
+    <property name="eof">pause</property>
+    <property name="resource">I will buy a rock.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">0c0a2fbd36b6b8042431c515a8412215</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">I will buy a rock.mp4</property>
+    <property name="shotcut:detail">I will buy a rock.mp4</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <producer id="producer30" title="Anonymous Submission" in="00:00:00,000" out="00:00:01,279">
+    <property name="length">00:00:01,311</property>
+    <property name="eof">pause</property>
+    <property name="resource">you are very fast.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">7046691a96f827ffdf0fd0d62cdb6b83</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">you are very fast.mp4</property>
+    <property name="shotcut:detail">you are very fast.mp4</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <producer id="producer31" title="Anonymous Submission" in="00:00:00,000" out="00:00:14,674">
+    <property name="length">00:00:14,706</property>
+    <property name="eof">pause</property>
+    <property name="resource">it is dtrong big epick thow it buy a rock.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">df1282b3e9b134b7c32fdd4d4fbecc9d</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">it is dtrong big epick thow it buy a rock.mp4</property>
+    <property name="shotcut:detail">it is dtrong big epick thow it buy a rock.mp4</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <producer id="producer32" title="Anonymous Submission" in="00:00:00,000" out="00:00:14,674">
+    <property name="length">00:00:14,706</property>
+    <property name="eof">pause</property>
+    <property name="resource">it is dtrong big epick thow it buy a rock.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">df1282b3e9b134b7c32fdd4d4fbecc9d</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">it is dtrong big epick thow it buy a rock.mp4</property>
+    <property name="shotcut:detail">it is dtrong big epick thow it buy a rock.mp4</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <producer id="producer33" title="Anonymous Submission" in="00:00:00,000" out="00:00:14,674">
+    <property name="length">00:00:14,706</property>
+    <property name="eof">pause</property>
+    <property name="resource">it is dtrong big epick thow it buy a rock.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">df1282b3e9b134b7c32fdd4d4fbecc9d</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">it is dtrong big epick thow it buy a rock.mp4</property>
+    <property name="shotcut:detail">it is dtrong big epick thow it buy a rock.mp4</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <producer id="producer34" title="Anonymous Submission" in="00:00:00,000" out="00:00:14,674">
+    <property name="length">00:00:14,706</property>
+    <property name="eof">pause</property>
+    <property name="resource">it is dtrong big epick thow it buy a rock.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">df1282b3e9b134b7c32fdd4d4fbecc9d</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">it is dtrong big epick thow it buy a rock.mp4</property>
+    <property name="shotcut:detail">it is dtrong big epick thow it buy a rock.mp4</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <producer id="producer35" title="Anonymous Submission" in="00:00:00,000" out="00:00:01,215">
+    <property name="length">00:00:01,247</property>
+    <property name="eof">pause</property>
+    <property name="resource">Buy a rock.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">5fc31df7b8f8c32b60393cf5d93c6316</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">Buy a rock.mp4</property>
+    <property name="shotcut:detail">Buy a rock.mp4</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <producer id="producer36" title="Anonymous Submission" in="00:00:00,000" out="00:00:01,343">
+    <property name="length">00:00:01,375</property>
+    <property name="eof">pause</property>
+    <property name="resource">a rock.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">19d07feee498ee58433dc5eec14039cf</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">a rock.mp4</property>
+    <property name="shotcut:detail">a rock.mp4</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <producer id="producer37" title="Anonymous Submission" in="00:00:00,000" out="00:00:01,343">
+    <property name="length">00:00:01,375</property>
+    <property name="eof">pause</property>
+    <property name="resource">a rock 2.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">1505ecd9ea4b16e8c071936f7a40ddce</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">a rock 2.mp4</property>
+    <property name="shotcut:detail">a rock 2.mp4</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <producer id="producer38" title="Anonymous Submission" in="00:00:00,000" out="00:00:01,247">
+    <property name="length">00:00:01,279</property>
+    <property name="eof">pause</property>
+    <property name="resource">a rock 3.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">bb459b57be0a01336677787ef9dbbf78</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">a rock 3.mp4</property>
+    <property name="shotcut:detail">a rock 3.mp4</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <producer id="producer39" title="Anonymous Submission" in="00:00:00,000" out="00:00:01,151">
+    <property name="length">00:00:01,183</property>
+    <property name="eof">pause</property>
+    <property name="resource">a rock 4.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">272c4f625f156d1430bc398dd47a0521</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">a rock 4.mp4</property>
+    <property name="shotcut:detail">a rock 4.mp4</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <producer id="producer40" title="Anonymous Submission" in="00:00:00,000" out="00:00:01,503">
+    <property name="length">00:00:01,535</property>
+    <property name="eof">pause</property>
+    <property name="resource">a rock 5.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">ee01374c318589239691a87e88e812bf</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">a rock 5.mp4</property>
+    <property name="shotcut:detail">a rock 5.mp4</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <producer id="producer41" title="Anonymous Submission" in="00:00:00,000" out="00:00:01,343">
+    <property name="length">00:00:01,375</property>
+    <property name="eof">pause</property>
+    <property name="resource">a rock 6.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">19d07feee498ee58433dc5eec14039cf</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">a rock 6.mp4</property>
+    <property name="shotcut:detail">a rock 6.mp4</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <producer id="producer42" title="Anonymous Submission" in="00:00:00,000" out="00:00:04,572">
+    <property name="length">00:00:04,604</property>
+    <property name="eof">pause</property>
+    <property name="resource">autro.mp4</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">0cb0dcd66c8f43552c721f7e154a2813</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">autro.mp4</property>
+    <property name="shotcut:detail">autro.mp4</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <playlist id="playlist1">
+    <property name="shotcut:video">1</property>
+    <property name="shotcut:name">V2</property>
+    <entry producer="producer20" in="00:00:00,000" out="00:00:02,845"/>
+    <entry producer="producer21" in="00:00:01,087" out="00:00:02,622"/>
+    <entry producer="producer22" in="00:00:00,000" out="00:00:01,662"/>
+    <entry producer="producer23" in="00:00:00,448" out="00:00:02,494"/>
+    <entry producer="producer24" in="00:00:00,512" out="00:00:01,758"/>
+    <entry producer="producer25" in="00:00:00,543" out="00:00:03,389"/>
+    <entry producer="producer26" in="00:00:00,480" out="00:00:03,261"/>
+    <entry producer="producer27" in="00:00:00,000" out="00:00:03,421"/>
+    <entry producer="producer28" in="00:00:03,996" out="00:00:05,723"/>
+    <entry producer="producer29" in="00:00:00,703" out="00:00:02,334"/>
+    <entry producer="producer30" in="00:00:00,320" out="00:00:01,279"/>
+    <entry producer="producer31" in="00:00:00,352" out="00:00:02,078"/>
+    <entry producer="producer32" in="00:00:02,909" out="00:00:03,804"/>
+    <entry producer="producer33" in="00:00:04,284" out="00:00:12,628"/>
+    <entry producer="producer34" in="00:00:13,651" out="00:00:14,674"/>
+    <entry producer="producer35" in="00:00:00,320" out="00:00:01,215"/>
+    <entry producer="producer36" in="00:00:00,799" out="00:00:01,343"/>
+    <entry producer="producer37" in="00:00:00,320" out="00:00:01,343"/>
+    <entry producer="producer38" in="00:00:00,320" out="00:00:01,247"/>
+    <entry producer="producer39" in="00:00:00,320" out="00:00:01,151"/>
+    <entry producer="producer40" in="00:00:00,480" out="00:00:01,503"/>
+    <entry producer="producer41" in="00:00:00,735" out="00:00:01,343"/>
+    <entry producer="producer42" in="00:00:00,000" out="00:00:04,444"/>
+  </playlist>
+  <tractor id="tractor0" title="Shotcut version 17.09.04" global_feed="1" in="00:00:00,000" out="00:00:45,686">
+    <property name="shotcut">1</property>
+    <property name="shotcut:scaleFactor">3,8247</property>
+    <track producer="background"/>
+    <track producer="playlist0" hide="both"/>
+    <track producer="playlist1"/>
+    <transition id="transition0">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="mlt_service">mix</property>
+      <property name="always_active">1</property>
+      <property name="sum">1</property>
+    </transition>
+    <transition id="transition1">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="version">0,9</property>
+      <property name="mlt_service">frei0r.cairoblend</property>
+      <property name="disable">1</property>
+    </transition>
+    <transition id="transition2">
+      <property name="a_track">0</property>
+      <property name="b_track">2</property>
+      <property name="mlt_service">mix</property>
+      <property name="always_active">1</property>
+      <property name="sum">1</property>
+    </transition>
+    <transition id="transition3">
+      <property name="a_track">1</property>
+      <property name="b_track">2</property>
+      <property name="version">0,9</property>
+      <property name="mlt_service">frei0r.cairoblend</property>
+      <property name="disable">0</property>
+    </transition>
+  </tractor>
+</mlt>

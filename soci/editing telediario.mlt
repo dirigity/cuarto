@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mlt LC_NUMERIC="es_ES.UTF-8" version="6.5.0" title="Shotcut version 17.11.07" producer="main bin">
+  <profile description="automatic" width="1280" height="720" progressive="1" sample_aspect_num="1" sample_aspect_den="1" display_aspect_num="1280" display_aspect_den="720" frame_rate_num="40" frame_rate_den="1" colorspace="709"/>
+  <producer id="producer0" title="Anonymous Submission" in="00:00:00,000" out="00:04:31,300">
+    <property name="length">00:04:31,325</property>
+    <property name="eof">pause</property>
+    <property name="resource">final.mp4</property>
+    <property name="audio_index">-1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">5d75e0a9d693be663185e3325a7427d7</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer1" title="Anonymous Submission" in="00:00:00,000" out="00:04:28,125">
+    <property name="length">00:04:28,150</property>
+    <property name="eof">pause</property>
+    <property name="resource">Audio del telediario.m4a</property>
+    <property name="audio_index">0</property>
+    <property name="video_index">-1</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="shotcut:hash">eec30a5bfc3a055d88f0745981f20d13</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <playlist id="main bin">
+    <property name="xml_retain">1</property>
+    <entry producer="producer0" in="00:00:00,000" out="00:04:31,300"/>
+    <entry producer="producer1" in="00:00:00,000" out="00:04:28,125"/>
+  </playlist>
+  <producer id="black" in="00:00:00,000" out="00:04:30,350">
+    <property name="length">00:04:30,375</property>
+    <property name="eof">pause</property>
+    <property name="resource">black</property>
+    <property name="aspect_ratio">1</property>
+    <property name="mlt_service">color</property>
+    <property name="set.test_audio">0</property>
+  </producer>
+  <playlist id="background">
+    <entry producer="black" in="00:00:00,000" out="00:04:30,350"/>
+  </playlist>
+  <producer id="producer2" title="Anonymous Submission" in="00:00:00,000" out="00:04:28,125">
+    <property name="length">00:04:28,150</property>
+    <property name="eof">pause</property>
+    <property name="resource">Audio del telediario.m4a</property>
+    <property name="audio_index">0</property>
+    <property name="video_index">-1</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="shotcut:hash">eec30a5bfc3a055d88f0745981f20d13</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">Audio del telediario.m4a</property>
+    <property name="shotcut:detail">Audio del telediario.m4a</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <playlist id="playlist0">
+    <property name="shotcut:video">1</property>
+    <property name="shotcut:name">V1</property>
+    <entry producer="producer2" in="00:00:02,675" out="00:04:28,125"/>
+  </playlist>
+  <producer id="producer3" title="Anonymous Submission" in="00:00:00,000" out="00:04:31,300">
+    <property name="length">00:04:31,325</property>
+    <property name="eof">pause</property>
+    <property name="resource">final.mp4</property>
+    <property name="audio_index">-1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">5d75e0a9d693be663185e3325a7427d7</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">final.mp4</property>
+    <property name="shotcut:detail">final.mp4</property>
+    <property name="shotcut:comment"></property>
+    <filter id="filter0" in="00:04:30,325" out="00:04:31,300">
+      <property name="start">1</property>
+      <property name="level">0=1; 39=0</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeOutBrightness</property>
+      <property name="alpha">1</property>
+    </filter>
+  </producer>
+  <playlist id="playlist1">
+    <property name="shotcut:video">1</property>
+    <property name="shotcut:name">V2</property>
+    <entry producer="producer3" in="00:00:04,150" out="00:04:31,300"/>
+  </playlist>
+  <producer id="producer4" title="Anonymous Submission" in="00:00:00,000" out="00:59:55,400">
+    <property name="length">00:59:55,425</property>
+    <property name="eof">pause</property>
+    <property name="resource">ruido blanco.mp3</property>
+    <property name="audio_index">0</property>
+    <property name="video_index">-1</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="shotcut:hash">d82dad162c5918cfa07bbb83e4efc632</property>
+    <property name="ignore_points">0</property>
+    <property name="shotcut:caption">ruido blanco.mp3</property>
+    <property name="shotcut:detail">ruido blanco.mp3</property>
+    <property name="shotcut:comment"></property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <filter id="filter1" in="00:00:00,050" out="00:00:01,025">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeInVolume</property>
+      <property name="gain">0</property>
+      <property name="end">1</property>
+    </filter>
+    <filter id="filter2" in="00:00:01,750" out="00:00:02,300">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeOutVolume</property>
+      <property name="gain">1</property>
+      <property name="end">0</property>
+    </filter>
+  </producer>
+  <producer id="producer5" title="Anonymous Submission" in="00:00:00,000" out="00:59:55,400">
+    <property name="length">00:59:55,425</property>
+    <property name="eof">pause</property>
+    <property name="resource">ruido blanco.mp3</property>
+    <property name="audio_index">0</property>
+    <property name="video_index">-1</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="shotcut:hash">d82dad162c5918cfa07bbb83e4efc632</property>
+    <property name="ignore_points">0</property>
+    <property name="shotcut:caption">ruido blanco.mp3</property>
+    <property name="shotcut:detail">ruido blanco.mp3</property>
+    <property name="shotcut:comment"></property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <filter id="filter3" in="00:01:52,925" out="00:01:53,475">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeOutVolume</property>
+      <property name="gain">1</property>
+      <property name="end">0</property>
+    </filter>
+    <filter id="filter4" in="00:01:49,750" out="00:01:50,725">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeInVolume</property>
+      <property name="gain">0</property>
+      <property name="end">1</property>
+    </filter>
+  </producer>
+  <producer id="producer6" title="Anonymous Submission" in="00:00:00,000" out="00:59:55,400">
+    <property name="length">00:59:55,425</property>
+    <property name="eof">pause</property>
+    <property name="resource">ruido blanco.mp3</property>
+    <property name="audio_index">0</property>
+    <property name="video_index">-1</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="shotcut:hash">d82dad162c5918cfa07bbb83e4efc632</property>
+    <property name="ignore_points">0</property>
+    <property name="shotcut:caption">ruido blanco.mp3</property>
+    <property name="shotcut:detail">ruido blanco.mp3</property>
+    <property name="shotcut:comment"></property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <filter id="filter5" in="00:03:25,525" out="00:03:26,500">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeInVolume</property>
+      <property name="gain">0</property>
+      <property name="end">1</property>
+    </filter>
+    <filter id="filter6" in="00:03:27,600" out="00:03:28,150">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeOutVolume</property>
+      <property name="gain">1</property>
+      <property name="end">0</property>
+    </filter>
+  </producer>
+  <producer id="producer7" title="Anonymous Submission" in="00:00:00,000" out="00:59:55,400">
+    <property name="length">00:59:55,425</property>
+    <property name="eof">pause</property>
+    <property name="resource">ruido blanco.mp3</property>
+    <property name="audio_index">0</property>
+    <property name="video_index">-1</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="shotcut:hash">d82dad162c5918cfa07bbb83e4efc632</property>
+    <property name="ignore_points">0</property>
+    <property name="shotcut:caption">ruido blanco.mp3</property>
+    <property name="shotcut:detail">ruido blanco.mp3</property>
+    <property name="shotcut:comment"></property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <filter id="filter7" in="00:04:21,625" out="00:04:22,600">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeInVolume</property>
+      <property name="gain">0</property>
+      <property name="end">1</property>
+    </filter>
+    <filter id="filter8" in="00:04:26,575" out="00:04:27,125">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeOutVolume</property>
+      <property name="gain">1</property>
+      <property name="end">0</property>
+    </filter>
+  </producer>
+  <playlist id="playlist2">
+    <property name="shotcut:audio">1</property>
+    <property name="shotcut:name">A1</property>
+    <entry producer="producer4" in="00:00:00,050" out="00:00:02,300"/>
+    <blank length="00:01:47,425"/>
+    <entry producer="producer5" in="00:01:49,750" out="00:01:53,475"/>
+    <blank length="00:01:35,300"/>
+    <entry producer="producer6" in="00:03:25,525" out="00:03:28,150"/>
+    <blank length="00:00:53,450"/>
+    <entry producer="producer7" in="00:04:21,625" out="00:04:27,125"/>
+  </playlist>
+  <tractor id="tractor0" title="Shotcut version 17.11.07" global_feed="1" in="00:00:00,000" out="00:04:30,350">
+    <property name="shotcut">1</property>
+    <property name="shotcut:scaleFactor">1,03564</property>
+    <property name="shotcut:trackHeight">30</property>
+    <track producer="background"/>
+    <track producer="playlist0"/>
+    <track producer="playlist1"/>
+    <track producer="playlist2" hide="video"/>
+    <transition id="transition0">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="mlt_service">mix</property>
+      <property name="always_active">1</property>
+      <property name="sum">1</property>
+    </transition>
+    <transition id="transition1">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="version">0,9</property>
+      <property name="mlt_service">frei0r.cairoblend</property>
+      <property name="disable">1</property>
+    </transition>
+    <transition id="transition2">
+      <property name="a_track">0</property>
+      <property name="b_track">2</property>
+      <property name="mlt_service">mix</property>
+      <property name="always_active">1</property>
+      <property name="sum">1</property>
+    </transition>
+    <transition id="transition3">
+      <property name="a_track">1</property>
+      <property name="b_track">2</property>
+      <property name="version">0,9</property>
+      <property name="mlt_service">frei0r.cairoblend</property>
+      <property name="disable">0</property>
+    </transition>
+    <transition id="transition4">
+      <property name="a_track">0</property>
+      <property name="b_track">3</property>
+      <property name="mlt_service">mix</property>
+      <property name="always_active">1</property>
+      <property name="sum">1</property>
+    </transition>
+  </tractor>
+</mlt>

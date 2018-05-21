@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mlt LC_NUMERIC="es_ES.UTF-8" version="6.5.0" title="Shotcut version 17.11.07" producer="main bin">
+  <profile description="automatic" width="1920" height="1080" progressive="1" sample_aspect_num="1" sample_aspect_den="1" display_aspect_num="1920" display_aspect_den="1080" frame_rate_num="392400" frame_rate_den="13087" colorspace="709"/>
+  <producer id="producer0" title="Anonymous Submission" in="00:00:00,000" out="00:00:21,778">
+    <property name="length">00:00:21,812</property>
+    <property name="eof">pause</property>
+    <property name="resource">S Why would you like to meet a french student.MOV</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">be2995597bfaca4b3b32ff078cc92900</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer1" title="Anonymous Submission" in="00:00:00,000" out="00:00:09,872">
+    <property name="length">00:00:09,905</property>
+    <property name="eof">pause</property>
+    <property name="resource">S What is your name.MOV</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">4ad8a8896f169851efc2526157f9e00c</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer2" title="Anonymous Submission" in="00:00:00,000" out="00:00:11,706">
+    <property name="length">00:00:11,740</property>
+    <property name="eof">pause</property>
+    <property name="resource">S Internarional program opinion.MOV</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">4b14dce5d09c5df0bf59d2771ee1c7df</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer3" title="Anonymous Submission" in="00:00:00,000" out="00:00:19,377">
+    <property name="length">00:00:19,410</property>
+    <property name="eof">pause</property>
+    <property name="resource">S Hobbies.MOV</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">a16195bdc9ff4d792d163e926604c76e</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer4" title="Anonymous Submission" in="00:00:00,000" out="00:00:15,775">
+    <property name="length">00:00:15,808</property>
+    <property name="eof">pause</property>
+    <property name="resource">S French knoligde.MOV</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">79c9502ee125de4a30d9bf21d766a242</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer5" title="Anonymous Submission" in="00:00:00,000" out="00:00:15,375">
+    <property name="length">00:00:15,408</property>
+    <property name="eof">pause</property>
+    <property name="resource">S Finishing ESO.MOV</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">e209119fca358752c80cac54930fd106</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer6" title="Anonymous Submission" in="00:00:00,000" out="00:00:05,536">
+    <property name="length">00:00:05,570</property>
+    <property name="eof">pause</property>
+    <property name="resource">S Conclusion.MOV</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">b1446b455b1c183ea8485bacb7b13eea</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <playlist id="main bin" title="Shotcut version 17.11.04">
+    <property name="xml_retain">1</property>
+    <entry producer="producer0" in="00:00:00,000" out="00:00:21,778"/>
+    <entry producer="producer1" in="00:00:00,000" out="00:00:09,872"/>
+    <entry producer="producer2" in="00:00:00,000" out="00:00:11,706"/>
+    <entry producer="producer3" in="00:00:00,000" out="00:00:19,377"/>
+    <entry producer="producer4" in="00:00:00,000" out="00:00:15,775"/>
+    <entry producer="producer5" in="00:00:00,000" out="00:00:15,375"/>
+    <entry producer="producer6" in="00:00:00,000" out="00:00:05,536"/>
+  </playlist>
+  <producer id="black" in="00:00:00,000" out="00:01:33,318">
+    <property name="length">00:01:33,351</property>
+    <property name="eof">pause</property>
+    <property name="resource">black</property>
+    <property name="aspect_ratio">1</property>
+    <property name="mlt_service">color</property>
+    <property name="set.test_audio">0</property>
+  </producer>
+  <playlist id="background">
+    <entry producer="black" in="00:00:00,000" out="00:01:33,318"/>
+  </playlist>
+  <producer id="producer7" title="Anonymous Submission" in="00:00:00,000" out="00:00:09,872">
+    <property name="length">00:00:09,905</property>
+    <property name="eof">pause</property>
+    <property name="resource">S What is your name.MOV</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">4ad8a8896f169851efc2526157f9e00c</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">S What is your name.MOV</property>
+    <property name="shotcut:detail">S What is your name.MOV</property>
+    <property name="shotcut:comment"></property>
+    <filter id="filter0" in="00:00:09,905" out="00:00:09,872">
+      <property name="start">1</property>
+      <property name="level">0=1; -1=0</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeOutBrightness</property>
+      <property name="alpha">1</property>
+    </filter>
+    <filter id="filter1" in="00:00:09,905" out="00:00:09,872">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeOutVolume</property>
+      <property name="gain">1</property>
+      <property name="end">0</property>
+    </filter>
+  </producer>
+  <producer id="producer8" title="Anonymous Submission" in="00:00:00,000" out="00:00:19,377">
+    <property name="length">00:00:19,410</property>
+    <property name="eof">pause</property>
+    <property name="resource">S Hobbies.MOV</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">a16195bdc9ff4d792d163e926604c76e</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">S Hobbies.MOV</property>
+    <property name="shotcut:detail">S Hobbies.MOV</property>
+    <property name="shotcut:comment"></property>
+    <filter id="filter2" out="00:00:00,033">
+      <property name="start">1</property>
+      <property name="level">0=0; 1=1</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeInBrightness</property>
+      <property name="alpha">1</property>
+    </filter>
+    <filter id="filter3" out="00:00:-0,033">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeInVolume</property>
+      <property name="gain">0</property>
+      <property name="end">1</property>
+    </filter>
+    <filter id="filter4" in="00:00:18,843" out="00:00:19,377">
+      <property name="window">75</property>
+      <property name="max_gain">20dB</property>
+      <property name="mlt_service">volume</property>
+      <property name="shotcut:filter">fadeOutVolume</property>
+      <property name="gain">1</property>
+      <property name="end">0</property>
+    </filter>
+    <filter id="filter5" in="00:00:19,410" out="00:00:19,377">
+      <property name="start">1</property>
+      <property name="level">0=1; -1=0</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeOutBrightness</property>
+      <property name="alpha">1</property>
+    </filter>
+  </producer>
+  <tractor id="tractor0" title="Anonymous Submission" global_feed="1" in="00:00:00,000" out="00:00:00,334">
+    <property name="shotcut:transition">lumaMix</property>
+    <track producer="producer7" in="00:00:09,538" out="00:00:09,872"/>
+    <track producer="producer8" in="00:00:00,000" out="00:00:00,334"/>
+    <transition id="transition0" out="00:00:00,334">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="factory">loader</property>
+      <property name="mlt_service">luma</property>
+    </transition>
+    <transition id="transition1" out="00:00:00,334">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="mlt_service">mix</property>
+      <property name="start">-1</property>
+      <property name="accepts_blanks">1</property>
+    </transition>
+  </tractor>
+  <producer id="producer9" title="Anonymous Submission" in="00:00:00,000" out="00:00:15,375">
+    <property name="length">00:00:15,408</property>
+    <property name="eof">pause</property>
+    <property name="resource">S Finishing ESO.MOV</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">e209119fca358752c80cac54930fd106</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">S Finishing ESO.MOV</property>
+    <property name="shotcut:detail">S Finishing ESO.MOV</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <tractor id="tractor1" title="Anonymous Submission" global_feed="1" in="00:00:00,000" out="00:00:00,334">
+    <property name="shotcut:transition">lumaMix</property>
+    <track producer="producer8" in="00:00:15,608" out="00:00:15,942"/>
+    <track producer="producer9" in="00:00:00,000" out="00:00:00,334"/>
+    <transition id="transition2" out="00:00:00,334">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="factory">loader</property>
+      <property name="mlt_service">luma</property>
+    </transition>
+    <transition id="transition3" out="00:00:00,334">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="mlt_service">mix</property>
+      <property name="start">-1</property>
+      <property name="accepts_blanks">1</property>
+    </transition>
+  </tractor>
+  <producer id="producer10" title="Anonymous Submission" in="00:00:00,000" out="00:00:15,775">
+    <property name="length">00:00:15,808</property>
+    <property name="eof">pause</property>
+    <property name="resource">S French knoligde.MOV</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">79c9502ee125de4a30d9bf21d766a242</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">S French knoligde.MOV</property>
+    <property name="shotcut:detail">S French knoligde.MOV</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <tractor id="tractor2" title="Anonymous Submission" global_feed="1" in="00:00:00,000" out="00:00:00,300">
+    <property name="shotcut:transition">lumaMix</property>
+    <track producer="producer9" in="00:00:15,075" out="00:00:15,375"/>
+    <track producer="producer10" in="00:00:00,000" out="00:00:00,300"/>
+    <transition id="transition4" out="00:00:00,300">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="factory">loader</property>
+      <property name="mlt_service">luma</property>
+    </transition>
+    <transition id="transition5" out="00:00:00,300">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="mlt_service">mix</property>
+      <property name="start">-1</property>
+      <property name="accepts_blanks">1</property>
+    </transition>
+  </tractor>
+  <producer id="producer11" title="Anonymous Submission" in="00:00:00,000" out="00:00:11,706">
+    <property name="length">00:00:11,740</property>
+    <property name="eof">pause</property>
+    <property name="resource">S Internarional program opinion.MOV</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">4b14dce5d09c5df0bf59d2771ee1c7df</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">S Internarional program opinion.MOV</property>
+    <property name="shotcut:detail">S Internarional program opinion.MOV</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <tractor id="tractor3" title="Anonymous Submission" global_feed="1" in="00:00:00,000" out="00:00:00,334">
+    <property name="shotcut:transition">lumaMix</property>
+    <track producer="producer10" in="00:00:15,442" out="00:00:15,775"/>
+    <track producer="producer11" in="00:00:00,000" out="00:00:00,334"/>
+    <transition id="transition6" out="00:00:00,334">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="factory">loader</property>
+      <property name="mlt_service">luma</property>
+    </transition>
+    <transition id="transition7" out="00:00:00,334">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="mlt_service">mix</property>
+      <property name="start">-1</property>
+      <property name="accepts_blanks">1</property>
+    </transition>
+  </tractor>
+  <producer id="producer12" title="Anonymous Submission" in="00:00:00,000" out="00:00:21,778">
+    <property name="length">00:00:21,812</property>
+    <property name="eof">pause</property>
+    <property name="resource">S Why would you like to meet a french student.MOV</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">be2995597bfaca4b3b32ff078cc92900</property>
+    <property name="ignore_points">0</property>
+    <property name="shotcut:caption">S Why would you like to meet a french student.MOV</property>
+    <property name="shotcut:detail">S Why would you like to meet a french student.MOV</property>
+    <property name="shotcut:comment"></property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <tractor id="tractor4" title="Anonymous Submission" global_feed="1" in="00:00:00,000" out="00:00:00,300">
+    <property name="shotcut:transition">lumaMix</property>
+    <track producer="producer11" in="00:00:11,039" out="00:00:11,339"/>
+    <track producer="producer12" in="00:00:00,000" out="00:00:00,300"/>
+    <transition id="transition8" out="00:00:00,300">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="factory">loader</property>
+      <property name="mlt_service">luma</property>
+    </transition>
+    <transition id="transition9" out="00:00:00,300">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="start">-1</property>
+      <property name="accepts_blanks">1</property>
+      <property name="mlt_service">mix</property>
+    </transition>
+  </tractor>
+  <producer id="producer13" title="Anonymous Submission" in="00:00:00,000" out="00:00:05,536">
+    <property name="length">00:00:05,570</property>
+    <property name="eof">pause</property>
+    <property name="resource">S Conclusion.MOV</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">b1446b455b1c183ea8485bacb7b13eea</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">S Conclusion.MOV</property>
+    <property name="shotcut:detail">S Conclusion.MOV</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <tractor id="tractor5" title="Anonymous Submission" global_feed="1" in="00:00:00,000" out="00:00:00,334">
+    <property name="shotcut:transition">lumaMix</property>
+    <track producer="producer12" in="00:00:21,445" out="00:00:21,778"/>
+    <track producer="producer13" in="00:00:00,367" out="00:00:00,700"/>
+    <transition id="transition10" out="00:00:00,334">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="factory">loader</property>
+      <property name="mlt_service">luma</property>
+    </transition>
+    <transition id="transition11" out="00:00:00,334">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="start">-1</property>
+      <property name="accepts_blanks">1</property>
+      <property name="mlt_service">mix</property>
+    </transition>
+  </tractor>
+  <playlist id="playlist0">
+    <property name="shotcut:video">1</property>
+    <property name="shotcut:name">V1</property>
+    <entry producer="producer7" in="00:00:00,000" out="00:00:09,505"/>
+    <entry producer="tractor0" in="00:00:00,000" out="00:00:00,334"/>
+    <entry producer="producer8" in="00:00:00,367" out="00:00:15,575"/>
+    <entry producer="tractor1" in="00:00:00,000" out="00:00:00,334"/>
+    <entry producer="producer9" in="00:00:00,367" out="00:00:15,041"/>
+    <entry producer="tractor2" in="00:00:00,000" out="00:00:00,300"/>
+    <entry producer="producer10" in="00:00:00,334" out="00:00:15,408"/>
+    <entry producer="tractor3" in="00:00:00,000" out="00:00:00,334"/>
+    <entry producer="producer11" in="00:00:00,367" out="00:00:11,006"/>
+    <entry producer="tractor4" in="00:00:00,000" out="00:00:00,300"/>
+    <entry producer="producer12" in="00:00:00,334" out="00:00:21,411"/>
+    <entry producer="tractor5" in="00:00:00,000" out="00:00:00,334"/>
+    <entry producer="producer13" in="00:00:00,734" out="00:00:05,536"/>
+  </playlist>
+  <tractor id="tractor6" title="Shotcut version 17.11.07" global_feed="1" in="00:00:00,000" out="00:01:33,318">
+    <property name="shotcut">1</property>
+    <track producer="background"/>
+    <track producer="playlist0"/>
+    <transition id="transition12">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="mlt_service">mix</property>
+      <property name="always_active">1</property>
+      <property name="sum">1</property>
+    </transition>
+    <transition id="transition13">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="version">0,9</property>
+      <property name="mlt_service">frei0r.cairoblend</property>
+      <property name="disable">1</property>
+    </transition>
+  </tractor>
+</mlt>

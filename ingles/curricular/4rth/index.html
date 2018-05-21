@@ -1,0 +1,321 @@
+<html><head><style>
+portada{
+    background-color: gray;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    animation: fade 4s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    transition: all 3s ease-in-out; 
+
+}
+.FullScreenNoAnimation{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    margin: 0px;
+    background-color: black;
+}
+.FullScreen{
+    animation: fillTheScreen 6s;
+    animation-fill-mode: backwards;
+}
+.fade{
+    animation: fade 4s;
+    animation-delay: 3s;
+    animation-fill-mode: forwards;
+}
+selector{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+BackwardsDect{
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    bottom: 90%;
+    right: 91%;
+    transition: all .7s ease-in-out; 
+    background-image: url("left-arrow-15.gif");
+    background-size: 100% 100%;
+    opacity: 0;
+
+
+}
+BackwardsDect:hover{
+    transform: scale(2);
+    opacity: 1;
+    top: 5%;
+    left: 5%;
+}
+IMG{
+    transition: all 2s ease-in-out; 
+}
+IMG.big{
+    margin-top: 10%;
+    height: 60%;
+}
+IMG.small{
+    margin-top: 6%;
+    height: 65%;
+}
+IMG.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.grow { transition: all .1s ease-in-out; }
+.grow:hover { transform: scale(1.1); }
+botton1{
+    background-color: white;
+    text-align: center;
+    font-size: 80px;
+    transition: all 1s ease-in-out;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    bottom: 0;
+    right: 0;
+}
+
+botton2{
+    background-color: lightgreen;
+    text-align: center;
+    font-size: 80px;
+    position: fixed;
+    transition: all 1s ease-in-out;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 50%;
+}
+
+
+@keyframes fade {
+    0%  {opacity: 1;}
+    10% {-webkit-transform: translateY(0px);}
+    100%{opacity: 0; -webkit-transform: translateY(-1000px);}
+}
+@keyframes fillTheScreen {
+    50%{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    }
+    100%{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    }
+    
+}
+entrada{
+        border: 2px solid black;
+        border-radius: 5px;
+    }
+    body{
+        background-color: white;
+    }
+    Cuerpo{
+        border: 2px solid black;
+        border-radius: 5px;
+        background-color: white;
+        display: block;
+    }
+    Titulo{
+        font-size: 300%;
+        display: block;
+
+    }
+    Entrada{
+        border: 2px solid black;
+        border-radius: 5px;
+        background-color: white;
+        display: block;
+        padding: 1%;
+        margin: 3%
+
+    }
+    Cavesa{
+        border: 2px solid black;
+        border-radius: 5px;
+        background-color: white;
+        display: block;
+        padding: 1%;
+        text-align: center;
+        font-size: 600%;
+        margin: 5%
+
+
+    }
+    Cavesa IMG{
+        width: 17%;
+        margin-top: 0%;
+
+    }
+    info{
+        border: 2px solid black;
+        border-radius: 5px;
+        background-color: greenyellow;
+        display: block;
+        padding: 1%
+    }
+</style></head>
+
+<body>
+    <Info id="Blog">
+        <Cavesa>
+                Blog
+
+        </Cavesa>
+        <table>
+            <tr>
+                <td>
+                    <entrada>
+                        <Titulo>
+                            Lorem ipsum<br>
+                        </Titulo>    
+                        <Cuerpo>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus arcu mauris, porta vitae magna eget, vestibulum fringilla magna. Vestibulum consequat id lorem et ultricies. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas elementum volutpat rutrum. In sapien massa, posuere gravida ex id, cursus porta ipsum. Etiam id tincidunt dolor. Suspendisse imperdiet dictum mi sit amet aliquam. In mattis fermentum lacus, et porta magna commodo quis. Nullam cursus ligula eget ultrices egestas. Integer auctor dolor justo, vitae consectetur neque porta in. Mauris vel metus sed risus ultrices pellentesque iaculis eu mi. Ut accumsan sodales dolor.
+                        </Cuerpo>
+                    </entrada>
+            
+                    <entrada>
+                        <Titulo>
+                            Lorem ipsum<br>
+                        </Titulo>    
+                        <Cuerpo>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus arcu mauris, porta vitae magna eget, vestibulum fringilla magna. Vestibulum consequat id lorem et ultricies. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas elementum volutpat rutrum. In sapien massa, posuere gravida ex id, cursus porta ipsum. Etiam id tincidunt dolor. Suspendisse imperdiet dictum mi sit amet aliquam. In mattis fermentum lacus, et porta magna commodo quis. Nullam cursus ligula eget ultrices egestas. Integer auctor dolor justo, vitae consectetur neque porta in. Mauris vel metus sed risus ultrices pellentesque iaculis eu mi. Ut accumsan sodales dolor.
+                        </Cuerpo>
+                    </entrada>
+                </td>
+                <td>
+                    <Cuerpo>
+
+                    </Cuerpo>
+                </td> 
+            </tr>
+        </table>
+        
+        
+    </Info>
+    <iframe class="FullScreenNoAnimation" id="VideoDePresentacion" src="https://player.vimeo.com/video/100501839" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    <BackwardsDect onclick="MainMenu();">
+
+    </BackwardsDect>
+    <selector id="Selector">
+        <botton2 onmouseenter = "showhide();" id="botton2" class = "left grow" onclick="blogShow();">
+            <IMG class="displayed big" src="NewPaper_Icon.png" alt="El_Mundo.png" align="middle">
+            Our blog            
+        </botton2>
+        <botton1 onmouseenter = "hidehide();" id="botton1" class = "right grow" onclick="videoShow();">
+            <IMG id="videoImage"class="displayed big" src="Video_Icon.png" alt="El_Mundo.png" align="middle">
+            Video presentation
+
+        </botton1>
+        <botton2 onmouseenter = "showhide();" id="botton2top" class = "left grow" onclick="blogShow();">
+            <IMG id="BlogImage"class="displayed big" src="NewPaper_Icon.png" alt="El_Mundo.png" align="middle">
+            Our blog            
+        </botton2>
+
+    </selector>
+    <portada>
+        
+        <IMG class="displayed small" src="Logo.png" alt="logo.png" align="middle">
+            
+    </portada>
+
+    <Script>
+    var goandtrollYourGramma = "true"
+    function hidehide() {
+        if(goandtrollYourGramma){
+            var hide = document.getElementById("botton2top");
+            hide.style.opacity="0";
+        }
+    }
+    function showhide() {
+        if(goandtrollYourGramma){
+            var hide = document.getElementById("botton2top");
+            hide.style.opacity="1";
+        }
+    }
+    var goandtrollYourGramma = "true"
+    function videoShow() {
+        if(goandtrollYourGramma){
+            goandtrollYourGramma = "";
+
+            var Button = document.getElementById("botton1");
+            var hide = document.getElementById("botton2top");
+            var Selector = document.getElementById("Selector");
+            var Video = document.getElementById("VideoDePresentacion");
+            var image = document.getElementById("videoImage");
+            image.className = 'displayed small'
+            hide.style.display = "none";
+            Button.className = 'FullScreen';
+            Selector.className = 'Fade';
+            Video.style.display = 'Block';
+            Blog.style.display = 'none';
+            setTimeout(() => {
+                image.className = 'displayed big'
+            }, 6000);
+
+        }
+    }
+    function blogShow() {
+        if(goandtrollYourGramma){
+            goandtrollYourGramma = "";
+            showhide();
+            var Blog = document.getElementById("Blog");
+            var Button = document.getElementById("botton2top");
+            var Selector = document.getElementById("Selector");
+            var Video = document.getElementById("VideoDePresentacion");
+            var image = document.getElementById("BlogImage");
+            image.className = 'displayed small'
+            Blog.style.display = 'Block';
+            Button.className = 'FullScreen';
+            Selector.className = 'Fade';
+            Video.style.display = 'none';
+            setTimeout(() => {
+                image.className = 'displayed big'
+            }, 6000);
+        }
+    }
+    function MainMenu() {
+        
+        var Selector = document.getElementById("Selector");
+        var Video = document.getElementById("VideoDePresentacion");
+        var hide = document.getElementById("botton2top");
+        var Button1 = document.getElementById("botton1");
+        var Button2 = document.getElementById("botton2");
+        var image1 = document.getElementById("videoImage");
+        var image2 = document.getElementById("BlogImage");
+        image1.className = 'displayed big'
+        image2.className = 'displayed big'
+        Button1.className = 'grow';
+        Button2.className = 'grow';
+        hide.className = 'grow';
+
+        hide.style.display = "block";
+        Video.style.display = 'none';
+        Selector.className = 'FullScreenNoAnimation';
+        goandtrollYourGramma = "true"
+
+
+    }
+    </Script>
+
+
+</body>
+
+</html>
