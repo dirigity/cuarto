@@ -1,129 +1,142 @@
 <!--https://dirigity.github.io/cuarto/ingles/curricular/4rth/index.html-->
 <html><head><style>
-portada{
-    background-color: gray;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    animation: fade 4s;
-    animation-delay: 1s;
-    animation-fill-mode: forwards;
-    transition: all 3s ease-in-out; 
+    portada{
+        background-color: gray;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        animation: fade 4s;
+        animation-delay: 1s;
+        animation-fill-mode: forwards;
+        transition: all 3s ease-in-out; 
 
-}
-.FullScreenNoAnimation{
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    margin: 0px;
-    background-color: black;
-}
-.FullScreen{
-    animation: fillTheScreen 6s;
-    animation-fill-mode: backwards;
-}
-.fade{
-    animation: fade 4s;
-    animation-delay: 3s;
-    animation-fill-mode: forwards;
-}
-selector{
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-}
-BackwardsDect{
-    position: fixed;
-    top: 0%;
-    left: 0%;
-    bottom: 90%;
-    right: 91%;
-    transition: all .7s ease-in-out; 
-    background-image: url("left-arrow-15.gif");
-    background-size: 100% 100%;
-    opacity: 0;
-
-
-}
-BackwardsDect:hover{
-    transform: scale(2);
-    opacity: 1;
-    top: 5%;
-    left: 5%;
-}
-IMG{
-    transition: all 2s ease-in-out; 
-}
-IMG.big{
-    margin-top: 10%;
-    height: 60%;
-}
-IMG.small{
-    margin-top: 6%;
-    height: 65%;
-}
-IMG.displayed {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-.grow { transition: all .1s ease-in-out; }
-.grow:hover { transform: scale(1.1); }
-botton1{
-    background-color: white;
-    text-align: center;
-    font-size: 80px;
-    transition: all 1s ease-in-out;
-    position: fixed;
-    top: 0;
-    left: 50%;
-    bottom: 0;
-    right: 0;
-}
-
-botton2{
-    background-color: lightgreen;
-    text-align: center;
-    font-size: 80px;
-    position: fixed;
-    transition: all 1s ease-in-out;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 50%;
-}
-
-
-@keyframes fade {
-    0%  {opacity: 1;}
-    10% {-webkit-transform: translateY(0px);}
-    100%{opacity: 0; -webkit-transform: translateY(-1000px);}
-}
-@keyframes fillTheScreen {
-    50%{
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
     }
-    100%{
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    .FullScreenNoAnimation{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        margin: 0px;
+        background-color: black;
     }
-    
-}
-entrada{
+    .FullScreen{
+        animation: fillTheScreen 6s;
+        animation-fill-mode: backwards;
+    }
+    .fade{
+        animation: fade 4s;
+        animation-delay: 3s;
+        animation-fill-mode: forwards;
+    }
+    selector{
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+    BackwardsDect{
+        position: fixed;
+        top: 0%;
+        left: 0%;
+        bottom: 90%;
+        right: 91%;
+        transition: all .7s ease-in-out; 
+        background-image: url("left-arrow-15.gif");
+        background-size: 100% 100%;
+        opacity: 0;
+
+
+    }
+    BackwardsDect:hover{
+        transform: scale(2);
+        opacity: 1;
+        top: 5%;
+        left: 5%;
+    }
+    IMG{
+        transition: all 2s ease-in-out; 
+    }
+    IMG.big{
+        margin-top: 10%;
+        height: 60%;
+    }
+    IMG.small{
+        margin-top: 6%;
+        height: 65%;
+    }
+    IMG.displayed {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .grow { transition: all .1s ease-in-out; }
+    .grow:hover { transform: scale(1.1); }
+    botton1{
+        background-color: white;
+        text-align: center;
+        font-size: 80px;
+        transition: all 1s ease-in-out;
+        position: fixed;
+        top: 0;
+        left: 50%;
+        bottom: 0;
+        right: 0;
+    }
+
+    botton2{
+        background-color: lightgreen;
+        text-align: center;
+        font-size: 80px;
+        position: fixed;
+        transition: all 1s ease-in-out;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 50%;
+    }
+
+
+    @keyframes fade {
+        0%  {opacity: 1;}
+        10% {-webkit-transform: translateY(0px);}
+        100%{opacity: 0; -webkit-transform: translateY(-1000px);}
+    }
+    @keyframes fillTheScreen {
+        50%{
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        }
+        100%{
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        }
+        
+    }
+    entrada{
         border: 2px solid black;
         border-radius: 5px;
+        background-color: lightgreen;
+        display: block;
+        padding: 1%;
+        margin: 3%
+
+    }
+    infobox{
+        border: 2px solid black;
+        border-radius: 5px;
+        background-color: white;
+        display: block;
+        padding: 1%;
+        margin: 1%
     }
     body{
         background-color: white;
@@ -133,19 +146,13 @@ entrada{
         border-radius: 5px;
         background-color: white;
         display: block;
+        padding: 3%;
+        font-size: 110%
+
     }
     Titulo{
         font-size: 300%;
         display: block;
-
-    }
-    Entrada{
-        border: 2px solid black;
-        border-radius: 5px;
-        background-color: white;
-        display: block;
-        padding: 1%;
-        margin: 3%
 
     }
     Cavesa{
@@ -168,9 +175,18 @@ entrada{
     info{
         border: 2px solid black;
         border-radius: 5px;
-        background-color: greenyellow;
+        background-color: lightgreen;
         display: block;
         padding: 1%
+    }
+    Pestania{
+        border: 2px solid black;
+        border-radius: 5px;
+        background-color: lightgreen;
+        display: inline-block;
+        padding: 1%;
+        width: 30%;
+        text-align: center;
     }
 </style></head>
 
@@ -180,36 +196,42 @@ entrada{
                 Blog
 
         </Cavesa>
-        <table>
-            <tr>
-                <td>
-
-                    <entrada>
-                        <Titulo>
-                            Lorem ipsum<br>
-                        </Titulo>    
-                        <Cuerpo>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus arcu mauris, porta vitae magna eget, vestibulum fringilla magna. Vestibulum consequat id lorem et ultricies. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas elementum volutpat rutrum. In sapien massa, posuere gravida ex id, cursus porta ipsum. Etiam id tincidunt dolor. Suspendisse imperdiet dictum mi sit amet aliquam. In mattis fermentum lacus, et porta magna commodo quis. Nullam cursus ligula eget ultrices egestas. Integer auctor dolor justo, vitae consectetur neque porta in. Mauris vel metus sed risus ultrices pellentesque iaculis eu mi. Ut accumsan sodales dolor.
-                        </Cuerpo>
-                    </entrada>
-            
-                    <entrada>
-                        <Titulo>
-                            Lorem ipsum<br>
-                        </Titulo>    
-                        <Cuerpo>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus arcu mauris, porta vitae magna eget, vestibulum fringilla magna. Vestibulum consequat id lorem et ultricies. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas elementum volutpat rutrum. In sapien massa, posuere gravida ex id, cursus porta ipsum. Etiam id tincidunt dolor. Suspendisse imperdiet dictum mi sit amet aliquam. In mattis fermentum lacus, et porta magna commodo quis. Nullam cursus ligula eget ultrices egestas. Integer auctor dolor justo, vitae consectetur neque porta in. Mauris vel metus sed risus ultrices pellentesque iaculis eu mi. Ut accumsan sodales dolor.
-                        </Cuerpo>
-                    </entrada>
-                </td>
-                <td>
-                    <Cuerpo>
-
-                    </Cuerpo>
-                </td> 
-            </tr>
-        </table>
+        <infobox>
+            <Pestania>Home</Pestania>
+            <Pestania>How can I help</Pestania>
+            <Pestania>Contact us</Pestania>
         
+            <table>
+                <tr>
+                    <td>
+                        <entrada>
+                            <Titulo>
+                                Lorem ipsum<br>
+                            </Titulo>    
+                            <Cuerpo>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus arcu mauris, porta vitae magna eget, vestibulum fringilla magna. Vestibulum consequat id lorem et ultricies. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas elementum volutpat rutrum. In sapien massa, posuere gravida ex id, cursus porta ipsum. Etiam id tincidunt dolor. Suspendisse imperdiet dictum mi sit amet aliquam. In mattis fermentum lacus, et porta magna commodo quis. Nullam cursus ligula eget ultrices egestas. Integer auctor dolor justo, vitae consectetur neque porta in. Mauris vel metus sed risus ultrices pellentesque iaculis eu mi. Ut accumsan sodales dolor.
+                            </Cuerpo>
+                        </entrada>
+                
+                        <entrada>
+                            <Titulo>
+                                Lorem ipsum<br>
+                            </Titulo>    
+                            <Cuerpo>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus arcu mauris, porta vitae magna eget, vestibulum fringilla magna. Vestibulum consequat id lorem et ultricies. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas elementum volutpat rutrum. In sapien massa, posuere gravida ex id, cursus porta ipsum. Etiam id tincidunt dolor. Suspendisse imperdiet dictum mi sit amet aliquam. In mattis fermentum lacus, et porta magna commodo quis. Nullam cursus ligula eget ultrices egestas. Integer auctor dolor justo, vitae consectetur neque porta in. Mauris vel metus sed risus ultrices pellentesque iaculis eu mi. Ut accumsan sodales dolor.
+                            </Cuerpo>
+                        </entrada>
+                    </td>
+                    <td width="30%" >
+                        <Cuerpo height="100%">
+                            apetecan
+
+                        </Cuerpo>
+                    </td> 
+                </tr>
+            </table>
+        </infobox>
+
         
     </Info>
     <iframe class="FullScreenNoAnimation" id="VideoDePresentacion" src="https://player.vimeo.com/video/100501839" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
