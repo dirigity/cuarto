@@ -126,13 +126,13 @@
     infobox{
         border: 2px solid black;
         border-radius: 5px;
-        background-color: white;
+        background-color: rgb(107, 107, 107);
         display: block;
         padding: 1%;
         margin: 1%
     }
     body{
-        background-color: white;
+        background-color: rgb(107, 107, 107);
     }
     Cuerpo{
         border: 2px solid black;
@@ -140,7 +140,7 @@
         background-color: white;
         display: block;
         padding: 3%;
-        font-size: 110%
+        font-size: 120%
     }
     Titulo{
         font-size: 300%;
@@ -149,7 +149,7 @@
     Cavesa{
         border: 2px solid black;
         border-radius: 5px;
-        background-color: white;
+        background-color: rgb(107, 107, 107);;
         display: block;
         padding: 1%;
         text-align: center;
@@ -163,7 +163,7 @@
     info{
         border: 2px solid black;
         border-radius: 5px;
-        background-color: lightgreen;
+        background-color: lightgreen;;
         display: block;
         padding: 1%
     }
@@ -184,7 +184,7 @@
 
 <body>
     <Info id="Page">
-        <Cavesa>
+        <Cavesa id="titulation">
                 Blog
 
         </Cavesa>
@@ -193,7 +193,7 @@
             <Pestania onclick="showHelp()">How can I help</Pestania>
             <Pestania onclick="showContact()">Contact us</Pestania>
         
-            <table>
+            <table id="blog">
                 <tr>
                     <td>
                         <entrada>
@@ -244,6 +244,62 @@
                    </td> 
                 </tr>
             </table>
+            <jorepore id="ONGs">
+                <entrada>
+                    <Titulo>
+                        Education<br>
+                    </Titulo>    
+                    <Cuerpo>
+                        Education is one of the most important topics when it comes to the growth of a person, but sadly an overwhelming majority of African countries lack this basic right. If you want to help mitigating this you can donate in this NGOs:
+                        <br><a href="https://www.build-africa.org/">Build Africa</a><br>
+                        <a href="http://www.roomtoread.org/">Room to read</a><br>
+                        <a href="https://www.tostan.org/">Tostan</a><br>
+                        <a href="http://fawe.org/home/">fawe</a><br>
+                        <a href="http://www.care.org/work/education">CARE Education</a><br>                       
+                     </Cuerpo>
+                </entrada>
+                <entrada>
+                    <Titulo>
+                        Health<br>
+                    </Titulo>    
+                    <Cuerpo>
+                        Third world countries often suffer from devastating health problems that force some people to run away from their homes to go to Europe thinking that they will be safer here. This NGOs mostly focus on this topic and try to make this places suitable for human life:
+                        <br><a href="http://www.care.org/work/health">CARE Health</a><br>
+                        <a href="https://www.theglobalfund.org/en/">The Global Fund</a><br>
+                        <a href="http://www.who.int/">World Health Organitation(WHO)</a><br>
+                    
+                    </Cuerpo>
+                </entrada>
+                <entrada>
+                    <Titulo>
+                        Economic help<br>
+                    </Titulo>    
+                    <Cuerpo>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus arcu mauris, porta vitae magna eget, vestibulum fringilla magna. Vestibulum consequat id lorem et ultricies. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas elementum volutpat rutrum. In sapien massa, posuere gravida ex id, cursus porta ipsum. Etiam id tincidunt dolor. Suspendisse imperdiet dictum mi sit amet aliquam. In mattis fermentum lacus, et porta magna commodo quis. Nullam cursus ligula eget ultrices egestas. Integer auctor dolor justo, vitae consectetur neque porta in. Mauris vel metus sed risus ultrices pellentesque iaculis eu mi. Ut accumsan sodales dolor.
+                    </Cuerpo>
+                </entrada>
+                <entrada>
+                    <Titulo>
+                        Alimentation<br>
+                    </Titulo>    
+                    <Cuerpo>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus arcu mauris, porta vitae magna eget, vestibulum fringilla magna. Vestibulum consequat id lorem et ultricies. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas elementum volutpat rutrum. In sapien massa, posuere gravida ex id, cursus porta ipsum. Etiam id tincidunt dolor. Suspendisse imperdiet dictum mi sit amet aliquam. In mattis fermentum lacus, et porta magna commodo quis. Nullam cursus ligula eget ultrices egestas. Integer auctor dolor justo, vitae consectetur neque porta in. Mauris vel metus sed risus ultrices pellentesque iaculis eu mi. Ut accumsan sodales dolor.
+                    </Cuerpo>
+                </entrada>
+                <entrada>
+                    <Titulo>
+                        General<br>
+                    </Titulo>    
+                    <Cuerpo>
+                        If you think that all of those topics are important you should consider donatin to one of the following charities. This charities don't focus in anything on particular, but they just help in any way posible to this needed countries. Their job is realy varied, covers all the topics listed before (and in some cases even more):
+                        <br><a href="https://www.usaid.gov/">USAID</a><br>
+                        <a href="http://amref.org/">AMREF</a><br>
+                    </Cuerpo>
+                </entrada>
+            </jorepore>
+            <jorepore id="Contakts">
+                <br><br>Work In Progres ;)<br><br>
+            </jorepore>
         </infobox>
 
         
@@ -321,6 +377,7 @@
                 Button.className = 'FullScreen';
                 Selector.className = 'Fade';
                 Video.style.display = 'none';
+                showBlog();
                 setTimeout(() => {
                     image.className = 'displayed big'
                 }, 6000);
@@ -345,17 +402,30 @@
             Selector.className = 'FullScreenNoAnimation';
             goandtrollYourGramma = "true"
         }
-        
+        ONGs-Contakts-blog
         function showBlog(){
+            document.getElementById("titulation").innerHTML="Blog";
 
+            document.getElementById("blog").style.display="block";
+            document.getElementById("Contakts").style.display="none";
+            document.getElementById("ONGs").style.display="none";
         }
 
         function showHelp(){
+            document.getElementById("titulation").innerHTML="How Can I help";
 
+            document.getElementById("blog").style.display="none";
+            document.getElementById("Contakts").style.display="none";
+            document.getElementById("ONGs").style.display="block";
         }
 
         function showContact(){
+            document.getElementById("titulation").innerHTML="Contact Us";
 
+
+            document.getElementById("blog").style.display="none";
+            document.getElementById("Contakts").style.display="block";
+            document.getElementById("ONGs").style.display="none";
         }
 
 
