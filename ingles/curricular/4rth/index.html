@@ -183,15 +183,15 @@
 </style></head>
 
 <body>
-    <Info id="Blog">
+    <Info id="Page">
         <Cavesa>
                 Blog
 
         </Cavesa>
         <infobox>
-            <Pestania>Home</Pestania>
-            <Pestania>How can I help</Pestania>
-            <Pestania>Contact us</Pestania>
+            <Pestania onclick="showBlog()">Blog</Pestania>
+            <Pestania onclick="showHelp()">How can I help</Pestania>
+            <Pestania onclick="showContact()">Contact us</Pestania>
         
             <table>
                 <tr>
@@ -275,80 +275,92 @@
     </portada>
 
     <Script>
-    var goandtrollYourGramma = "true"
-    function hidehide() {
-        if(goandtrollYourGramma){
-            var hide = document.getElementById("botton2top");
-            hide.style.opacity="0";
+        var goandtrollYourGramma = "true"
+        function hidehide() {
+            if(goandtrollYourGramma){
+                var hide = document.getElementById("botton2top");
+                hide.style.opacity="0";
+            }
         }
-    }
-    function showhide() {
-        if(goandtrollYourGramma){
-            var hide = document.getElementById("botton2top");
-            hide.style.opacity="1";
+        function showhide() {
+            if(goandtrollYourGramma){
+                var hide = document.getElementById("botton2top");
+                hide.style.opacity="1";
+            }
         }
-    }
-    var goandtrollYourGramma = "true"
-    function videoShow() {
-        if(goandtrollYourGramma){
-            goandtrollYourGramma = "";
-            var Button = document.getElementById("botton1");
-            var hide = document.getElementById("botton2top");
+        var goandtrollYourGramma = "true"
+        function videoShow() {
+            if(goandtrollYourGramma){
+                goandtrollYourGramma = "";
+                var Button = document.getElementById("botton1");
+                var hide = document.getElementById("botton2top");
+                var Selector = document.getElementById("Selector");
+                var Video = document.getElementById("VideoDePresentacion");
+                var image = document.getElementById("videoImage");
+                image.className = 'displayed small'
+                hide.style.display = "none";
+                Button.className = 'FullScreen';
+                Selector.className = 'Fade';
+                Video.style.display = 'Block';
+                Blog.style.display = 'none';
+                setTimeout(() => {
+                    image.className = 'displayed big'
+                }, 6000);
+            }
+        }
+        function blogShow() {
+            if(goandtrollYourGramma){
+                goandtrollYourGramma = "";
+                showhide();
+                var Blog = document.getElementById("Page");
+                var Button = document.getElementById("botton2top");
+                var Selector = document.getElementById("Selector");
+                var Video = document.getElementById("VideoDePresentacion");
+                var image = document.getElementById("BlogImage");
+                image.className = 'displayed small'
+                Blog.style.display = 'Block';
+                Button.className = 'FullScreen';
+                Selector.className = 'Fade';
+                Video.style.display = 'none';
+                setTimeout(() => {
+                    image.className = 'displayed big'
+                }, 6000);
+            }
+        }
+        function MainMenu() {
+            
             var Selector = document.getElementById("Selector");
             var Video = document.getElementById("VideoDePresentacion");
-            var image = document.getElementById("videoImage");
-            image.className = 'displayed small'
-            hide.style.display = "none";
-            Button.className = 'FullScreen';
-            Selector.className = 'Fade';
-            Video.style.display = 'Block';
-            Blog.style.display = 'none';
-            setTimeout(() => {
-                image.className = 'displayed big'
-            }, 6000);
-        }
-    }
-    function blogShow() {
-        if(goandtrollYourGramma){
-            goandtrollYourGramma = "";
-            showhide();
-            var Blog = document.getElementById("Blog");
-            var Button = document.getElementById("botton2top");
-            var Selector = document.getElementById("Selector");
-            var Video = document.getElementById("VideoDePresentacion");
-            var image = document.getElementById("BlogImage");
-            image.className = 'displayed small'
-            Blog.style.display = 'Block';
-            Button.className = 'FullScreen';
-            Selector.className = 'Fade';
+            var hide = document.getElementById("botton2top");
+            var Button1 = document.getElementById("botton1");
+            var Button2 = document.getElementById("botton2");
+            var image1 = document.getElementById("videoImage");
+            var image2 = document.getElementById("BlogImage");
+            image1.className = 'displayed big'
+            image2.className = 'displayed big'
+            Button1.className = 'grow';
+            Button2.className = 'grow';
+            hide.className = 'grow';
+            hide.style.display = "block";
             Video.style.display = 'none';
-            setTimeout(() => {
-                image.className = 'displayed big'
-            }, 6000);
+            Selector.className = 'FullScreenNoAnimation';
+            goandtrollYourGramma = "true"
         }
-    }
-    function MainMenu() {
         
-        var Selector = document.getElementById("Selector");
-        var Video = document.getElementById("VideoDePresentacion");
-        var hide = document.getElementById("botton2top");
-        var Button1 = document.getElementById("botton1");
-        var Button2 = document.getElementById("botton2");
-        var image1 = document.getElementById("videoImage");
-        var image2 = document.getElementById("BlogImage");
-        image1.className = 'displayed big'
-        image2.className = 'displayed big'
-        Button1.className = 'grow';
-        Button2.className = 'grow';
-        hide.className = 'grow';
-        hide.style.display = "block";
-        Video.style.display = 'none';
-        Selector.className = 'FullScreenNoAnimation';
-        goandtrollYourGramma = "true"
-    }
+        function showBlog(){
+
+        }
+
+        function showHelp(){
+
+        }
+
+        function showContact(){
+
+        }
+
+
     </Script>
-
-
 </body>
 
 </html>
