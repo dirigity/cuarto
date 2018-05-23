@@ -11,7 +11,6 @@
         animation-delay: 1s;
         animation-fill-mode: forwards;
         transition: all 3s ease-in-out; 
-
     }
     .FullScreenNoAnimation{
         position: fixed;
@@ -47,8 +46,6 @@
         background-image: url("left-arrow-15.gif");
         background-size: 100% 100%;
         opacity: 0;
-
-
     }
     BackwardsDect:hover{
         transform: scale(2);
@@ -85,7 +82,6 @@
         bottom: 0;
         right: 0;
     }
-
     botton2{
         background-color: lightgreen;
         text-align: center;
@@ -97,8 +93,6 @@
         bottom: 0;
         right: 50%;
     }
-
-
     @keyframes fade {
         0%  {opacity: 1;}
         10% {-webkit-transform: translateY(0px);}
@@ -128,7 +122,6 @@
         display: block;
         padding: 1%;
         margin: 3%
-
     }
     infobox{
         border: 2px solid black;
@@ -148,12 +141,10 @@
         display: block;
         padding: 3%;
         font-size: 110%
-
     }
     Titulo{
         font-size: 300%;
         display: block;
-
     }
     Cavesa{
         border: 2px solid black;
@@ -164,13 +155,10 @@
         text-align: center;
         font-size: 600%;
         margin: 5%
-
-
     }
     Cavesa IMG{
         width: 17%;
         margin-top: 0%;
-
     }
     info{
         border: 2px solid black;
@@ -188,6 +176,10 @@
         width: 30%;
         text-align: center;
     }
+    td{
+        vertical-align:top;
+    }
+
 </style></head>
 
 <body>
@@ -221,13 +213,35 @@
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus arcu mauris, porta vitae magna eget, vestibulum fringilla magna. Vestibulum consequat id lorem et ultricies. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas elementum volutpat rutrum. In sapien massa, posuere gravida ex id, cursus porta ipsum. Etiam id tincidunt dolor. Suspendisse imperdiet dictum mi sit amet aliquam. In mattis fermentum lacus, et porta magna commodo quis. Nullam cursus ligula eget ultrices egestas. Integer auctor dolor justo, vitae consectetur neque porta in. Mauris vel metus sed risus ultrices pellentesque iaculis eu mi. Ut accumsan sodales dolor.
                             </Cuerpo>
                         </entrada>
+
+                        <entrada>
+                            <Titulo>
+                                Lorem ipsum<br>
+                            </Titulo>    
+                            <Cuerpo>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus arcu mauris, porta vitae magna eget, vestibulum fringilla magna. Vestibulum consequat id lorem et ultricies. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas elementum volutpat rutrum. In sapien massa, posuere gravida ex id, cursus porta ipsum. Etiam id tincidunt dolor. Suspendisse imperdiet dictum mi sit amet aliquam. In mattis fermentum lacus, et porta magna commodo quis. Nullam cursus ligula eget ultrices egestas. Integer auctor dolor justo, vitae consectetur neque porta in. Mauris vel metus sed risus ultrices pellentesque iaculis eu mi. Ut accumsan sodales dolor.
+                            </Cuerpo>
+                        </entrada>
+
+                        <entrada>
+                            <Titulo>
+                                Lorem ipsum<br>
+                            </Titulo>    
+                            <Cuerpo>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus arcu mauris, porta vitae magna eget, vestibulum fringilla magna. Vestibulum consequat id lorem et ultricies. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas elementum volutpat rutrum. In sapien massa, posuere gravida ex id, cursus porta ipsum. Etiam id tincidunt dolor. Suspendisse imperdiet dictum mi sit amet aliquam. In mattis fermentum lacus, et porta magna commodo quis. Nullam cursus ligula eget ultrices egestas. Integer auctor dolor justo, vitae consectetur neque porta in. Mauris vel metus sed risus ultrices pellentesque iaculis eu mi. Ut accumsan sodales dolor.
+                            </Cuerpo>
+                        </entrada>
                     </td>
                     <td width="30%" >
-                        <Cuerpo height="100%">
-                            apetecan
-
-                        </Cuerpo>
-                    </td> 
+                        <entrada>
+                            <Titulo>
+                                Who are we: <br>
+                            </Titulo>    
+                            <Cuerpo>
+                                We are students from a high school of spain, and we are really worried about the situation that refugees are suffering nowadays. The bottom line of this project is to aware the most people possible about the challenging conditions that some people are being forced to go through to ensure a better future. People think that refugees come only because of wars but there are other causes that motivate people to risk their lives to emigrate like for example african people want to escape from the epidemics that destroy their countries. But when refugees get to europe they hit a death end because our society isn’t ready to admit that much people. The only solution that could be accomplished in a near future is to make the country they belong a safer place. This is the purpose of our campaign is all about. We want to show people that the right way of doing things is to help before they need it, so they don’t have to get to a situation of need. I you want to know more we invite you continue reading the blog, if you want to help right away go to the page “How can I help”
+                            </Cuerpo>
+                        </entrada>
+                   </td> 
                 </tr>
             </table>
         </infobox>
@@ -278,7 +292,6 @@
     function videoShow() {
         if(goandtrollYourGramma){
             goandtrollYourGramma = "";
-
             var Button = document.getElementById("botton1");
             var hide = document.getElementById("botton2top");
             var Selector = document.getElementById("Selector");
@@ -293,7 +306,6 @@
             setTimeout(() => {
                 image.className = 'displayed big'
             }, 6000);
-
         }
     }
     function blogShow() {
@@ -329,13 +341,10 @@
         Button1.className = 'grow';
         Button2.className = 'grow';
         hide.className = 'grow';
-
         hide.style.display = "block";
         Video.style.display = 'none';
         Selector.className = 'FullScreenNoAnimation';
         goandtrollYourGramma = "true"
-
-
     }
     </Script>
 
