@@ -94,7 +94,7 @@
         right: 50%;
     }
     @keyframes fade {
-        0%  {opacity: 1;}
+        0%  {}
         10% {-webkit-transform: translateY(0px);}
         100%{opacity: 0; -webkit-transform: translateY(-1000px);}
     }
@@ -189,17 +189,21 @@
     }
 
     backWardsTuto{
-        opacity: 0.8;
-        animation: fadeSimple 4s;
-        animation-delay: 1.7s;
-        animation-fill-mode: forwards;
-        text-align: center;
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        margin: 0px;
-        margin: 0px;
         background-color: black;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        opacity: 0.8;
+        font-size: 140%;
+        color : white;
+        position: absolute;
+        margin: 50%
+    }
+    center{
+        top: 50%;
+        left: 50%;
     }
 </style></head>
 
@@ -344,8 +348,8 @@
 
     </BackwardsDect>
 
-    <backWardsTuto>
-            aproach the mouse to the top left corner to go back
+    <backWardsTuto id="Tuto"class="FullScreenNoAnimation" >
+            <center>aproach the mouse to the top left corner to go back</center>
     </backWardsTuto>
 
     <selector id="Selector">
@@ -385,7 +389,6 @@
             }
         }
         function videoShow() {
-            console.log("video")
             if(goandtrollYourGramma){
                 goandtrollYourGramma = "";
                 var Blog = document.getElementById("Page");
@@ -401,7 +404,8 @@
                 Video.style.display = 'Block';
                 Blog.style.display = 'none';
                 setTimeout(() => {
-                    image.className = 'displayed big'
+                    image.className = 'displayed big';
+                    document.getElementById("Tuto").className='Fade';
                 }, 6000);
             }
         }
@@ -421,7 +425,9 @@
                 Video.style.display = 'none';
                 showBlog();
                 setTimeout(() => {
-                    image.className = 'displayed big'
+                    image.className = 'displayed big';
+                    document.getElementById("Tuto").className='Fade';
+
                 }, 6000);
             }
         }
