@@ -45,7 +45,7 @@
         transition: all .7s ease-in-out; 
         background-image: url("left-arrow-15.gif");
         background-size: 100% 100%;
-        opacity: 0;
+        opacity: 1;
     }
     BackwardsDect:hover{
         transform: scale(2);
@@ -115,6 +115,10 @@
         }
         
     }
+    @keyframes fadeSimple{
+        0%  {opacity: 1;}
+        100%{opacity: 0;}
+    }
     entrada{
         border: 1px solid black;
         border-radius: 5px;
@@ -181,9 +185,22 @@
         vertical-align:top;
     }
     IMG.HiperLink{
-        height: 15%;
+        height: 20%;
     }
 
+    backWardsTuto{
+        opacity: 0.8;
+        animation: fadeSimple 4s;
+        animation-delay: 1.7s;
+        animation-fill-mode: forwards;
+        text-align: center;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        margin: 0px;
+        background-color: black;
+    }
 </style></head>
 
 <body>
@@ -272,12 +289,14 @@
                     </Titulo>    
                     <Cuerpo>
                         Some people think that the best way to help them is to give to them the opportunity to choose where they want to spend the money that you give them. If you agree with them, here you have a list of NGOs that will give money to the people that need it.
-                        <br><a href="http://www.care.org/work/economic-development">
-                            <img class = "HiperLink" src="carelogo.jpeg"></img>
-                        </a>
-                        <a href="http://www.worldbank.org/">
-                            <img class = "HiperLink" src="The World Bank Logo.svg"></img>
-                        </a>
+                        <br><Cuerpo>
+                            <a href="http://www.worldbank.org/">
+                                <img class = "HiperLink" src="The World Bank Logo.svg"></img>
+                            </a>
+                            <a href="http://www.care.org/work/economic-development">
+                                <img class = "HiperLink" src="carelogo.jpeg"></img>
+                            </a>
+                        </Cuerpo>
                     </Cuerpo>
                 </entrada>
                 <entrada>
@@ -286,12 +305,14 @@
                     </Titulo>    
                     <Cuerpo>
                         One of the things we need to take care is the lack of correct alimentation. Alimentation is basic for the proper development of humans. If you want to ensure the availability of this needed resource visit the NGO listed below.
-                        <br><a href="http://www.care.org/work/world-hunger">
-                            <img class = "HiperLink" src="carelogo.jpeg"></img>
-                        </a>
-                        <a href="https://www.fesbal.org/">
-                            <img class = "HiperLink" src="Logotipo-Fesbal-WEB-white.png"></img>
-                        </a>
+                        <br><Cuerpo>
+                            <a href="http://www.care.org/work/world-hunger">
+                                <img class = "HiperLink" src="carelogo.jpeg"></img>
+                            </a>
+                            <a href="https://www.fesbal.org/">
+                                <img class = "HiperLink" src="Logotipo-Fesbal-WEB-white.png"></img>
+                            </a>
+                        </Cuerpo>
                     </Cuerpo>
                 </entrada>
                 <entrada>
@@ -300,12 +321,14 @@
                     </Titulo>    
                     <Cuerpo>
                         If you think that all of those topics are important you should consider donation to one of the following charities. This charities don't focus in anything on particular, but they just help in any way posible to this needed countries. Their job is realy varied, covers all the topics listed before (and in some cases even more):
-                        <br><a href="https://www.usaid.gov/">
-                            <img class = "HiperLink" src="Usaid Logo.png"></img>
-                        </a>
-                        <a href="http://amref.org/">
-                            <img class = "HiperLink" src="amref-logo.png"></img>
-                        </a>
+                        <br><Cuerpo>
+                            <a href="https://www.usaid.gov/">
+                                <img class = "HiperLink" src="Usaid Logo.png"></img>
+                            </a>
+                            <a href="http://amref.org/">
+                                <img class = "HiperLink" src="amref-logo.png"></img>
+                            </a>
+                        </Cuerpo>
                     </Cuerpo>
                 </entrada>
             </jorepore>
@@ -320,6 +343,11 @@
     <BackwardsDect onclick="MainMenu();">
 
     </BackwardsDect>
+
+    <backWardsTuto>
+            aproach the mouse to the top left corner to go back
+    </backWardsTuto>
+
     <selector id="Selector">
         <botton2 onmouseenter = "showhide();" id="botton2" class = "left grow" onclick="blogShow();">
             <IMG class="displayed big" src="NewPaper_Icon.png" alt="El_Mundo.png" align="middle">
@@ -357,8 +385,10 @@
             }
         }
         function videoShow() {
+            console.log("video")
             if(goandtrollYourGramma){
                 goandtrollYourGramma = "";
+                var Blog = document.getElementById("Page");
                 var Button = document.getElementById("botton1");
                 var hide = document.getElementById("botton2top");
                 var Selector = document.getElementById("Selector");
@@ -414,7 +444,6 @@
             Selector.className = 'FullScreenNoAnimation';
             goandtrollYourGramma = "true"
         }
-        ONGs-Contakts-blog
         function showBlog(){
             document.getElementById("titulation").innerHTML="Blog";
 
@@ -425,7 +454,6 @@
             document.getElementById("BBlog").style.backgroundColor = "rgb(32,200,120)";
             document.getElementById("BHelp").style.backgroundColor = "white";
         }
-
         function showHelp(){
             document.getElementById("titulation").innerHTML="How Can I help";
 
@@ -436,7 +464,6 @@
             document.getElementById("BBlog").style.backgroundColor = "white";
             document.getElementById("BHelp").style.backgroundColor = "rgb(32,200,120)";
         }
-
         function showContact(){
             document.getElementById("titulation").innerHTML="Contact Us";
 
