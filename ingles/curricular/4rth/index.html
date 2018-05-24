@@ -83,7 +83,7 @@
         right: 0;
     }
     botton2{
-        background-color: rgb(0, 128, 94);
+        background-color: lightgreen;
         text-align: center;
         font-size: 80px;
         position: fixed;
@@ -116,26 +116,26 @@
         
     }
     entrada{
-        border: 2px solid black;
+        border: 1px solid black;
         border-radius: 5px;
-        background-color: rgb(0, 128, 94);
+        background: linear-gradient(to right, rgb(41, 179, 121) ,rgb(59, 230, 138));
         display: block;
-        padding: 1%;
-        margin: 3%
+        padding: 5px;
+        margin: 5px;
     }
     infobox{
-        border: 2px solid black;
+        border: 1px solid black;
         border-radius: 5px;
-        background-color: rgb(0, 115, 153);
+        background-color: white;
         display: block;
         padding: 1%;
-        margin: 1%
+        margin: 1%;
     }
     body{
-        background-color: rgb(0, 115, 153);
+        background-color: white;
     }
     Cuerpo{
-        border: 2px solid black;
+        border: 1px solid black;
         border-radius: 5px;
         background-color: white;
         display: block;
@@ -147,9 +147,9 @@
         display: block;
     }
     Cavesa{
-        border: 2px solid black;
+        border: 1px solid black;
         border-radius: 5px;
-        background-color: rgb(0, 115, 153);
+        background-color: white;
         display: block;
         padding: 1%;
         text-align: center;
@@ -161,26 +161,27 @@
         margin-top: 0%;
     }
     info{
-        border: 2px solid black;
+        border: 1px solid black;
         border-radius: 5px;
-        background-color: rgb(0, 128, 94);
+        background: linear-gradient(to right, rgb(41, 179, 121) ,rgb(59, 230, 138));
         display: block;
         padding: 1%
     }
     Pestania{
-        border: 2px solid black;
+        border: 1px solid black;
         border-radius: 5px;
-        background-color: rgb(0, 128, 94);
+        background-color: white;
         display: inline-block;
         padding: 1%;
         width: 30%;
         text-align: center;
+        transition: all .7s ease-in-out; 
     }
     td{
         vertical-align:top;
     }
     IMG.HiperLink{
-        width = 15%;
+        width: 15%;
     }
 
 </style></head>
@@ -192,9 +193,9 @@
 
         </Cavesa>
         <infobox>
-            <Pestania onclick="showBlog()">Blog</Pestania>
-            <Pestania onclick="showHelp()">How can I help</Pestania>
-            <Pestania onclick="showContact()">Contact us</Pestania>
+            <Pestania id="BBlog" onclick="showBlog()">Blog</Pestania>
+            <Pestania id="BHelp" onclick="showHelp()">How can I help</Pestania>
+            <Pestania id="BContk" onclick="showContact()">Contact us</Pestania>
         
             <table id="blog">
                 <tr>
@@ -207,35 +208,8 @@
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus arcu mauris, porta vitae magna eget, vestibulum fringilla magna. Vestibulum consequat id lorem et ultricies. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas elementum volutpat rutrum. In sapien massa, posuere gravida ex id, cursus porta ipsum. Etiam id tincidunt dolor. Suspendisse imperdiet dictum mi sit amet aliquam. In mattis fermentum lacus, et porta magna commodo quis. Nullam cursus ligula eget ultrices egestas. Integer auctor dolor justo, vitae consectetur neque porta in. Mauris vel metus sed risus ultrices pellentesque iaculis eu mi. Ut accumsan sodales dolor.
                             </Cuerpo>
                         </entrada>
-                
-                        <entrada>
-                            <Titulo>
-                                Lorem ipsum<br>
-                            </Titulo>    
-                            <Cuerpo>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus arcu mauris, porta vitae magna eget, vestibulum fringilla magna. Vestibulum consequat id lorem et ultricies. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas elementum volutpat rutrum. In sapien massa, posuere gravida ex id, cursus porta ipsum. Etiam id tincidunt dolor. Suspendisse imperdiet dictum mi sit amet aliquam. In mattis fermentum lacus, et porta magna commodo quis. Nullam cursus ligula eget ultrices egestas. Integer auctor dolor justo, vitae consectetur neque porta in. Mauris vel metus sed risus ultrices pellentesque iaculis eu mi. Ut accumsan sodales dolor.
-                            </Cuerpo>
-                        </entrada>
-
-                        <entrada>
-                            <Titulo>
-                                Lorem ipsum<br>
-                            </Titulo>    
-                            <Cuerpo>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus arcu mauris, porta vitae magna eget, vestibulum fringilla magna. Vestibulum consequat id lorem et ultricies. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas elementum volutpat rutrum. In sapien massa, posuere gravida ex id, cursus porta ipsum. Etiam id tincidunt dolor. Suspendisse imperdiet dictum mi sit amet aliquam. In mattis fermentum lacus, et porta magna commodo quis. Nullam cursus ligula eget ultrices egestas. Integer auctor dolor justo, vitae consectetur neque porta in. Mauris vel metus sed risus ultrices pellentesque iaculis eu mi. Ut accumsan sodales dolor.
-                            </Cuerpo>
-                        </entrada>
-
-                        <entrada>
-                            <Titulo>
-                                Lorem ipsum<br>
-                            </Titulo>    
-                            <Cuerpo>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus arcu mauris, porta vitae magna eget, vestibulum fringilla magna. Vestibulum consequat id lorem et ultricies. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas elementum volutpat rutrum. In sapien massa, posuere gravida ex id, cursus porta ipsum. Etiam id tincidunt dolor. Suspendisse imperdiet dictum mi sit amet aliquam. In mattis fermentum lacus, et porta magna commodo quis. Nullam cursus ligula eget ultrices egestas. Integer auctor dolor justo, vitae consectetur neque porta in. Mauris vel metus sed risus ultrices pellentesque iaculis eu mi. Ut accumsan sodales dolor.
-                            </Cuerpo>
-                        </entrada>
                     </td>
-                    <td width="30%" >
+                    <td width="30%">
                         <entrada>
                             <Titulo>
                                 Who are we: <br>
@@ -258,7 +232,8 @@
                         <a href="http://www.roomtoread.org/">Room to read</a><br>
                         <a href="https://www.tostan.org/">Tostan</a><br>
                         <a href="http://fawe.org/home/">fawe</a><br>
-                        <a href="http://www.care.org/work/education">CARE Education</a><br>                       
+                        <a href="http://www.care.org/work/education">CARE Education</a><br>           
+
                      </Cuerpo>
                 </entrada>
                 <entrada>
@@ -281,8 +256,6 @@
                         Some people think that the best way to help them is to give to them the opportunity to choose where they want to spend the money that you give them. If you agree with them, here you have a list of NGOs that will give money to the people that need it.
                         <br><a href="http://www.care.org/work/economic-development">CARE Economic Developement</a><br>
                         <a href="http://www.worldbank.org/">World Bank</a><br>
-                        
-
 
                     </Cuerpo>
                 </entrada>
@@ -419,6 +392,9 @@
             document.getElementById("blog").style.display="block";
             document.getElementById("Contakts").style.display="none";
             document.getElementById("ONGs").style.display="none";
+            document.getElementById("BContk").style.backgroundColor = "white";
+            document.getElementById("BBlog").style.backgroundColor = "rgb(32,200,120)";
+            document.getElementById("BHelp").style.backgroundColor = "white";
         }
 
         function showHelp(){
@@ -427,6 +403,9 @@
             document.getElementById("blog").style.display="none";
             document.getElementById("Contakts").style.display="none";
             document.getElementById("ONGs").style.display="block";
+            document.getElementById("BContk").style.backgroundColor = "white";
+            document.getElementById("BBlog").style.backgroundColor = "white";
+            document.getElementById("BHelp").style.backgroundColor = "rgb(32,200,120)";
         }
 
         function showContact(){
@@ -436,6 +415,9 @@
             document.getElementById("blog").style.display="none";
             document.getElementById("Contakts").style.display="block";
             document.getElementById("ONGs").style.display="none";
+            document.getElementById("BContk").style.backgroundColor = "rgb(32,200,120)";
+            document.getElementById("BBlog").style.backgroundColor = "white";
+            document.getElementById("BHelp").style.backgroundColor = "white";
         }
 
 
