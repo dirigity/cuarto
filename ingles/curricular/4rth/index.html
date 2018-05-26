@@ -45,7 +45,7 @@
         transition: all .7s ease-in-out; 
         background-image: url("left-arrow-15.gif");
         background-size: 100% 100%;
-        opacity: 1;
+        opacity: 0;
     }
     BackwardsDect:hover{
         transform: scale(2);
@@ -198,12 +198,11 @@
         opacity: 0.8;
         font-size: 140%;
         color : white;
-        position: absolute;
-        margin: 50%
+        transition: all 2s ease-in-out; 
+
     }
     center{
-        top: 50%;
-        left: 50%;
+        margin-top: 20%;
     }
 </style></head>
 
@@ -337,7 +336,12 @@
                 </entrada>
             </jorepore>
             <jorepore id="Contakts">
-                <br><br>Work In Progres ;)<br><br>
+                <br><br>
+                Email us: <a href="mailto:HelpRefugeesContactMail@gmail.com">HelpRefugeesContactMail@gmail.com</a>
+                <input type="text" id="textField"></jorepore></input>
+                <jnie onclick="sendtestmail();">apetecan</jnie>
+                
+                <br><br>
             </jorepore>
         </infobox>
 
@@ -373,9 +377,20 @@
         <IMG class="displayed small" src="Logo.png" alt="logo.png" align="middle">
             
     </portada>
-
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("user_rXKtXfsleCpwhvblpgkxu");
+        })();
+    </script>
     <Script>
         var goandtrollYourGramma = "true"
+
+        function sendtestmail(){
+            var Amessage_html = document.getElementById("textField").value;
+            emailjs.send("gmail","qwerty",{message_html:Amessage_html});
+        }
+
         function hidehide() {
             if(goandtrollYourGramma){
                 var hide = document.getElementById("botton2top");
@@ -427,7 +442,7 @@
                 setTimeout(() => {
                     image.className = 'displayed big';
                     document.getElementById("Tuto").className='Fade';
-
+                    console.log("Let the show beguin")
                 }, 6000);
             }
         }
