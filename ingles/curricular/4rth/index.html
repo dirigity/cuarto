@@ -204,6 +204,14 @@
     center{
         margin-top: 20%;
     }
+    jnie{
+        border: 1px solid black;
+        border-radius: 5px;
+        background: linear-gradient(to right, rgb(41, 179, 121) ,rgb(59, 230, 138));
+        padding: 2px;
+        margin: 2px;
+
+    }
 </style></head>
 
 <body>
@@ -338,8 +346,9 @@
             <jorepore id="Contakts">
                 <br><br>
                 Email us: <a href="mailto:HelpRefugeesContactMail@gmail.com">HelpRefugeesContactMail@gmail.com</a>
-                <input type="text" id="textField"></jorepore></input>
-                <jnie onclick="sendtestmail();">apetecan</jnie>
+                <br>Or leave a comment here:
+                <br><textarea rows="4" cols="50" id="textField"></textarea>
+                <br><jnie onclick="sendtestmail();">send</jnie>
                 
                 <br><br>
             </jorepore>
@@ -389,6 +398,9 @@
         function sendtestmail(){
             var Amessage_html = document.getElementById("textField").value;
             emailjs.send("gmail","qwerty",{message_html:Amessage_html});
+            alert("Sended");
+            document.getElementById("textField").value = "";
+
         }
 
         function hidehide() {
