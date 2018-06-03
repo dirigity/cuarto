@@ -420,7 +420,8 @@
             </jorepore>
         </infobox>
     </Info>
-    <iframe class="FullScreenNoAnimation" id="VideoDePresentacion" src="https://player.vimeo.com/video/100501839" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+    <iframe id="VideoDePresentacion" class="FullScreenNoAnimation" src="https://player.vimeo.com/video/273219072" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
     <BackwardsDect onclick="MainMenu();">
 
     </BackwardsDect>
@@ -481,6 +482,7 @@
         }
         function videoShow() {
             if(goandtrollYourGramma){
+                console.log("llego");
                 goandtrollYourGramma = "";
                 var Blog = document.getElementById("Page");
                 var Button = document.getElementById("botton1");
@@ -493,7 +495,7 @@
                 Button.className = 'FullScreen';
                 Selector.className = 'Fade';
                 Video.style.display = 'Block';
-                Blog.style.display = 'none';
+                Blog.style.display = "none";
                 setTimeout(() => {
                     image.className = 'displayed big';
                     document.getElementById("Tuto").className='Fade';
