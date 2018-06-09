@@ -66,10 +66,93 @@
 -->  
   </SPAN></TD>
   <TD><SPAN CLASS="input">
-<span class="code_function">wxplot2d</span>( [<span class="code_function">atan</span>(<span class="code_variable">x</span>)<span class="code_operator">/</span>(<span class="code_variable">%pi</span><span class="code_operator">/</span><span class="code_number">2</span>),<span class="code_function">tanh</span>(<span class="code_variable">x</span>)], [<span class="code_variable">x</span>,<span class="code_number">-</span><span class="code_number">3</span>,<span class="code_number">30</span>], [<span class="code_variable">y</span>,<span class="code_number">-</span><span class="code_number">4</span>,<span class="code_number">4</span>] )<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+<BR>
+<BR>
+<span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">wxplot2d</span>( [<span class="code_function">atan</span>(<span class="code_variable">x</span>)<span class="code_operator">/</span>(<span class="code_variable">%pi</span><span class="code_operator">/</span><span class="code_number">2</span>),<span class="code_function">tanh</span>(<span class="code_variable">x</span>)], [<span class="code_variable">x</span>,<span class="code_number">-</span><span class="code_number">3</span>,<span class="code_number">30</span>], [<span class="code_variable">y</span>,<span class="code_number">-</span><span class="code_number">4</span>,<span class="code_number">4</span>] )<span class="code_endofline">$</span><BR>
+<span class="code_operator"></span>  </SPAN></TD>
 </TR></TABLE>
 \[\mathrm{\tt (\%t133) }\quad \]
   <img src="Jaim2.71_htmlimg/Jaim2.71_4.png" width="598" style="max-width:90%;" alt=" (Graphics) " >
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i3) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">recorta_funcion</span>(<span class="code_variable">inicio</span>,<span class="code_variable">fin</span>,<span class="code_variable">f</span>)<span class="code_operator">:</span><span class="code_operator">=</span> ((<span class="code_function">tanh</span>((<span class="code_variable">x</span><span class="code_operator">-</span><span class="code_variable">inicio</span>)<span class="code_operator">*</span><span class="code_number">20</span>)<span class="code_operator">+</span><span class="code_number">1</span>)<span class="code_operator">*</span>(<span class="code_operator">-</span><span class="code_function">tanh</span>((<span class="code_variable">x</span><span class="code_operator">-</span><span class="code_variable">fin</span>)<span class="code_operator">*</span><span class="code_number">20</span>)<span class="code_operator">+</span><span class="code_number">1</span>)<span class="code_operator">/</span><span class="code_number">4</span>)<span class="code_operator">*</span><span class="code_variable">f</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\mathrm{\tt (\%o3) }\quad \mathrm{recorta\_funcion}\left( \mathit{inicio},\mathit{fin},f\right) :=\frac{\left( \mathrm{tanh}\left( \left( x-\mathit{inicio}\right) \cdot 20\right) +1\right) \cdot \left( 1-\mathrm{tanh}\left( \left( x-\mathit{fin}\right) \cdot 20\right) \right) \cdot f}{4}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i4) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">jota</span>(<span class="code_variable">x</span>)<span class="code_operator">:</span><span class="code_operator">=</span><span class="code_function">recorta_funcion</span>(<span class="code_number">1</span>,<span class="code_number">4</span>,(<span class="code_variable">x</span><span class="code_operator">-</span><span class="code_number">2</span>)<span class="code_operator">^</span><span class="code_number">2</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\mathrm{\tt (\%o4) }\quad \mathrm{jota}\left( x\right) :=\mathrm{recorta\_funcion}\left( 1,4,{{\left( x-2\right) }^{2}}\right) \]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i6) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">wxplot2d</span>( <span class="code_function">jota</span>(<span class="code_variable">x</span>), [<span class="code_variable">x</span>,<span class="code_number">0</span>,<span class="code_number">6</span>])<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\mathrm{\tt (\%t6) }\quad \]
+  <img src="Jaim2.71_htmlimg/Jaim2.71_8.png" width="598" style="max-width:90%;" alt=" (Graphics) " >
+\[\mathrm{\tt (\%o6) }\quad \]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i7) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">expand</span>(<span class="code_function">jota</span>(<span class="code_variable">x</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\mathrm{\tt (\%o7) }\quad -\frac{{{x}^{2}}\cdot \mathrm{tanh}\left( 20\cdot x-80\right) \cdot \mathrm{tanh}\left( 20\cdot x-20\right) }{4}+x\cdot \mathrm{tanh}\left( 20\cdot x-80\right) \cdot \mathrm{tanh}\left( 20\cdot x-20\right) -\mathrm{tanh}\left( 20\cdot x-80\right) \cdot \mathrm{tanh}\left( 20\cdot x-20\right) +\frac{{{x}^{2}}\cdot \mathrm{tanh}\left( 20\cdot x-20\right) }{4}-x\cdot \mathrm{tanh}\left( 20\cdot x-20\right) +\mathrm{tanh}\left( 20\cdot x-20\right) -\frac{{{x}^{2}}\cdot \mathrm{tanh}\left( 20\cdot x-80\right) }{4}+x\cdot \mathrm{tanh}\left( 20\cdot x-80\right) -\mathrm{tanh}\left( 20\cdot x-80\right) +\frac{{{x}^{2}}}{4}-x+1\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i10) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">expand</span>(<span class="code_function">Jaim271</span>(<span class="code_variable">x</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\mathrm{\tt (\%o10) }\quad \mathrm{Jaim271}\left( x\right) \]
 
  <HR>
  <SMALL> Created with <A HREF="http://wxmaxima.sourceforge.net/">wxMaxima</A>.</SMALL>
