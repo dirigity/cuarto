@@ -3,20 +3,27 @@
         <style>
             canvas{
                 position: fixed;
+                
                 width: 100%;
                 height: 100%;
-                margin: 0px;
-                margin: 0px;
-            }
-            html{
-                padding: 0px;
-                margin: 0px;
+                
             }
         </style>
     </head>
-    <body>
-            <canvas id="myCanvas"></canvas>
+    <body onload="start()">
+        <canvas id="myCanvas"></canvas>
         <Script>
+
+            function start(){
+                cube.draw();
+
+            }
+
+            var distanciaAlPlano = 2;
+            var xCamara = 0;
+            var yCamara = 0;
+            var zCamara = -3;
+            var zoom = 20;
             var cube = {
                 x : [ 1,-1, 1,-1, 1,-1, 1,-1, 1,-1, 1,-1, 1,-1, 1,-1],
                 y : [ 1, 1,-1,-1, 1, 1,-1,-1, 1, 1,-1,-1, 1, 1,-1,-1],
@@ -31,7 +38,7 @@
                     return coordinate
                 },
                 pibot3d: function (x,y,z,gradosxy,gradosyz,gradoszx) {
-                    for (let index = 0; index < this.points; index++) {
+                    for (let index = 0; index < this.points(); index++) {
                         cordenadas1 = pibot2d(x,y,x[index],y[index],gradosxy);
                         x[index] = cordenadas1.x;
                         y[index] = cordenadas1.y;
@@ -54,21 +61,45 @@
                         y : Math.sin(angulloFinal)*distancia,
                     }
                     return coordinate2d
+                },
+                draw: function(){
+                    for (let index = 0; index < this.points(); index++) {
+                        for (let jndex = 0; jndex < this.points(); jndex++) {
+                            xy1 = to2d(this.x[index],this.y[index],this.z[index]);
+                            xy2 = to2d(this.x[jndex],this.y[jndex],this.z[jndex]);
+                            draw2dLine(xy1.x,xy1.y,xy2.x,xy2.y);
+                            
+                        }
+                    }
                 }
 
             }
             function draw2dLine(x1,y1,x2,y2){
                 var c = document.getElementById("myCanvas");
-                c.width = window.innerWidth;
-                c.height = window.innerHeight;
+                var PIncrs = 100;
+                c.style.width = (c.width * PIncrs) + "px";
+                c.style.height = (c.height * PIncrs) + "px";
+
                 var ctx = c.getContext("2d");
-                ctx.moveTo(x1, y1);
-                ctx.lineTo(x2, y2);
+
+                ctx.moveTo((x1*zoom+c.width * PIncrs/2), (y1*zoom+c.height * PIncrs/2));
+                ctx.lineTo((x2*zoom+c.width * PIncrs/2), (y2*zoom+c.height * PIncrs/2));
                 ctx.stroke();
+
+                console.log((x1*zoom+c.width/2)+" "+(y1*zoom+c.height/2)+" "+(x2*zoom+c.width/2)+" "+(y2*zoom+c.height/2));
+            }
+
+            function to2d(x,y,z){
+                var x_ = distanciaAlPlano*((xCamara-x)/(zCamara-z));
+                var y_ =  distanciaAlPlano*((yCamara-y)/(zCamara-z));
+                var Anws = {
+                    x : x_,
+                    y : y_
+                };
+                return Anws;
             }
             
         </Script>
     </body>
 </html>
-
 
