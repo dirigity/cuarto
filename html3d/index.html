@@ -13,17 +13,43 @@
     <body onload="start()">
         <canvas id="myCanvas"></canvas>
         <Script>
+            
+            document.onkeydown = checkKey;
+
+            function checkKey(e) {
+
+                e = e || window.event;
+
+                if (e.keyCode == '38') {
+                }
+                else if (e.keyCode == '40') {
+                }
+                else if (e.keyCode == '37') {
+                    cube.pivot3d(0,0,0,10,10,10);
+                    start()
+                }
+                else if (e.keyCode == '39') {
+                    cube.pivot3d(0,0,0,-10,-10,-10);
+                    start()
+                }
+
+            }
+
 
             function start(){
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+                ctx.clearRect(0, 0, c.width, c.height);
+
                 cube.draw();
 
             }
 
-            var distanciaAlPlano = 2;
+            var distanciaAlPlano = 3;
             var xCamara = 0;
             var yCamara = 0;
-            var zCamara = -3;
-            var zoom = 20;
+            var zCamara = -2;
+            var zoom = 10;
             var cube = {
                 x : [ 1,-1, 1,-1, 1,-1, 1,-1, 1,-1, 1,-1, 1,-1, 1,-1],
                 y : [ 1, 1,-1,-1, 1, 1,-1,-1, 1, 1,-1,-1, 1, 1,-1,-1],
@@ -37,56 +63,60 @@
                     }
                     return coordinate
                 },
-                pibot3d: function (x,y,z,gradosxy,gradosyz,gradoszx) {
+                pivot3d: function (x,y,z,gradosxy,gradosyz,gradoszx) {
                     for (let index = 0; index < this.points(); index++) {
-                        cordenadas1 = pibot2d(x,y,x[index],y[index],gradosxy);
+                        cordenadas1 = this.pivot2d(x,y,this.x[index],this.y[index],gradosxy);
                         x[index] = cordenadas1.x;
                         y[index] = cordenadas1.y;
                         
-                        cordenadas2 = pibot2d(y,z,y[index],z[index],gradosyz);
+                        cordenadas2 = this.pivot2d(y,z,this.y[index],this.z[index],gradosyz);
                         y[index] = cordenadas1.x;
                         z[index] = cordenadas1.y;
 
-                        cordenadas3 = pibot2d(z,x,z[index],x[index],gradoszx);
+                        cordenadas3 = this.pivot2d(z,x,this.z[index],this.x[index],gradoszx);
                         z[index] = cordenadas1.x;
                         x[index] = cordenadas1.y;
                     }
+                    console.log(this.x);
+                    console.log(this.y);
+                    console.log(this.z);
+
                 },
-                pibot2d: function (x1,y1,x2,y2,gradosxy){
-                    distancia = Math.sqrt(math.pow(x1-x2,2)+math.pow(y1-y2,2));
-                    anguloInicial = Math.asin((y1-y2)/distancia);
+                pivot2d: function (x1,y1,x2,y2,gradosxy){
+                    distancia = Math.sqrt(Math.pow(x1-x2,2)+Math.pow(y1-y2,2));
+                    anguloInicial = Math.asin((x1-x2)/distancia);
                     angulloFinal = anguloInicial+gradosxy;
                     var coordinate2d = {
                         x : Math.cos(angulloFinal)*distancia,
                         y : Math.sin(angulloFinal)*distancia,
                     }
+                    console.log(x2);
                     return coordinate2d
                 },
                 draw: function(){
                     for (let index = 0; index < this.points(); index++) {
                         for (let jndex = 0; jndex < this.points(); jndex++) {
-                            xy1 = to2d(this.x[index],this.y[index],this.z[index]);
-                            xy2 = to2d(this.x[jndex],this.y[jndex],this.z[jndex]);
-                            draw2dLine(xy1.x,xy1.y,xy2.x,xy2.y);
-                            
+                            if(!(this.x[index]==this.x[jndex]^this.y[index]==this.y[jndex]^this.z[index]==this.z[jndex])){
+                                xy1 = to2d(this.x[index],this.y[index],this.z[index]);
+                                xy2 = to2d(this.x[jndex],this.y[jndex],this.z[jndex]);
+                                draw2dLine(xy1.x,xy1.y,xy2.x,xy2.y);
+                            }
                         }
                     }
                 }
 
             }
+
             function draw2dLine(x1,y1,x2,y2){
                 var c = document.getElementById("myCanvas");
-                var PIncrs = 100;
-                c.style.width = (c.width * PIncrs) + "px";
-                c.style.height = (c.height * PIncrs) + "px";
-
+                
                 var ctx = c.getContext("2d");
-
-                ctx.moveTo((x1*zoom+c.width * PIncrs/2), (y1*zoom+c.height * PIncrs/2));
-                ctx.lineTo((x2*zoom+c.width * PIncrs/2), (y2*zoom+c.height * PIncrs/2));
+                ctx.lineWidth = 1;
+                ctx.moveTo((x1*zoom+c.width /2), (y1*zoom+c.height /2));
+                ctx.lineTo((x2*zoom+c.width /2), (y2*zoom+c.height /2));
                 ctx.stroke();
 
-                console.log((x1*zoom+c.width/2)+" "+(y1*zoom+c.height/2)+" "+(x2*zoom+c.width/2)+" "+(y2*zoom+c.height/2));
+                //console.log((x1*zoom+c.width/2)+" "+(y1*zoom+c.height/2)+" "+(x2*zoom+c.width/2)+" "+(y2*zoom+c.height/2));
             }
 
             function to2d(x,y,z){
