@@ -10,9 +10,18 @@
             }
         </style>
     </head>
-    <body onload="start()">
-        <canvas id="myCanvas"></canvas>
+    <body onload="Render()">
+        <canvas id="myCanvas" width="600" height="600"></canvas>
         <Script>
+
+            var distanciaAlPlano = 3;
+            var xCamara = 0;
+            var yCamara = 0;
+            var zCamara = -3;
+            var zoom = 20;
+
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
             
             document.onkeydown = checkKey;
 
@@ -21,39 +30,53 @@
                 e = e || window.event;
 
                 if (e.keyCode == '38') {
-                }
-                else if (e.keyCode == '40') {
-                }
-                else if (e.keyCode == '37') {
-                    cube.pivot3d(0,0,0,10,10,10);
-                    start()
-                }
-                else if (e.keyCode == '39') {
-                    cube.pivot3d(0,0,0,-10,-10,-10);
-                    start()
+                    cube.pivot3d(xCamara,yCamara,zCamara,0,-Math.PI/100,0);
+                    Render();
+                }else if (e.keyCode == '40') {
+                    cube.pivot3d(xCamara,yCamara,zCamara,0,Math.PI/100,0);
+                    Render();
+                }else if (e.keyCode == '37') {
+                    cube.pivot3d(xCamara,yCamara,zCamara,0,0,Math.PI/100);
+                    Render();
+                }else if (e.keyCode == '39') {
+                    cube.pivot3d(xCamara,yCamara,zCamara,0,0,-Math.PI/100);
+                    Render();
+                }else if (e.keyCode == '87') {
+                    zCamara++;
+                    Render();
+                }else if (e.keyCode == '83') {
+                    zCamara--;
+                    Render();
+                }else if (e.keyCode == '65') {
+                    xCamara--;
+                    Render();
+                }else if (e.keyCode == '68') {
+                    xCamara++;
+                    Render();
+                }else if (e.keyCode == '32') {
+                    yCamara--;
+                    Render();
+                }else if (e.keyCode == '16') {
+                    yCamara++;
+                    Render();
                 }
 
             }
 
 
-            function start(){
-                var c = document.getElementById("myCanvas");
-                var ctx = c.getContext("2d");
-                ctx.clearRect(0, 0, c.width, c.height);
-
+            function Render(){
+                ctx.canvas.width = ctx.canvas.width;
                 cube.draw();
 
             }
+            
 
-            var distanciaAlPlano = 3;
-            var xCamara = 0;
-            var yCamara = 0;
-            var zCamara = -2;
-            var zoom = 10;
+
             var cube = {
-                x : [ 1,-1, 1,-1, 1,-1, 1,-1, 1,-1, 1,-1, 1,-1, 1,-1],
-                y : [ 1, 1,-1,-1, 1, 1,-1,-1, 1, 1,-1,-1, 1, 1,-1,-1],
-                z : [ 1, 1, 1, 1, 1, 1, 1, 1,-1,-1,-1,-1,-1,-1,-1,-1],
+                x : [ 1,-1, 1,-1, 1,-1, 1,-1],
+                y : [ 1, 1,-1,-1, 1, 1,-1,-1],
+                z : [-1,-1,-1,-1, 1, 1, 1, 1],
+                aristas : [[0,1],[0,4],[0,2],[1,5],[1,3],[3,7],[3,2],[4,5],[4,6],[5,7],[6,2],[6,7]],
                 points : function(){return this.x.length},
                 getCoordinate: function(i){
                     var coordinate3d = {
@@ -66,60 +89,49 @@
                 pivot3d: function (x,y,z,gradosxy,gradosyz,gradoszx) {
                     for (let index = 0; index < this.points(); index++) {
                         cordenadas1 = this.pivot2d(x,y,this.x[index],this.y[index],gradosxy);
-                        x[index] = cordenadas1.x;
-                        y[index] = cordenadas1.y;
-                        
+                        this.x[index] = cordenadas1.x;
+                        this.y[index] = cordenadas1.y;
+                    }for (let index = 0; index < this.points(); index++) {
                         cordenadas2 = this.pivot2d(y,z,this.y[index],this.z[index],gradosyz);
-                        y[index] = cordenadas1.x;
-                        z[index] = cordenadas1.y;
-
+                        this.y[index] = cordenadas2.x;
+                        this.z[index] = cordenadas2.y;
+                    }for (let index = 0; index < this.points(); index++) {
                         cordenadas3 = this.pivot2d(z,x,this.z[index],this.x[index],gradoszx);
-                        z[index] = cordenadas1.x;
-                        x[index] = cordenadas1.y;
+                        this.z[index] = cordenadas3.x;
+                        this.x[index] = cordenadas3.y;
                     }
-                    console.log(this.x);
-                    console.log(this.y);
-                    console.log(this.z);
 
                 },
-                pivot2d: function (x1,y1,x2,y2,gradosxy){
-                    distancia = Math.sqrt(Math.pow(x1-x2,2)+Math.pow(y1-y2,2));
-                    anguloInicial = Math.asin((x1-x2)/distancia);
-                    angulloFinal = anguloInicial+gradosxy;
+                pivot2d: function (xCentro,yCentro,x2,y2,gradosxy){
                     var coordinate2d = {
-                        x : Math.cos(angulloFinal)*distancia,
-                        y : Math.sin(angulloFinal)*distancia,
+                        x: Math.cos(gradosxy) * (x2-xCentro) - Math.sin(gradosxy) * (y2-yCentro) + xCentro,
+                        y: Math.sin(gradosxy) * (x2-xCentro) + Math.cos(gradosxy) * (y2-yCentro) + yCentro,
                     }
-                    console.log(x2);
                     return coordinate2d
                 },
                 draw: function(){
-                    for (let index = 0; index < this.points(); index++) {
-                        for (let jndex = 0; jndex < this.points(); jndex++) {
-                            if(!(this.x[index]==this.x[jndex]^this.y[index]==this.y[jndex]^this.z[index]==this.z[jndex])){
-                                xy1 = to2d(this.x[index],this.y[index],this.z[index]);
-                                xy2 = to2d(this.x[jndex],this.y[jndex],this.z[jndex]);
-                                draw2dLine(xy1.x,xy1.y,xy2.x,xy2.y);
-                            }
-                        }
+                    for (let i = 0; i < this.aristas.length; i++) {
+                        const element = this.aristas[i];
+                        xy1 = to2d(this.x[element[0]],this.y[element[0]],this.z[element[0]]);
+                        xy2 = to2d(this.x[element[1]],this.y[element[1]],this.z[element[1]]);
+                        if(xy1 && xy2)draw2dLine(xy1.x,xy1.y,xy2.x,xy2.y);
+                        
                     }
                 }
-
             }
+            
 
             function draw2dLine(x1,y1,x2,y2){
-                var c = document.getElementById("myCanvas");
-                
-                var ctx = c.getContext("2d");
                 ctx.lineWidth = 1;
                 ctx.moveTo((x1*zoom+c.width /2), (y1*zoom+c.height /2));
                 ctx.lineTo((x2*zoom+c.width /2), (y2*zoom+c.height /2));
                 ctx.stroke();
-
-                //console.log((x1*zoom+c.width/2)+" "+(y1*zoom+c.height/2)+" "+(x2*zoom+c.width/2)+" "+(y2*zoom+c.height/2));
             }
 
             function to2d(x,y,z){
+                if(z-zCamara<0){
+                    return null;
+                }
                 var x_ = distanciaAlPlano*((xCamara-x)/(zCamara-z));
                 var y_ =  distanciaAlPlano*((yCamara-y)/(zCamara-z));
                 var Anws = {
@@ -129,6 +141,38 @@
                 return Anws;
             }
             
+
+            function Tests() {
+
+                let igual = function(a,b){
+                    return Math.abs(a-b) < 0.001;
+                }
+
+                let prueba = function(p,c,a,e){
+                    let r = cube.pivot2d(c.x, c.y, p.x, p.y, a); 
+                    if( !igual(r.x, e.x) || !igual(r.y, e.y) ){
+                        throw new Error("Mal");
+                    }
+                }
+
+                let p1 = {x:0, y:0};
+                let c1 = {x:0, y:0};
+                let a1 = 90*Math.PI/180;
+                let e1 = {x:0, y:0};
+
+                prueba(p1,c1,a1,e1);
+
+                prueba( {x:1, y:1}, {x:0, y:0}, Math.PI, {x:-1, y:-1});
+
+                prueba( {x:1, y:1}, {x:1, y:1}, Math.PI, {x:1, y:1});
+
+                prueba( {x:1, y:0}, {x:0, y:0}, 90*Math.PI/180, {x:0, y:1});
+
+                prueba( {x:1, y:0}, {x:0, y:0}, -90*Math.PI/180, {x:0, y:-1});
+            }
+
+            Tests();
+
         </Script>
     </body>
 </html>
