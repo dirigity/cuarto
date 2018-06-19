@@ -18,7 +18,7 @@
             var xCamara = 0;
             var yCamara = 0;
             var zCamara = -3;
-            var zoom = 20;
+            var zoom = 70;
 
             var c = document.getElementById("myCanvas");
             var ctx = c.getContext("2d");
@@ -41,6 +41,13 @@
                 }else if (e.keyCode == '39') {
                     cube.pivot3d(xCamara,yCamara,zCamara,0,0,-Math.PI/100);
                     Render();
+                }else if (e.keyCode == '74') {
+                    cube.pivot3d(xCamara,yCamara,zCamara,Math.PI/100,0,0);
+                    Render();
+                }else if (e.keyCode == '76') {
+                    cube.pivot3d(xCamara,yCamara,zCamara,-Math.PI/100,0,0);
+                    Render();
+                
                 }else if (e.keyCode == '87') {
                     zCamara++;
                     Render();
