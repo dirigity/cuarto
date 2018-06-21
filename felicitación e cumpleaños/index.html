@@ -23,16 +23,15 @@
 
         <Script>
             var Places = [0,3,4,2,0];
-            var times = [1,2,3,4,5];
-            var lastPulsed = -1;
+            var times = [1,2,2,3,2];
             var yposible = 410;
             var xposible = [88,148,198,258,318,408,468,518,568,628,678,784];
             
             var x = 8;
             var y = yposible;
             var gravedad = 1000;
-            var vx = 50;
-            var vy = -500;
+            var vx = 0;
+            var vy = -0;
             var unopartidodefremeporsecond = 0.01;
             var ball = document.getElementById("ball");
             
@@ -49,8 +48,24 @@
 
             function Start(){
                 tick();
-                tocar();
+                tocar(0);
+            }
 
+            function tocar(a){
+                var pitch = Places[a];
+                var time = times[a];
+                var pixelsToCover = xposible[pitch]-x;
+                var velocidadInsty = -700;
+                var tiempoTonextcrush = -2*velocidadInsty/1000;
+                var velocidadInstx = tiempoTonextcrush/pixelsToCover;
+                vx = velocidadInstx;
+                vy = velocidadInsty;
+                console.log("jump?");
+
+
+                if(a < Places.length){
+                    setTimeout(function() {return tocar(a+1)}, time*1000);
+                }
             }
 
             function tick(){
@@ -64,12 +79,12 @@
                     y = yposible;
                     vy = 0;
                     vx = 0;
-                    console.log("chush",ball.style.top+vy);
+                    //console.log("chush",ball.style.top+vy);
 
                 }
                 ball.style.top = y;
                 ball.style.left = x;
-                console.log(getPosition(ball),y,x)
+                //console.log(getPosition(ball),y,x)
 
                 setTimeout(function() {return tick()}, unopartidodefremeporsecond*1000);
             }
