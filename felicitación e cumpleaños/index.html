@@ -5,37 +5,58 @@
                 position: absolute;
             }
             #piano{
-                left: 10%;
-                bottom: 3%;
-                width: 80%;
-                height: 20%;
+                left: 1%;
+                bottom: 1%;
+                width: 98%;
+                height: 22%;
             }
             #ball{
                 width: 10%;
             }
+            showStage{
+                display: none;
+            }
+            configuration{
+                display: block;
+            }
         </style>
     </head>
-    <body>
+    <body>  
+        <configuration id="conf">
+            Hi there, welcome to Jaime's kind of interactive piano.<br>
+            You can enter the code and write your own song following the insructions that you'll hoppefully find there or instead if you don't feel like working or you are using an mobile phone pick one from here, when you are done click <strong onclick="Start()" >GO!</strong>
+            <br><br>
+            <button onclick="SelectHB()">Happy BirthDay</button>
+            <button onclick="Start()">GO!</button>
         
+        </configuration>
+        <showStage id="ShowStage">
             <img id= "piano" src="piano.png" alt="imagine a piano">
             <img id= "ball" src="vinilo-infantil-pelota-futbol-color-1399.png" alt="imagine a ball">
+        </showStage>
+
 
         <script>
-            var Places = [1,2,3,4,5,6,7,8,9,10];
-            var times = [1,1,1,1,1,1,1,1,1];
-            var yposible = 23;
-            var xposible = [10,19,24.5,30,37,47,53,58.5,63.5,69,76,83];
             
-            var x = 0;
+            var Places; // 0 is DO, 11 is SI, it stands for places to go, here you write the tile numbers, do not worry about cordinates (I already did it for you)
+            var times; // for each value you write in places you should write its length (in seconds)
+            
+            var PlacesCumpleañosfeliz = [0  ,0  ,2,0,5,4,0  ,0  ,2,0,7,5,0  ,0  ,11,9,5,4,2,11 ,11 ,9,5,7,5];
+            var timesCumpleañosfeliz =  [0.5,0.5,1,1,1,2,0.5,0.5,1,1,1,2,0.5,0.5,1 ,1,1,1,1,0.5,0.5,1,1,1,2];
+
+            var yposible = 23;
+            var xposible = [3,10,17,24,32,44,51.5,58.5,65.5,72.5,79.5,88];
+            
+            var x;
             var y = yposible;
-            var gravedad = -100;
+            var gravedad = -200;
             var vx = 0;
             var vy = 0;
             var unopartidodefremeporsecond = 0.01;
             var ball = document.getElementById("ball");
             
-
-            document.onkeydown = checkKey;
+            
+            //document.onkeydown = checkKey;
             function checkKey(e) {
 
                 e = e || window.event;
@@ -46,11 +67,21 @@
             }
 
             function Start(){
+                document.getElementById("ShowStage").style.display="block";
+                document.getElementById("conf").style.display="none";
+                x = xposible[Places[0]];
                 tick();
-                //tocar(0);
             }
 
-            
+            function SelectHB(){
+                Places = PlacesCumpleañosfeliz;
+                times = timesCumpleañosfeliz;
+
+
+                
+            }
+
+
             var nota = 0;
             function tick(){
                 
@@ -65,16 +96,19 @@
                     vy = 0;
                     vx = 0;
                     console.log("chush", nota);
-
-                    var pitch = Places[nota];
-                    var time = times[nota];
-                    var spacetocover = xposible[pitch]-x;
-                    vy = -gravedad*time;
-                    vx = spacetocover/time;
-                    nota++;
-                    console.log("pitch: " + pitch);
-                    console.log("time: "+time);
-
+                    if(nota-1!=Places.length){
+                        var pitch = Places[nota];
+                        var time = times[nota-1];
+                        var spacetocover = xposible[pitch]-x;
+                        vy = (-gravedad*time)/2;
+                        vx = spacetocover/time;
+                        nota++;
+                        console.log("pitch: " + pitch);
+                        console.log("time: "+time);
+                        setTimeout(function() {                    
+                            console.log("espectativa:"+ xposible[Places[nota-1]], "realidad: "+ (ball.offsetLeft/window.innerHeight)*100 , "error:" + xposible[Places[nota-1]]-(ball.offsetLeft/window.innerHeight)*100);
+                        }, time*1000);
+                    }
                 }
                 ball.style.bottom = y + "%";
                 ball.style.left = x + "%";
