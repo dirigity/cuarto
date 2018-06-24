@@ -20,15 +20,15 @@
             <img id= "piano" src="piano.png" alt="imagine a piano">
             <img id= "ball" src="vinilo-infantil-pelota-futbol-color-1399.png" alt="imagine a ball">
 
-        <Script>
-            var Places = [4,3,3];
-            var times = [1,1,1];
+        <script>
+            var Places = [1,2,3,4,5,6,7,8,9,10];
+            var times = [1,1,1,1,1,1,1,1,1];
             var yposible = 23;
             var xposible = [10,19,24.5,30,37,47,53,58.5,63.5,69,76,83];
             
             var x = 0;
             var y = yposible;
-            var gravedad = -10;
+            var gravedad = -100;
             var vx = 0;
             var vy = 0;
             var unopartidodefremeporsecond = 0.01;
@@ -47,41 +47,39 @@
 
             function Start(){
                 tick();
-                tocar(0);
+                //tocar(0);
             }
 
-            function tocar(a){
-                console.log("velocidad y = " + vy);
-                var pitch = Places[a];
-                var time = times[a];
-                var spacetocover = xposible[pitch]-x;
-                vy = -gravedad*time;
-                vx = spacetocover/time;
-
-                if(a+1 < Places.length){
-                    setTimeout(function() {return tocar(a+1)}, time*1000);
-                }
-            }
-
+            
+            var nota = 0;
             function tick(){
                 
                 if(y+vy*unopartidodefremeporsecond > yposible){
                     x  = x  + vx*unopartidodefremeporsecond;
                     y  = y  + vy*unopartidodefremeporsecond;
-                    vy = vy + gravedad*Math.pow(unopartidodefremeporsecond,2);
+                    vy = vy + gravedad*unopartidodefremeporsecond;
                     
 
                 }else{
                     y = yposible;
                     vy = 0;
                     vx = 0;
-                    console.log("chush");
+                    console.log("chush", nota);
+
+                    var pitch = Places[nota];
+                    var time = times[nota];
+                    var spacetocover = xposible[pitch]-x;
+                    vy = -gravedad*time;
+                    vx = spacetocover/time;
+                    nota++;
+                    console.log("pitch: " + pitch);
+                    console.log("time: "+time);
 
                 }
                 ball.style.bottom = y + "%";
                 ball.style.left = x + "%";
-
                 setTimeout(function() {return tick()}, unopartidodefremeporsecond*1000);
+
             }
 
 
