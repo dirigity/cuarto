@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mlt LC_NUMERIC="es_ES.UTF-8" version="6.9.0" title="Shotcut version 18.06.02" producer="main bin">
+  <profile description="automatic" width="1920" height="964" progressive="1" sample_aspect_num="1" sample_aspect_den="1" display_aspect_num="1920" display_aspect_den="964" frame_rate_num="40" frame_rate_den="1" colorspace="709"/>
+  <producer id="producer0" title="Anonymous Submission" in="00:00:00,000" out="00:00:35,950">
+    <property name="length">00:00:35,975</property>
+    <property name="eof">pause</property>
+    <property name="resource">/home/jaime/Desktop/felicitación de cumple/video sin musica-2018-06-25_15.33.47.mp4</property>
+    <property name="audio_index">-1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">b0264ed664a5341938866d6a897659dc</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <producer id="producer1" title="Anonymous Submission" in="00:00:00,000" out="00:01:04,550">
+    <property name="length">00:01:04,575</property>
+    <property name="eof">pause</property>
+    <property name="resource">/home/jaime/Desktop/felicitación de cumple/futuroMP3.mp3</property>
+    <property name="audio_index">0</property>
+    <property name="video_index">-1</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="shotcut:hash">ae3331ec7cf092ed876365a3c00f8247</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+  </producer>
+  <playlist id="main bin" title="Shotcut version 18.06.02">
+    <property name="shotcut:projectAudioChannels">2</property>
+    <property name="xml_retain">1</property>
+    <entry producer="producer0" in="00:00:00,000" out="00:00:35,950"/>
+    <entry producer="producer1" in="00:00:00,000" out="00:01:04,550"/>
+  </playlist>
+  <producer id="black" in="00:00:00,000" out="00:00:26,275">
+    <property name="length">00:00:26,300</property>
+    <property name="eof">pause</property>
+    <property name="resource">black</property>
+    <property name="aspect_ratio">1</property>
+    <property name="mlt_service">color</property>
+    <property name="set.test_audio">0</property>
+  </producer>
+  <playlist id="background">
+    <entry producer="black" in="00:00:00,000" out="00:00:26,275"/>
+  </playlist>
+  <producer id="producer2" title="Anonymous Submission" in="00:00:00,000" out="00:00:15,625">
+    <property name="length">00:00:15,650</property>
+    <property name="eof">pause</property>
+    <property name="resource">2,3:/home/jaime/Desktop/felicitación de cumple/video sin musica-2018-06-25_15.33.47.mp4</property>
+    <property name="aspect_ratio">1</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">-1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">1</property>
+    <property name="warp_speed">2,3</property>
+    <property name="warp_resource">/home/jaime/Desktop/felicitación de cumple/video sin musica-2018-06-25_15.33.47.mp4</property>
+    <property name="mlt_service">timewarp</property>
+    <property name="shotcut:producer">avformat</property>
+    <property name="video_delay">0</property>
+    <property name="shotcut:hash">b0264ed664a5341938866d6a897659dc</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">video sin musica-2018-06-25_15.33.47.mp4 (2.3x)</property>
+    <property name="shotcut:detail">/home/jaime/Desktop/felicitación de cumple/video sin musica-2018-06-25_15.33.47.mp4</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <playlist id="playlist0">
+    <property name="shotcut:video">1</property>
+    <property name="shotcut:name">V1</property>
+    <entry producer="producer2" in="00:00:00,375" out="00:00:13,425"/>
+  </playlist>
+  <producer id="producer3" title="Anonymous Submission" in="00:00:00,000" out="00:01:04,550">
+    <property name="length">00:01:04,575</property>
+    <property name="eof">pause</property>
+    <property name="resource">/home/jaime/Desktop/felicitación de cumple/futuroMP3.mp3</property>
+    <property name="audio_index">0</property>
+    <property name="video_index">-1</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="shotcut:hash">ae3331ec7cf092ed876365a3c00f8247</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">futuroMP3.mp3</property>
+    <property name="shotcut:detail">/home/jaime/Desktop/felicitación de cumple/futuroMP3.mp3</property>
+    <property name="shotcut:comment"></property>
+  </producer>
+  <playlist id="playlist1">
+    <property name="shotcut:audio">1</property>
+    <property name="shotcut:name">A1</property>
+    <entry producer="producer3" in="00:00:00,000" out="00:00:26,275"/>
+  </playlist>
+  <tractor id="tractor0" title="Shotcut version 18.06.02" global_feed="1" in="00:00:00,000" out="00:00:26,275">
+    <property name="shotcut">1</property>
+    <property name="shotcut:projectAudioChannels">2</property>
+    <property name="shotcut:scaleFactor">1,01</property>
+    <track producer="background"/>
+    <track producer="playlist0"/>
+    <track producer="playlist1" hide="video"/>
+    <transition id="transition0">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="mlt_service">mix</property>
+      <property name="always_active">1</property>
+      <property name="sum">1</property>
+    </transition>
+    <transition id="transition1">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="version">0,9</property>
+      <property name="mlt_service">frei0r.cairoblend</property>
+      <property name="disable">1</property>
+    </transition>
+    <transition id="transition2">
+      <property name="a_track">0</property>
+      <property name="b_track">2</property>
+      <property name="mlt_service">mix</property>
+      <property name="always_active">1</property>
+      <property name="sum">1</property>
+    </transition>
+  </tractor>
+</mlt>
