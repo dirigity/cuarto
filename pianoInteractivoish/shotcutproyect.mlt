@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mlt LC_NUMERIC="es_ES.UTF-8" version="6.9.0" title="Shotcut version 18.06.02" producer="main bin">
   <profile description="automatic" width="1920" height="964" progressive="1" sample_aspect_num="1" sample_aspect_den="1" display_aspect_num="1920" display_aspect_den="964" frame_rate_num="40" frame_rate_den="1" colorspace="709"/>
-  <producer id="producer0" title="Anonymous Submission" in="00:00:00,000" out="00:00:35,950">
-    <property name="length">00:00:35,975</property>
+  <producer id="producer0" title="Anonymous Submission" in="00:00:00,000" out="00:00:02,050">
+    <property name="length">00:00:02,075</property>
     <property name="eof">pause</property>
-    <property name="resource">/home/jaime/Desktop/felicitación de cumple/video sin musica-2018-06-25_15.33.47.mp4</property>
+    <property name="resource">UnconsciousWeeklyIslandcanary-max-1mb.mov</property>
     <property name="audio_index">-1</property>
     <property name="video_index">0</property>
     <property name="mute_on_pause">0</property>
     <property name="mlt_service">avformat-novalidate</property>
     <property name="seekable">1</property>
     <property name="aspect_ratio">1</property>
-    <property name="shotcut:hash">b0264ed664a5341938866d6a897659dc</property>
+    <property name="shotcut:hash">051f073c3bb25c05220fc493ee8df790</property>
     <property name="global_feed">1</property>
     <property name="xml">was here</property>
   </producer>
-  <producer id="producer1" title="Anonymous Submission" in="00:00:00,000" out="00:01:04,550">
-    <property name="length">00:01:04,575</property>
+  <producer id="producer1" title="Anonymous Submission" in="00:00:00,000" out="03:59:59,975">
+    <property name="length">04:00:00,000</property>
     <property name="eof">pause</property>
-    <property name="resource">/home/jaime/Desktop/felicitación de cumple/futuroMP3.mp3</property>
-    <property name="audio_index">0</property>
-    <property name="video_index">-1</property>
-    <property name="mute_on_pause">0</property>
-    <property name="mlt_service">avformat-novalidate</property>
+    <property name="resource">desportada.png</property>
+    <property name="ttl">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
     <property name="seekable">1</property>
-    <property name="shotcut:hash">ae3331ec7cf092ed876365a3c00f8247</property>
+    <property name="mlt_service">qimage</property>
+    <property name="shotcut:hash">2317e4e9535f30cbabdc3146442be56f</property>
     <property name="global_feed">1</property>
     <property name="xml">was here</property>
   </producer>
   <playlist id="main bin" title="Shotcut version 18.06.02">
     <property name="shotcut:projectAudioChannels">2</property>
     <property name="xml_retain">1</property>
-    <entry producer="producer0" in="00:00:00,000" out="00:00:35,950"/>
-    <entry producer="producer1" in="00:00:00,000" out="00:01:04,550"/>
+    <entry producer="producer0" in="00:00:00,000" out="00:00:02,050"/>
+    <entry producer="producer1" in="00:00:00,000" out="00:00:03,975"/>
   </playlist>
   <producer id="black" in="00:00:00,000" out="00:00:26,275">
     <property name="length">00:00:26,300</property>
@@ -45,31 +45,34 @@
   <playlist id="background">
     <entry producer="black" in="00:00:00,000" out="00:00:26,275"/>
   </playlist>
-  <producer id="producer2" title="Anonymous Submission" in="00:00:00,000" out="00:00:15,625">
-    <property name="length">00:00:15,650</property>
+  <producer id="producer2" title="Anonymous Submission" in="00:00:00,000" out="00:00:15,300">
+    <property name="length">04:00:00,000</property>
     <property name="eof">pause</property>
-    <property name="resource">2,3:/home/jaime/Desktop/felicitación de cumple/video sin musica-2018-06-25_15.33.47.mp4</property>
+    <property name="resource">bacground.png</property>
+    <property name="ttl">1</property>
     <property name="aspect_ratio">1</property>
+    <property name="progressive">1</property>
     <property name="seekable">1</property>
-    <property name="audio_index">-1</property>
-    <property name="video_index">0</property>
-    <property name="mute_on_pause">1</property>
-    <property name="warp_speed">2,3</property>
-    <property name="warp_resource">/home/jaime/Desktop/felicitación de cumple/video sin musica-2018-06-25_15.33.47.mp4</property>
-    <property name="mlt_service">timewarp</property>
-    <property name="shotcut:producer">avformat</property>
-    <property name="video_delay">0</property>
-    <property name="shotcut:hash">b0264ed664a5341938866d6a897659dc</property>
+    <property name="mlt_service">qimage</property>
+    <property name="shotcut:hash">69d191b205cf31099ffe52a4cdd7b0c9</property>
+    <property name="ignore_points">0</property>
     <property name="global_feed">1</property>
     <property name="xml">was here</property>
-    <property name="shotcut:caption">video sin musica-2018-06-25_15.33.47.mp4 (2.3x)</property>
-    <property name="shotcut:detail">/home/jaime/Desktop/felicitación de cumple/video sin musica-2018-06-25_15.33.47.mp4</property>
-    <property name="shotcut:comment"></property>
+    <filter id="filter0" out="00:00:15,300">
+      <property name="mlt_service">crop</property>
+      <property name="center">0</property>
+      <property name="center_bias">0</property>
+      <property name="top">399</property>
+      <property name="bottom">0</property>
+      <property name="left">0</property>
+      <property name="right">0</property>
+    </filter>
   </producer>
   <playlist id="playlist0">
     <property name="shotcut:video">1</property>
     <property name="shotcut:name">V1</property>
-    <entry producer="producer2" in="00:00:00,375" out="00:00:13,425"/>
+    <blank length="00:00:09,675"/>
+    <entry producer="producer2" in="00:00:00,000" out="00:00:15,300"/>
   </playlist>
   <producer id="producer3" title="Anonymous Submission" in="00:00:00,000" out="00:01:04,550">
     <property name="length">00:01:04,575</property>
@@ -92,6 +95,138 @@
     <property name="shotcut:name">A1</property>
     <entry producer="producer3" in="00:00:00,000" out="00:00:26,275"/>
   </playlist>
+  <producer id="producer4" title="Anonymous Submission" in="00:00:00,000" out="00:00:15,625">
+    <property name="length">00:00:15,650</property>
+    <property name="eof">pause</property>
+    <property name="resource">2,3:/home/jaime/Desktop/felicitación de cumple/video sin musica-2018-06-25_15.33.47.mp4</property>
+    <property name="aspect_ratio">1</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">-1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">1</property>
+    <property name="warp_speed">2,3</property>
+    <property name="warp_resource">/home/jaime/Desktop/felicitación de cumple/video sin musica-2018-06-25_15.33.47.mp4</property>
+    <property name="mlt_service">timewarp</property>
+    <property name="shotcut:producer">avformat</property>
+    <property name="video_delay">0</property>
+    <property name="shotcut:hash">b0264ed664a5341938866d6a897659dc</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">video sin musica-2018-06-25_15.33.47.mp4 (2.3x)</property>
+    <property name="shotcut:detail">/home/jaime/Desktop/felicitación de cumple/video sin musica-2018-06-25_15.33.47.mp4</property>
+    <property name="shotcut:comment"></property>
+    <filter id="filter3" in="00:00:00,375" out="00:00:13,425">
+      <property name="start">1</property>
+      <property name="level">1</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeOutBrightness</property>
+      <property name="alpha">513=1;522=0</property>
+      <property name="shotcut:animOut">10</property>
+    </filter>
+    <filter id="filter4" in="00:00:00,375" out="00:00:13,425">
+      <property name="start">1</property>
+      <property name="level">1</property>
+      <property name="mlt_service">brightness</property>
+      <property name="shotcut:filter">fadeInBrightness</property>
+      <property name="alpha">0=0;9=1</property>
+      <property name="shotcut:animIn">10</property>
+    </filter>
+  </producer>
+  <producer id="producer5" title="Anonymous Submission" in="00:00:00,000" out="00:00:02,050">
+    <property name="length">00:00:02,075</property>
+    <property name="eof">pause</property>
+    <property name="resource">UnconsciousWeeklyIslandcanary-max-1mb.mov</property>
+    <property name="audio_index">-1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">051f073c3bb25c05220fc493ee8df790</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">UnconsciousWeeklyIslandcanary-max-1mb.mov</property>
+    <property name="shotcut:detail">UnconsciousWeeklyIslandcanary-max-1mb.mov</property>
+    <property name="shotcut:comment"></property>
+    <filter id="filter6" out="00:00:02,050">
+      <property name="mlt_service">crop</property>
+      <property name="center">0</property>
+      <property name="center_bias">0</property>
+      <property name="top">0</property>
+      <property name="bottom">0</property>
+      <property name="left">248</property>
+      <property name="right">0</property>
+    </filter>
+    <filter id="filter8" out="00:00:02,050">
+      <property name="mirror">flip</property>
+      <property name="mlt_service">mirror</property>
+    </filter>
+    <filter id="filter1" out="00:00:02,050">
+      <property name="background">colour:0</property>
+      <property name="mlt_service">affine</property>
+      <property name="shotcut:filter">affineSizePosition</property>
+      <property name="transition.fill">1</property>
+      <property name="transition.distort">0</property>
+      <property name="transition.rect">0%/0%:100%x100%</property>
+      <property name="transition.valign">top</property>
+      <property name="transition.halign">right</property>
+      <property name="shotcut:animIn">0</property>
+      <property name="shotcut:animOut">0</property>
+      <property name="transition.threads">0</property>
+    </filter>
+  </producer>
+  <playlist id="playlist2">
+    <property name="shotcut:video">1</property>
+    <property name="shotcut:name">V2</property>
+    <entry producer="producer4" in="00:00:00,375" out="00:00:13,425"/>
+    <blank length="00:00:01,100"/>
+    <entry producer="producer5" in="00:00:00,000" out="00:00:02,050"/>
+  </playlist>
+  <producer id="producer6" title="Anonymous Submission" in="00:00:00,000" out="00:00:02,050">
+    <property name="length">00:00:02,075</property>
+    <property name="eof">pause</property>
+    <property name="resource">UnconsciousWeeklyIslandcanary-max-1mb.mov</property>
+    <property name="audio_index">-1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">0</property>
+    <property name="mlt_service">avformat-novalidate</property>
+    <property name="seekable">1</property>
+    <property name="aspect_ratio">1</property>
+    <property name="shotcut:hash">051f073c3bb25c05220fc493ee8df790</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <property name="shotcut:caption">UnconsciousWeeklyIslandcanary-max-1mb.mov</property>
+    <property name="shotcut:detail">UnconsciousWeeklyIslandcanary-max-1mb.mov</property>
+    <property name="shotcut:comment"></property>
+    <filter id="filter10" out="00:00:02,050">
+      <property name="mlt_service">crop</property>
+      <property name="center">0</property>
+      <property name="center_bias">0</property>
+      <property name="top">0</property>
+      <property name="bottom">0</property>
+      <property name="left">248</property>
+      <property name="right">0</property>
+    </filter>
+    <filter id="filter2" out="00:00:02,050">
+      <property name="background">colour:0</property>
+      <property name="mlt_service">affine</property>
+      <property name="shotcut:filter">affineSizePosition</property>
+      <property name="transition.fill">1</property>
+      <property name="transition.distort">0</property>
+      <property name="transition.rect">0%/0%:100%x100%</property>
+      <property name="transition.valign">top</property>
+      <property name="transition.halign">left</property>
+      <property name="shotcut:animIn">0</property>
+      <property name="shotcut:animOut">0</property>
+      <property name="transition.threads">0</property>
+    </filter>
+  </producer>
+  <playlist id="playlist3">
+    <property name="shotcut:video">1</property>
+    <property name="shotcut:name">V3</property>
+    <blank length="00:00:14,175"/>
+    <entry producer="producer6" in="00:00:00,000" out="00:00:02,050"/>
+  </playlist>
   <tractor id="tractor0" title="Shotcut version 18.06.02" global_feed="1" in="00:00:00,000" out="00:00:26,275">
     <property name="shotcut">1</property>
     <property name="shotcut:projectAudioChannels">2</property>
@@ -99,6 +234,8 @@
     <track producer="background"/>
     <track producer="playlist0"/>
     <track producer="playlist1" hide="video"/>
+    <track producer="playlist2"/>
+    <track producer="playlist3"/>
     <transition id="transition0">
       <property name="a_track">0</property>
       <property name="b_track">1</property>
@@ -119,6 +256,34 @@
       <property name="mlt_service">mix</property>
       <property name="always_active">1</property>
       <property name="sum">1</property>
+    </transition>
+    <transition id="transition3">
+      <property name="a_track">0</property>
+      <property name="b_track">3</property>
+      <property name="mlt_service">mix</property>
+      <property name="always_active">1</property>
+      <property name="sum">1</property>
+    </transition>
+    <transition id="transition4">
+      <property name="a_track">1</property>
+      <property name="b_track">3</property>
+      <property name="version">0,9</property>
+      <property name="mlt_service">frei0r.cairoblend</property>
+      <property name="disable">0</property>
+    </transition>
+    <transition id="transition5">
+      <property name="a_track">0</property>
+      <property name="b_track">4</property>
+      <property name="mlt_service">mix</property>
+      <property name="always_active">1</property>
+      <property name="sum">1</property>
+    </transition>
+    <transition id="transition6">
+      <property name="a_track">1</property>
+      <property name="b_track">4</property>
+      <property name="version">0,9</property>
+      <property name="mlt_service">frei0r.cairoblend</property>
+      <property name="disable">0</property>
     </transition>
   </tractor>
 </mlt>
