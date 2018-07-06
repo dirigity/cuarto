@@ -1,10 +1,219 @@
 <html>
     <head>
         <style>
+            
+            table{
+                display: none;
+                width: 100%;
+                height: 100%;
+
+            }
+            td{
+                border: 1px solid black;
+                text-align: center;
+                font-size: 60px;
+                font-family: monospace;
+            }
+            color{
+                width: 100%;
+                height: 100%;
+                display: block;
+                color: rgb(red, green, blue)
+            }
+
         </style>
     </head>
     <body>  
+        <intro id="intro">
+            try to find the symbol that is repeteated on the top and on the bottom row. When you get it rigth the lower row will rise up to the top and another row will be created. Then repeat forever or until you starb to your death. Before starting you should select what icons you would like to have in the cards. 
+            <br><button onclick="leters()">letters</button>
+            <br><button onclick="letersdos()">pairs of letters</button>
+            <br><button onclick="leterstres()">three letters at a time</button>
+            <br><button onclick="faces()">faces</button>
+            <br><button onclick="colors()">colors</button>
+            <br><button onclick="webdings()">webdings icons</button>
+            <br>
+            <br><button onclick="GO()"><strong>GO!!</strong></button>
+
+        </intro>
+        <table id="PlayRoom">
+            <tr>
+                <td id="10"><br></td>
+                <td id="11"><br></td>
+                <td id="12"><br></td>
+                <td id="13"><br></td>
+                <td id="14"><br></td>
+                <td id="15"><br></td>
+                <td id="16"><br></td>
+                <td id="17"><br></td>
+            </tr>
+            <tr>
+                <td onclick="pressed(0)" id="20"><br></td>
+                <td onclick="pressed(1)" id="21"><br></td>
+                <td onclick="pressed(2)" id="22"><br></td>
+                <td onclick="pressed(3)" id="23"><br></td>
+                <td onclick="pressed(4)" id="24"><br></td>
+                <td onclick="pressed(5)" id="25"><br></td>
+                <td onclick="pressed(6)" id="26"><br></td>
+                <td onclick="pressed(7)" id="27"><br></td>
+            </tr>
+        </table>
         <script>
+            var columnas = 8;
+            var iconosLetras = ["q","w","e","r","t","y","u","i","o","p","a","s","d","f","g","h","j","k","l","ñ","z","x","c","v","b","n","m"];
+            var iconos;
+            function leters() {
+                iconos = [];
+                iconos = iconosLetras;
+            }
+            function letersdos() {
+                iconos = [];
+                for (let i = 0; i < iconosLetras.length; i++) {
+                    const element0 = iconosLetras[i];
+                    for (let j = 0; j < iconosLetras.length; j++) {
+                        const element1 = iconosLetras[j];
+                        iconos.push(element0+element1);
+                    }
+                }
+            }
+            function leterstres() {
+                iconos = [];
+                for (let i = 0; i < iconosLetras.length; i++) {
+                    const element0 = iconosLetras[i];
+                    for (let j = 0; j < iconosLetras.length; j++) {
+                        const element1 = iconosLetras[j];
+                        for (let k = 0; k < iconosLetras.length; k++) {
+                            const element2 = iconosLetras[k];
+                            iconos.push(element0+element1+element2);
+                        }
+                    }
+                }
+            }
+            function faces() {
+                iconos = [];
+                var ojos = ["@","o","'","*","$","º","^","#","·","¬"];
+                var bocas = [".","-","~","_"];
+                var mofletes = ["  ","()","{}","[]","||"];
+                
+                for (let ojo1 = 0; ojo1 < ojos.length; ojo1++) {
+                    const ojoses1 = ojos[ojo1];
+                    for (let boca = 0; boca < bocas.length; boca++) {
+                        const bocases = bocas[boca];
+                        for (let moflete = 0; moflete < mofletes.length; moflete++) {
+                            const mofleteses = mofletes[moflete];
+                            iconos.push(mofleteses.substr(0,1)+ojoses1+bocases+ojoses1+mofleteses.substr(1,1))
+                        }
+                    }
+                }
+                
+            }
+
+            function colors() {
+                cartanueva = [0,1,2,3];
+                cartavieja = [4,5,6,3];
+                iconos = [];
+                for (let red = 0; red < 255; red= red+255/2) {
+                    for (let blue = 0; blue < 255; blue= blue+255/2) {
+                        for (let green = 0; green < 255; green= green+255/2) {
+                            iconos.push("<color style=\"background-color: rgb("+red+","+green+","+blue+")\"></color>")
+                        }
+                    }
+                }
+                console.log(iconos);
+                
+            }
+
+            function webdings() {
+                faces();
+            }
+
+            function GO() {
+                document.getElementById("intro").style.display = "none";
+                document.getElementById("PlayRoom").style.display = "table";
+                document.getElementById("PlayRoom").style.height = "100%";
+                document.getElementById("PlayRoom").style.width = "100%";
+                refresh();
+
+            }
+            
+            
+            var cartavieja = [
+                0,1,2,3,4,5,6,7
+            ];
+
+            var cartanueva = [
+                0,1,2,3,4,5,6,7
+            ];
+
+            function refresh() {
+                for (let i = 0; i < columnas; i++) {
+                    document.getElementById("1"+i).innerHTML = iconos[cartavieja[i]];
+                    document.getElementById("2"+i).innerHTML = iconos[cartanueva[i]];
+                }
+                
+
+            }
+
+            function pressed(id) {
+                const contenido = cartanueva[id];
+                let duplicados = 0;
+                for (let i = 0; i < cartavieja.length; i++) {
+                    const element = cartavieja[i];
+                    if (contenido == element){
+                        duplicados++
+                    }
+                }
+
+                if(duplicados == 1){
+                    cartavieja = cartanueva;
+                    cartanueva = nuevaCarta();
+                    refresh();
+                }
+                
+                
+                if (duplicados > 1){
+                    console.log("error interno");
+                }else if (duplicados < 1){
+                    console.log("mal hecho");
+                }
+            }
+
+            function nuevaCarta() {
+                var ret = [];
+                var ChoosenIndex = Math.round(Math.random()*columnas-1);
+                var repeteated = cartavieja[Math.round(Math.random()*columnas-1)];
+
+                for (let j = 0; j < columnas+1; j++) {
+                    if(ChoosenIndex==j){
+                        ret.push(repeteated);
+                    }else{
+                        var repeate = true;
+                        var random;
+                        while (repeate) {
+                            random = Math.round(Math.random()*iconos.length-1);
+                            if(!EnLaCartaXHayEsto(cartavieja,random) && !EnLaCartaXHayEsto(ret,random) && random != repeteated && iconos[random]){
+                                repeate = false;
+                            }
+                        }
+                        ret.push(random);
+                    }
+                }
+                return ret;
+            }
+
+            function EnLaCartaXHayEsto(carta,element1) {
+                var ret = 0;
+                for (let k = 0; k < carta.length; k++) {
+                    const element2 = carta[k];
+                    if (element1==element2) {
+                        ret++;
+                    }
+                }
+                return ret>0;
+            }
+
+
+
         </script>
     </body>
 </html>
