@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <style>
+            canvas{
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body onresize="render()">  
+        <config id="config">
+            introduce a 12 digit number 
+            <input type="text" id = "inputSeed"></input>
+            <button onclick="start()"> Render </button>
+        </config>
+        <canvas id="canvas"></canvas>
+            <script>
+                var kanvas = document.getElementById("canvas");
+                var ctx = kanvas.getContext("2d");
+                var randomNumber = 1;
+                var dibujitos = [];
+                var started = false;
+
+                function start() {
+                    started = true;
+                    render();
+                }
+                function render() {
+                    
+                    if(started){
+                        kanvas.width = window.innerWidth;
+                        kanvas.height = window.innerHeight;
+                        document.getElementById("config").style.display = "none";
+                        randomNumber = parseInt(document.getElementById("inputSeed").value);
+                        for (let index = 0; index < 36000; index++) {
+                            drawAnglePoint(index/100,Math.sin((index/360)*2*Math.PI)*10+200);
+                        }
+                        
+                        
+                    }
+
+                }
+                function random(x,y) {
+                    randomNumber = parseInt(((randomNumber*getClosestPrime(10000)+ "").substr(3,10)));
+
+                    return ((randomNumber%(y-x))+x);
+                }
+                function getClosestPrime(x) {
+                    let finished = false;
+                    while(!finished){
+                        x++
+                        if(Primo(x))finished = true;
+                    }
+                    return x;
+                }
+                function Primo(x) {
+                    for (let d = 2; d < x; d++) {
+                        if(x%d==0) return false;
+                    }
+                    return true;
+                }
+                function drawAnglePoint(angle,distance) {
+                    angle = ( angle / 360 ) * 2*Math.PI;
+                    drawXY(Math.cos(angle)*distance,Math.sin(angle)*distance,1,"black");
+                }
+                function drawXY(x,y,grosor,color) {
+                    ctx.fillStyle = color;
+                    ctx.fillRect(x+kanvas.width/2,y+kanvas.height/2,grosor,grosor);
+                }
+            </script>
+    </body>
+</html>
