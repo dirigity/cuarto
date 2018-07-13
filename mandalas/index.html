@@ -20,25 +20,61 @@
                 var randomNumber = 1;
                 var dibujitos = [];
                 var started = false;
+                var radio = 497;
+                var precision = 100
 
                 function start() {
                     started = true;
                     render();
                 }
                 function render() {
-                    
                     if(started){
                         kanvas.width = window.innerWidth;
                         kanvas.height = window.innerHeight;
                         document.getElementById("config").style.display = "none";
-                        randomNumber = parseInt(document.getElementById("inputSeed").value);
-                        for (let index = 0; index < 36000; index++) {
-                            drawAnglePoint(index/100,Math.sin((index/360)*2*Math.PI)*10+200);
+                        if (parseInt(document.getElementById("inputSeed").value)){
+                            randomNumber = parseInt(document.getElementById("inputSeed").value);
+                        }else {
+                            randomNumber = 1;
                         }
-                        
-                        
+                        var FutureDibusLength = random(8,14);
+                        console.log(FutureDibusLength);
+                        for (let distanciaAlCentro = 0; distanciaAlCentro < radio; distanciaAlCentro=distanciaAlCentro+(radio/FutureDibusLength)) {
+                            for (let g = 0; g < 360*precision; g++) {
+                                drawAnglePoint(g/precision,distanciaAlCentro);
+                            }
+                            var choosen = random(0,1);
+                            if (choosen == 0) {
+                                dibujitos.push("echoedSin");
+                            }
+                        }
+                        for (let i = 1; i < dibujitos.length; i++) {
+                            const element = dibujitos[i];
+                            if (element == "simpleSin") {
+                                for (let g = 0; g < 360*precision; g++) {
+                                    var iteraciones = Math.pow(2,i+2);
+                                    while((360/iteraciones)/360*2*Math.PI*(i-1)*(radio/dibujitos.length)<10){
+                                        iteraciones = iteraciones / 2;
+                                    }
+                                    var distanciaAlCentro = (i-1)*(radio/dibujitos.length) + (radio/dibujitos.length)/2 + (Math.cos((((g/precision)/360)*Math.PI*iteraciones))*(radio/dibujitos.length)/2);
+                                    drawAnglePoint(g/precision,distanciaAlCentro);
+                                }
+                            } else if (element == "echoedSin") {
+                                for (let index = -(radio/dibujitos.length); index < (radio/dibujitos.length); index = index + (radio/dibujitos.length)/4) {
+                                    for (let g = 0; g < 360*precision; g++) {
+                                        var iteraciones = Math.pow(2,i+2);
+                                        while((360/iteraciones)/360*2*Math.PI*(i-1)*(radio/dibujitos.length)<30){
+                                            iteraciones = iteraciones / 2;
+                                        }
+                                        var distanciaAlCentro = index + (i-1)*(radio/dibujitos.length) + (radio/dibujitos.length)/2 + (Math.cos((((g/precision)/360)*Math.PI*iteraciones))*(radio/dibujitos.length)/2);
+                                        if(distanciaAlCentro < i*(radio/dibujitos.length) || distanciaAlCentro > (i-1)*(radio/dibujitos.length) ){
+                                            drawAnglePoint(g/precision,distanciaAlCentro);
+                                        }
+                                    }
+                                }
+                            }
+                        }  
                     }
-
                 }
                 function random(x,y) {
                     randomNumber = parseInt(((randomNumber*getClosestPrime(10000)+ "").substr(3,10)));
@@ -59,13 +95,14 @@
                     }
                     return true;
                 }
-                function drawAnglePoint(angle,distance) {
+                function drawAnglePoint(angle,distance,grosor,x,y) {
+                    if(!x) var x = kanvas.width/2;
+                    if(!y) var y = kanvas.height/2;
                     angle = ( angle / 360 ) * 2*Math.PI;
-                    drawXY(Math.cos(angle)*distance,Math.sin(angle)*distance,1,"black");
+                    drawXYrect(Math.cos(angle)*distance + x, Math.sin(angle)*distance + y,1,"black");
                 }
-                function drawXY(x,y,grosor,color) {
-                    ctx.fillStyle = color;
-                    ctx.fillRect(x+kanvas.width/2,y+kanvas.height/2,grosor,grosor);
+                function drawXYrect(x,y,grosor,color) {
+                    ctx.fillRect(x,y,grosor,grosor);
                 }
             </script>
     </body>
