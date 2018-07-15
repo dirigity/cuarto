@@ -1,0 +1,266 @@
+<html>
+    <head>
+        <style>
+            dysplay{
+                font-family: monospace;
+                font-size: 40px;
+                line-height: 22px;
+            }
+        </style>
+    </head>
+    <body>  
+        <dysplay id = "dysplay">
+                ++++++++++<br>
+                ++++++++++<br>
+                ++++++++++<br>
+                ++++++++++<br>
+                ++++++++++<br>
+                ++++++++++<br>
+                ++++++++++<br>
+                ++++++++++<br>
+                ++++++++++<br>
+                ++++++++++<br>
+                ++++++++++<br>
+                ++++++++++<br>
+                ++++++++++<br>
+                ++++++++++<br>
+                ++++++++++<br>
+                ++++++++++<br>
+                ++++++++++<br>
+                ++++++++++<br>
+                ++++++++++<br>
+                ++++++++++<br>
+        </dysplay>
+        <script>
+
+            window.onkeydown = function(e) {
+                var code = e.key;
+                console.log(code);
+                if(code=="a"){
+                    
+                    var crushed = false;
+                    for (let y = 0; y < faller[posicion.turn].length && !crushed; y++) {
+                        const fila = faller[posicion.turn][y];
+                        for (let x = 0; x < fila.length && !crushed ; x++) {
+                            const caracter = fila[x];
+                            if(0<x+posicion.x){
+                                if(memoriaDePosiciones[y+posicion.y][x+posicion.x-1]==" " && faller[posicion.turn][y][x]==" "){
+                                    crushed = true;
+                                }
+                            }else{
+                                crushed = true;
+                            }
+                        }
+                    }
+                    if(!crushed) posicion.x--;
+                }
+                if(code=="d"){
+                    var crushed = false;
+                    for (let y = 0; y < faller[posicion.turn].length && !crushed; y++) {
+                        const fila = faller[posicion.turn][y];
+                        for (let x = 0; x < fila.length && !crushed ; x++) {
+                            const caracter = fila[x];
+                            if(memoriaDePosiciones[0].length>x+posicion.x+1){
+                                if(memoriaDePosiciones[y+posicion.y][x+posicion.x+1]==" " && faller[posicion.turn][y][x]==" "){
+                                    crushed = true;
+                                }
+                            }else{
+                                crushed = true;
+                            }
+                        }
+                    }
+                    if(!crushed) posicion.x++;
+                }
+                if(code=="s"){
+                    posicion.turn++;
+                    if(posicion.turn>faller.length-1){
+                        posicion.turn = 0;
+                    }
+                }
+                render(memoriaDePantalla);
+            }
+
+            var memoriaDePosiciones = [];
+            var memoriaDePantalla = []
+            var isThereSomethingFalling = false;
+            var faller = [];
+            var posicion = {x:5,y:0,turn:0};
+            var posibleFallers = [
+                [
+                    [
+                        [" "," "," "],
+                        ["+","+"," "]
+                    ],[
+                        [" "," "],
+                        [" ","+"],
+                        [" ","+"]
+                    ],[
+                        [" ","+","+"],
+                        [" "," "," "]
+                    ],[
+                        ["+"," "],
+                        ["+"," "],
+                        [" "," "]
+                    ]
+                ],[
+                    [
+                        [" "," "," "],
+                        [" ","+","+"]
+                    ],[
+                        [" ","+"],
+                        [" ","+"],
+                        [" "," "]
+                    ],[
+                        ["+","+"," "],
+                        [" "," "," "]
+                    ],[
+                        [" "," "],
+                        ["+"," "],
+                        ["+"," "]
+                    ]
+                    
+                ],[
+                    [
+                        [" "," "],
+                        [" "," "]
+                    ]
+                ],[
+                    [
+                        [" "," "," "," "],
+                    ],[
+                        [" "],
+                        [" "],
+                        [" "],
+                        [" "]
+                    ]
+                ],[
+                    [
+                        [" "," "," "],
+                        ["+"," ","+"],
+                        
+                    ],[
+                        ["+"," "],
+                        [" "," "],
+                        ["+"," "]
+
+                    ],[
+                        ["+"," ","+"],
+                        [" "," "," "],
+                    ],[
+                        [" ","+"],
+                        [" ","+"],
+                        [" ","+"]
+                    ]
+                ]
+            ]
+            initialize();
+            function initialize() {
+                memoriaDePosiciones = [];
+                memoriaDePantalla = []
+                for (let y = 0; y < 20; y++) {
+                    let subArray = ["+","+","+","+","+","+","+","+","+","+"];
+                    memoriaDePantalla.push(subArray);
+                    memoriaDePosiciones.push(subArray.slice(0));
+                }
+                tick(); 
+            }
+
+
+            function tick(params) {
+                
+                if(!isThereSomethingFalling){
+                    posicion.turn = 0;
+                    faller = posibleFallers[Math.round(Math.random()*3)];
+                    isThereSomethingFalling = true;
+                    posicion.x = 5;
+                    posicion.y = 0;
+                } else {
+
+                    // COPIO MEMORIA DE POSICIONES A LA PANTALLA                    
+                    for (let y = 0; y < memoriaDePosiciones.length; y++) {
+                        for (let x = 0; x < memoriaDePosiciones[y].length; x++) {
+                            memoriaDePantalla[y][x] = memoriaDePosiciones[y][x];
+                        }
+                    }                    
+                    
+                    
+                    // COPIO LA FICHA QUE CAE EN LA PANTALLA
+                    for (let y = 0; y < faller[posicion.turn].length; y++) {
+                        const fila = faller[posicion.turn][y];
+                        for (let x = 0; x < fila.length; x++) {
+                            const caracter = fila[x];
+                            if(caracter == " "){
+                                memoriaDePantalla[y+posicion.y][x+posicion.x]= " ";
+                            }
+                        }
+                    }
+
+                    // VOY A VER SI PUEDO SEGUIR BAJANDO
+                    var crushed = false;
+                    for (let y = 0; y < faller[posicion.turn].length && !crushed; y++) {
+                        const fila = faller[posicion.turn][y];
+                        for (let x = 0; x < fila.length && !crushed ; x++) {
+                            const caracter = fila[x];
+                            if(memoriaDePosiciones.length>y+posicion.y+1){
+                                if(memoriaDePosiciones[y+posicion.y+1][x+posicion.x]==" " && faller[posicion.turn][y][x]==" "){
+                                    crushed = true;
+                                }
+                            }else{
+                                crushed = true;
+                            }
+                        }
+                    }
+
+                    if(crushed && posicion.y==0){
+                        alert("you lose");
+                    }
+
+                    if (crushed) {
+                        console.log("chushed");
+                        isThereSomethingFalling = false;
+
+                        // HE TOCADO FONDO, LO COPIO A MEMORIA DE POSICIONES QUE ES EL FONDO
+                        for (let y = 0; y < faller[posicion.turn].length; y++) {
+                            const fila = faller[posicion.turn][y];
+                            for (let x = 0; x < fila.length; x++) {
+                                const caracter = fila[x];
+                                if (caracter==" ") {
+                                    memoriaDePosiciones[y+posicion.y][x+posicion.x] = " ";
+                                }
+                            }
+                        }
+                    }else{
+                        posicion.y++;
+                    }
+
+
+                }
+                
+                render(memoriaDePantalla);
+
+                setTimeout(tick,300);
+            
+            }
+
+            function render(memoria) {
+                const display = document.getElementById("dysplay");
+                display.innerHTML = "";
+                for (let y = 0; y < memoria.length; y++) {
+                    let subArray = memoria[y];
+                        for (let x = 0; x < subArray.length; x++) {
+                        let caracter = subArray[x];
+                        if (caracter==" ") {
+                            display.innerHTML += "&nbsp;";
+                        }
+                        if (caracter=="+") {
+                            display.innerHTML += "+";
+                        }
+                    }
+                    display.innerHTML += "<br>";
+                }
+            }
+        </script>
+    </body>
+</html>
+
+

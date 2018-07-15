@@ -20,8 +20,8 @@
                 var randomNumber = 1;
                 var dibujitos = [];
                 var started = false;
-                var radio = 497;
-                var precision = 100
+                var radio = 400;
+                var precision = 10;
 
                 function start() {
                     started = true;
@@ -37,42 +37,208 @@
                         }else {
                             randomNumber = 1;
                         }
-                        var FutureDibusLength = random(8,14);
+                        var FutureDibusLength = 14;
                         console.log(FutureDibusLength);
-                        for (let distanciaAlCentro = 0; distanciaAlCentro < radio; distanciaAlCentro=distanciaAlCentro+(radio/FutureDibusLength)) {
-                            for (let g = 0; g < 360*precision; g++) {
-                                drawAnglePoint(g/precision,distanciaAlCentro);
-                            }
+                        for (let distanciaAlCentro = 0; distanciaAlCentro < FutureDibusLength; distanciaAlCentro=distanciaAlCentro+1) {
                             var choosen = random(0,1);
                             if (choosen == 0) {
+                                dibujitos.push("simpleSin");
+                            }else if(choosen == 1){
+                                dibujitos.push("absSin");
+                            }else if(choosen == 2){
                                 dibujitos.push("echoedSin");
+                            }else if(choosen == 3){
+                                dibujitos.push("echoedAbsSin");
+                            }else if(choosen == 4){
+                                dibujitos.push("escamas");
+                            }else if(choosen == 5){
+                                dibujitos.push("echoedlazosCruzados");
+                            }else if(choosen == 6){
+                                dibujitos.push("lazosCruzados");
+                            }else if(choosen == 7){
+                                dibujitos.push("echoedlazosCruzados");
+                            }else if(choosen == 8){
+                                dibujitos.push("petalos");
+                            }else if(choosen == 9){
+                                dibujitos.push("diamantes");
                             }
                         }
-                        for (let i = 1; i < dibujitos.length; i++) {
+                        
+                        console.log(dibujitos);
+                        for (let i = 0; i < dibujitos.length; i++) {
                             const element = dibujitos[i];
+                            console.log(element);
                             if (element == "simpleSin") {
                                 for (let g = 0; g < 360*precision; g++) {
                                     var iteraciones = Math.pow(2,i+2);
-                                    while((360/iteraciones)/360*2*Math.PI*(i-1)*(radio/dibujitos.length)<10){
+                                    while((360/iteraciones)/360*2*Math.PI*(i)*(radio/dibujitos.length)<10){
                                         iteraciones = iteraciones / 2;
                                     }
-                                    var distanciaAlCentro = (i-1)*(radio/dibujitos.length) + (radio/dibujitos.length)/2 + (Math.cos((((g/precision)/360)*Math.PI*iteraciones))*(radio/dibujitos.length)/2);
+                                    var distanciaAlCentro = (i)*(radio/dibujitos.length) + (radio/dibujitos.length)/2 + (Math.cos((((g/precision)/360)*Math.PI*iteraciones))*(radio/dibujitos.length)/2);
                                     drawAnglePoint(g/precision,distanciaAlCentro);
                                 }
-                            } else if (element == "echoedSin") {
+                            }
+                            else if(element == "absSin") {
+                                for (let g = 0; g < 360*precision; g++) {
+                                    var iteraciones = Math.pow(2,i+2);
+                                    while((360/iteraciones)/360*2*Math.PI*(i)*(radio/dibujitos.length)<10){
+                                        iteraciones = iteraciones / 2;
+                                    }
+                                    var distanciaAlCentro = (i)*(radio/dibujitos.length) + Math.abs(Math.cos((((g/precision)/360)*Math.PI*iteraciones))*(radio/dibujitos.length));
+                                    drawAnglePoint(g/precision,distanciaAlCentro);
+                                }
+                            }
+                            else if(element == "echoedSin") {
                                 for (let index = -(radio/dibujitos.length); index < (radio/dibujitos.length); index = index + (radio/dibujitos.length)/4) {
                                     for (let g = 0; g < 360*precision; g++) {
                                         var iteraciones = Math.pow(2,i+2);
-                                        while((360/iteraciones)/360*2*Math.PI*(i-1)*(radio/dibujitos.length)<30){
+                                        while((360/iteraciones)/360*2*Math.PI*(i)*(radio/dibujitos.length)<0){
                                             iteraciones = iteraciones / 2;
                                         }
-                                        var distanciaAlCentro = index + (i-1)*(radio/dibujitos.length) + (radio/dibujitos.length)/2 + (Math.cos((((g/precision)/360)*Math.PI*iteraciones))*(radio/dibujitos.length)/2);
-                                        if(distanciaAlCentro < i*(radio/dibujitos.length) || distanciaAlCentro > (i-1)*(radio/dibujitos.length) ){
+                                        var distanciaAlCentro = index + (i)*(radio/dibujitos.length) + (radio/dibujitos.length)/2 + (Math.cos((((g/precision)/360)*Math.PI*iteraciones))*(radio/dibujitos.length)/2);
+                                        if(distanciaAlCentro < (i+1)*(radio/dibujitos.length) && distanciaAlCentro > (i)*(radio/dibujitos.length) ){
                                             drawAnglePoint(g/precision,distanciaAlCentro);
                                         }
                                     }
                                 }
                             }
+                            else if(element == "echoedAbsSin") {
+                                for (let index = -(radio/dibujitos.length); index < (radio/dibujitos.length); index = index + (radio/dibujitos.length)/4) {
+                                    for (let g = 0; g < 360*precision; g++) {
+                                        var iteraciones = Math.pow(2,i+2);
+                                        while((360/iteraciones)/360*2*Math.PI*(i)*(radio/dibujitos.length)<10){
+                                            iteraciones = iteraciones / 2;
+                                        }
+                                        var distanciaAlCentro = index + (i)*(radio/dibujitos.length) + (radio/dibujitos.length)/2 + Math.abs(Math.cos((((g/precision)/360)*Math.PI*iteraciones))*(radio/dibujitos.length)/2);
+                                        if(distanciaAlCentro < (i+1)*(radio/dibujitos.length) && distanciaAlCentro > (i)*(radio/dibujitos.length) ){
+                                            drawAnglePoint(g/precision,distanciaAlCentro);
+                                        }
+                                    }
+                                }
+                            }
+                            else if(element == "escamas") {
+                                var translacion = 0;
+
+                                for (let index = -(radio/dibujitos.length); index < (radio/dibujitos.length); index = index + (radio/dibujitos.length)/8) {
+                                    
+                                    if (translacion == 0){
+                                        translacion = Math.PI/2;
+                                    }else if(translacion == Math.PI/2) {
+                                        translacion = 0;
+                                    }
+                                    for (let g = 0; g < 360*precision; g++) {
+                                        var iteraciones = Math.pow(2,i+2);
+                                        while((360/iteraciones)/360*2*Math.PI*(i)*(radio/dibujitos.length)<20){
+                                            iteraciones = iteraciones / 2;
+                                        }
+
+                                        var distanciaAlCentro = index + (i)*(radio/dibujitos.length) + (radio/dibujitos.length)/2 + (Math.abs(Math.cos(((((g)/precision)/360)*Math.PI*iteraciones+translacion))*(radio/dibujitos.length)/8));
+                                        if(distanciaAlCentro < (i+1)*(radio/dibujitos.length) && distanciaAlCentro > (i)*(radio/dibujitos.length) ){
+                                            drawAnglePoint(g/precision,distanciaAlCentro);
+                                        }
+                                    }
+                                }
+                            }
+                            else if(element == "echoedlazosCruzados") {
+                                var translacion = 0;
+
+                                for (let index = -(radio/dibujitos.length); index < (radio/dibujitos.length); index = index + (radio/dibujitos.length)/8) {
+                                    
+                                    if (translacion == 0){
+                                        translacion = Math.PI;
+                                    }else if(translacion == Math.PI) {
+                                        translacion = 0;
+                                    }
+                                    for (let g = 0; g < 360*precision; g++) {
+                                        var iteraciones = Math.pow(2,i+2);
+                                        while((360/iteraciones)/360*2*Math.PI*(i)*(radio/dibujitos.length)<10){
+                                            iteraciones = iteraciones / 2;
+                                        }
+
+                                        var distanciaAlCentro = index + (i)*(radio/dibujitos.length) + (radio/dibujitos.length)/2 + ((Math.cos(((((g)/precision)/360)*Math.PI*iteraciones+translacion))*(radio/dibujitos.length)/8));
+                                        if(distanciaAlCentro < (i+1)*(radio/dibujitos.length) && distanciaAlCentro > (i)*(radio/dibujitos.length) ){
+                                            drawAnglePoint(g/precision,distanciaAlCentro);
+                                        }
+                                    }
+                                }
+                            }
+                            else if(element == "lazosCruzados") {
+                                for (let g = 0; g < 360*precision; g++) {
+                                    var iteraciones = Math.pow(2,i+2);
+                                    while((360/iteraciones)/360*2*Math.PI*(i)*(radio/dibujitos.length)<40){
+                                        iteraciones = iteraciones / 2;
+                                    }
+                                    var distanciaAlCentro = (i)*(radio/dibujitos.length) + (radio/dibujitos.length)/2 + (Math.cos((((g/precision)/360)*Math.PI*iteraciones))*(radio/dibujitos.length)/2);
+                                    drawAnglePoint(g/precision,distanciaAlCentro);
+                                }
+                                for (let g = 0; g < 360*precision; g++) {
+                                    var iteraciones = Math.pow(2,i+2);
+                                    while((360/iteraciones)/360*2*Math.PI*(i)*(radio/dibujitos.length)<40){
+                                        iteraciones = iteraciones / 2;
+                                    }
+                                    var distanciaAlCentro = (i)*(radio/dibujitos.length) + (radio/dibujitos.length)/2 - (Math.cos((((g/precision)/360)*Math.PI*iteraciones))*(radio/dibujitos.length)/2);
+                                    if(distanciaAlCentro < (i+1)*(radio/dibujitos.length) && distanciaAlCentro > (i)*(radio/dibujitos.length) ){
+                                        drawAnglePoint(g/precision,distanciaAlCentro);
+                                    }
+                                }
+                            }
+                            else if(element == "petalos"){
+                                for (let g = 0; g < 360*precision; g++) {
+                                    var iteraciones = Math.pow(2,i+2);
+                                    while((360/iteraciones)/360*2*Math.PI*(i)*(radio/dibujitos.length)<40){
+                                        iteraciones = iteraciones / 2;
+                                    }
+                                    var distanciaAlCentro = (i)*(radio/dibujitos.length) + (radio/dibujitos.length)/2 + (Math.cos((((g/precision)/360)*Math.PI*iteraciones))*(radio/dibujitos.length)/2);
+                                    if(distanciaAlCentro < (i+1)*(radio/dibujitos.length) && distanciaAlCentro > (i)*(radio/dibujitos.length) && Math.cos((((g/precision)/360)*Math.PI*iteraciones))*(radio/dibujitos.length)/2 > 0){
+                                        drawAnglePoint(g/precision,distanciaAlCentro);
+                                    }
+                                }
+                                for (let g = 0; g < 360*precision; g++) {
+                                    var iteraciones = Math.pow(2,i+2);
+                                    while((360/iteraciones)/360*2*Math.PI*(i)*(radio/dibujitos.length)<40){
+                                        iteraciones = iteraciones / 2;
+                                    }
+                                    var distanciaAlCentro = (i)*(radio/dibujitos.length) + (radio/dibujitos.length)/2 - (Math.cos((((g/precision)/360)*Math.PI*iteraciones))*(radio/dibujitos.length)/2);
+                                    if(distanciaAlCentro < (i+1)*(radio/dibujitos.length) && distanciaAlCentro > (i)*(radio/dibujitos.length)){
+                                        drawAnglePoint(g/precision,distanciaAlCentro);
+                                    }
+                                }
+                            }
+                            else if(element == "diamantes"){
+                                for (let g = 0; g < 360*precision; g++) {
+                                    var iteraciones = Math.pow(2,i+2);
+                                    while((360/iteraciones)/360*2*Math.PI*(i)*(radio/dibujitos.length)<40){
+                                        iteraciones = iteraciones / 2;
+                                    }
+                                    var distanciaAlCentro = (i)*(radio/dibujitos.length) + (radio/dibujitos.length)/2 + (Math.cos((((g/precision)/360)*Math.PI*iteraciones))*(radio/dibujitos.length)/2);
+                                    if(distanciaAlCentro < (i+1)*(radio/dibujitos.length) && distanciaAlCentro > (i)*(radio/dibujitos.length) && Math.cos((((g/precision)/360)*Math.PI*iteraciones))*(radio/dibujitos.length)/2 > 0){
+                                        drawAnglePoint(g/precision,distanciaAlCentro);
+                                    }
+                                }
+                                for (let g = 0; g < 360*precision; g++) {
+                                    var iteraciones = Math.pow(2,i+2);
+                                    while((360/iteraciones)/360*2*Math.PI*(i)*(radio/dibujitos.length)<40){
+                                        iteraciones = iteraciones / 2;
+                                    }
+                                    var distanciaAlCentro = (i)*(radio/dibujitos.length) + (radio/dibujitos.length)/2 - (Math.cos((((g/precision)/360)*Math.PI*iteraciones))*(radio/dibujitos.length)/2);
+                                    if(distanciaAlCentro < (i+1)*(radio/dibujitos.length) && distanciaAlCentro > (i)*(radio/dibujitos.length) && Math.cos((((g/precision)/360)*Math.PI*iteraciones))*(radio/dibujitos.length)/2 > 0){
+                                        drawAnglePoint(g/precision,distanciaAlCentro);
+                                    }
+                                }
+                            }else if(element == "espiral"){
+                                for (let g = 0; g < 360*precision; g++) {
+                                    var iteraciones = Math.pow(2,i+2);
+                                    while((360/iteraciones)/360*2*Math.PI*(i)*(radio/dibujitos.length)<10){
+                                        iteraciones = iteraciones / 2;
+                                    }
+                                    var distanciaAlCentro = (i)*(radio/dibujitos.length) + ((g/precision)/360)*(radio/dibujitos.length);
+                                    drawAnglePoint(g/precision,distanciaAlCentro);
+                                }
+                                
+                                
+                                
+                            }
+                            
                         }  
                     }
                 }
