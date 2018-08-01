@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <style>
+            canvas {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>  
+        <canvas id="canvas"></canvas>
+        <script>
+            var kanvas = document.getElementById("canvas");
+            var ctx = kanvas.getContext("2d");
+            var altavocesx = [100];
+            var altavocesy = [100];
+            var altavocesDesfase = [0];
+
+            function drawXYrect(x, y, grosor, color) {
+                if(color) ctx.fillStyle = color; else ctx.fillStyle = "#000000";
+                ctx.fillRect(x, y, grosor, grosor);
+            }
+            function tick() {
+                for (let x = 0; x < kanvas.width; x++) {
+                    for (let y = 0; y < kanvas.height; y++) {
+                        drawXYrect(x,y,1,render(x,y));
+                    }   
+                }
+            }
+            function render(x,y) {
+                var ret = rgb(0,0,0);
+                return ret;
+            }
+
+            function rgb(r,g,b) {
+                var r_ = check(decToHex(r));
+                var g_ = check(decToHex(g));
+                var b_ = check(decToHex(b));
+                return "#"+r_+g_+b_;
+            }
+
+            function decToHex(n) {
+                if(n<0){
+                    n = 0xFFFFFFFF + n + 1;
+                }
+                return n.toString(16).toUpperCase();
+            }
+            function check(n){
+                if(n.length>2){
+                    return n.slice(0,2);
+                }else if (n.length<2){
+                    return "0"+n;
+                }else return n
+            }
+            for (let index = 0; index < 5000; index++) {
+               console.log(check(decToHex(index))); 
+            }
+        </script>
+    </body>
+</html>

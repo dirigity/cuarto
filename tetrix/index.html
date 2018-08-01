@@ -6,6 +6,9 @@
                 font-size: 40px;
                 line-height: 22px;
             }
+            t{
+                font-size: 400px;
+            }
         </style>
     </head>
     <body>  
@@ -31,6 +34,9 @@
                 ++++++++++<br>
                 ++++++++++<br>
         </dysplay>
+        <t id="puntuationDisplay">
+            0
+        </t>
         <script>
 
             window.onkeydown = function(e) {
@@ -72,14 +78,34 @@
                     if(!crushed) posicion.x++;
                 }
                 if(code=="s"){
-                    posicion.turn++;
-                    if(posicion.turn>faller.length-1){
-                        posicion.turn = 0;
+                    var futuraposibleposicion = posicion.turn+1
+                    if(futuraposibleposicion>faller.length-1){
+                        futuraposibleposicion = 0;
                     }
+                    console.log(posicion,faller[futuraposibleposicion].length,"u may be able to do that");
+                    var crushed = false;
+                    for (let y = 0; y < faller[futuraposibleposicion].length && !crushed; y++) {
+                        const fila = faller[futuraposibleposicion][y];
+                        for (let x = 0; x < fila.length && !crushed ; x++) {
+                            const caracter = fila[x];
+                            if(memoriaDePosiciones[0].length>x+posicion.x){
+                                if(memoriaDePosiciones[y+posicion.y][x+posicion.x]==" " && faller[futuraposibleposicion][y][x]==" "){
+                                    crushed = true;
+                                }
+                            }else{
+                                crushed = true;
+                            }
+                        }
+                    }
+                    if(!crushed) posicion.turn=futuraposibleposicion;
+                    
                 }
-                render(memoriaDePantalla);
+                if(code==" "){
+                    tick(true,false);
+                }
+                tick(false,false);
             }
-
+            var puntuacion = 0;
             var memoriaDePosiciones = [];
             var memoriaDePantalla = []
             var isThereSomethingFalling = false;
@@ -148,13 +174,14 @@
                         [" "," "," "],
                     ],[
                         [" ","+"],
-                        [" ","+"],
+                        [" "," "],
                         [" ","+"]
                     ]
                 ]
             ]
             initialize();
             function initialize() {
+                puntuacion = 0;
                 memoriaDePosiciones = [];
                 memoriaDePantalla = []
                 for (let y = 0; y < 20; y++) {
@@ -162,15 +189,15 @@
                     memoriaDePantalla.push(subArray);
                     memoriaDePosiciones.push(subArray.slice(0));
                 }
-                tick(); 
+                tick(true,true); 
             }
 
 
-            function tick(params) {
+            function tick(move,repeat) {
                 
                 if(!isThereSomethingFalling){
                     posicion.turn = 0;
-                    faller = posibleFallers[Math.round(Math.random()*3)];
+                    faller = posibleFallers[Math.round(Math.random()*4)];
                     isThereSomethingFalling = true;
                     posicion.x = 5;
                     posicion.y = 0;
@@ -213,12 +240,12 @@
 
                     if(crushed && posicion.y==0){
                         alert("you lose");
+                        initialize();
                     }
 
                     if (crushed) {
                         console.log("chushed");
                         isThereSomethingFalling = false;
-
                         // HE TOCADO FONDO, LO COPIO A MEMORIA DE POSICIONES QUE ES EL FONDO
                         for (let y = 0; y < faller[posicion.turn].length; y++) {
                             const fila = faller[posicion.turn][y];
@@ -229,8 +256,32 @@
                                 }
                             }
                         }
+
+                        // MIRO SI HAY LINEAS y las borro
+                        for (let y = 0; y < memoriaDePosiciones.length; y++) {
+                            const element1 = memoriaDePosiciones[y];
+                            var linea = true
+                            for (let x = 0; x < element1.length; x++) {
+                                const element2 = element1[x];
+                                if (element2 != " ") {
+                                    linea = false
+                                }
+                            }
+                            if(linea){
+                                puntuacion++;
+                                console.log("hay una linea en " + y);
+                                for (let y2 = y; y2 >= 0; y2--) {
+                                    console.log(y2);
+                                    if(y2 == 0){
+                                        memoriaDePosiciones[y2] = ["+","+","+","+","+","+","+","+","+","+"];
+                                    }else{
+                                        memoriaDePosiciones[y2] = memoriaDePosiciones[y2-1].slice(0);
+                                    }
+                                } 
+                            }
+                        }
                     }else{
-                        posicion.y++;
+                        if(move) posicion.y++;
                     }
 
 
@@ -238,11 +289,14 @@
                 
                 render(memoriaDePantalla);
 
-                setTimeout(tick,300);
+                if(repeat) setTimeout(() => {
+                    tick(true,true);
+                }, 300);
             
             }
 
             function render(memoria) {
+                console.log("rendering")
                 const display = document.getElementById("dysplay");
                 display.innerHTML = "";
                 for (let y = 0; y < memoria.length; y++) {
@@ -258,7 +312,10 @@
                     }
                     display.innerHTML += "<br>";
                 }
+                document.getElementById("puntuationDisplay").innerHTML = puntuacion;
             }
+
+            
         </script>
     </body>
 </html>
