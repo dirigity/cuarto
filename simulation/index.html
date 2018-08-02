@@ -4,33 +4,26 @@
             canvas {
                 width: 100%;
                 height: 100%;
+                color: rgb(255, 255, 255);
             }
         </style>
     </head>
-    <body>  
-        <canvas id="canvas"></canvas>
+    <body onload="">  
+        <canvas width = "300" height = "200" id="canvas"></canvas>
         <script>
+            document.onkeydown = checkKey;
+            function checkKey(e) {
+                e = e || window.event;
+
+            }    
+
             var kanvas = document.getElementById("canvas");
             var ctx = kanvas.getContext("2d");
-            var altavocesx = [100];
-            var altavocesy = [100];
+            var altavocesx = [0];
+            var altavocesy = [0];
             var altavocesDesfase = [0];
-
-            function drawXYrect(x, y, grosor, color) {
-                if(color) ctx.fillStyle = color; else ctx.fillStyle = "#000000";
-                ctx.fillRect(x, y, grosor, grosor);
-            }
-            function tick() {
-                for (let x = 0; x < kanvas.width; x++) {
-                    for (let y = 0; y < kanvas.height; y++) {
-                        drawXYrect(x,y,1,render(x,y));
-                    }   
-                }
-            }
-            function render(x,y) {
-                var ret = rgb(0,0,0);
-                return ret;
-            }
+            var altavocesFrecuencia = [1];
+            var time = 0;
 
             function rgb(r,g,b) {
                 var r_ = check(decToHex(r));
@@ -43,18 +36,81 @@
                 if(n<0){
                     n = 0xFFFFFFFF + n + 1;
                 }
-                return n.toString(16).toUpperCase();
+                return Math.round(n).toString(16).toUpperCase();
             }
             function check(n){
+                //console.log(n)
                 if(n.length>2){
-                    return n.slice(0,2);
+                    return "FF";
                 }else if (n.length<2){
                     return "0"+n;
+
                 }else return n
             }
-            for (let index = 0; index < 5000; index++) {
-               console.log(check(decToHex(index))); 
+
+            function drawXYrect(x, y, grosor, color) {
+                if(color) 
+                  ctx.fillStyle = color; 
+                else 
+                  ctx.fillStyle = "#555555";
+                ctx.fillRect(x, y, grosor, grosor);
             }
+            function tick() {
+                time++;
+                for (let x = 0; x < kanvas.width; x++) {
+                    for (let y = 0; y < kanvas.height; y++) {
+                        drawXYrect(x,y,1,render(x,y));
+                    }   
+                }
+                for (let altavoz = 0; altavoz < altavocesx.length; altavoz++) {
+                    drawXYrect(altavocesx[altavoz],altavocesy[altavoz],1,"#000000")                    
+                }
+                setTimeout(() => {
+                    //tick();
+                }, 200);
+            }
+
+            function valorDeLaOnda(nAltavoz,time,x,y){
+                const xaltavoz = altavocesx[nAltavoz];
+                const yaltavoz = altavocesy[nAltavoz];
+                const desfase = altavocesDesfase[nAltavoz];
+                const frecuencia = altavocesFrecuencia[nAltavoz];
+                const distancia = Math.sqrt(Math.pow(xaltavoz - x, 2) + Math.pow(yaltavoz - y, 2));
+                return Math.sin(frecuencia * (distancia-time/10) + desfase);    
+            }
+            //console.log(colorDeValor(0,-1,1),255/2);
+            //console.log(colorDeValor(-1,-1,1),0);
+            //console.log(colorDeValor(1,-1,1),255);
+            for (let index = -1; index < 1; index = index+0.1) {
+                colorDeValor(index,-1,1);
+            }
+            function colorDeValor(wavestate,minwavestate,maxwavestate){
+                console.log(wavestate);
+                var tope = 255; 
+                wavestate = ((-minwavestate + wavestate) / (maxwavestate - minwavestate) * tope*2)-tope;
+                var ret = rgb(tope,tope,tope);
+                if(wavestate>0){
+                    ret = rgb(tope-wavestate,tope,tope-wavestate);
+                }
+                if(wavestate<0){
+                    ret = rgb(tope,tope+wavestate,tope+wavestate);
+                }
+                console.log(wavestate,ret);
+                return ret;
+            }
+
+
+            function render(x,y) {
+                var wavestate = 0;  
+                for (let altavoz = 0; altavoz < altavocesx.length; altavoz++) {
+                    wavestate = wavestate + valorDeLaOnda(altavoz,time,x,y);
+                }
+                //console.log(wavestate);
+                return colorDeValor(wavestate,-(altavocesx.length),altavocesx.length);
+            }
+    
+            //tick();
+            
         </script>
     </body>
 </html>
