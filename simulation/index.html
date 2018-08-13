@@ -19,11 +19,12 @@
 
             var kanvas = document.getElementById("canvas");
             var ctx = kanvas.getContext("2d");
-            var altavocesx = [0];
-            var altavocesy = [0];
-            var altavocesDesfase = [0];
-            var altavocesFrecuencia = [1];
+            var altavocesx = [0,200];
+            var altavocesy = [0,0];
+            var altavocesDesfase = [0,1];
+            var altavocesFrecuencia = [10,10];
             var time = 0;
+            var precision = 100;
 
             function rgb(r,g,b) {
                 var r_ = check(decToHex(r));
@@ -59,15 +60,15 @@
                 time++;
                 for (let x = 0; x < kanvas.width; x++) {
                     for (let y = 0; y < kanvas.height; y++) {
-                        drawXYrect(x,y,1,render(x,y));
+                        drawXYrect(x,y,1,render(x/precision,y/precision));
                     }   
                 }
                 for (let altavoz = 0; altavoz < altavocesx.length; altavoz++) {
                     drawXYrect(altavocesx[altavoz],altavocesy[altavoz],1,"#000000")                    
                 }
                 setTimeout(() => {
-                    //tick();
-                }, 200);
+                    tick();
+                }, 20);
             }
 
             function valorDeLaOnda(nAltavoz,time,x,y){
@@ -75,17 +76,31 @@
                 const yaltavoz = altavocesy[nAltavoz];
                 const desfase = altavocesDesfase[nAltavoz];
                 const frecuencia = altavocesFrecuencia[nAltavoz];
-                const distancia = Math.sqrt(Math.pow(xaltavoz - x, 2) + Math.pow(yaltavoz - y, 2));
-                return Math.sin(frecuencia * (distancia-time/10) + desfase);    
+                const distancia = distanciaEntre(x,y,xaltavoz,yaltavoz);
+                return Math.sin(frecuencia * (distancia-time/1000) + desfase);    
             }
-            //console.log(colorDeValor(0,-1,1),255/2);
-            //console.log(colorDeValor(-1,-1,1),0);
-            //console.log(colorDeValor(1,-1,1),255);
-            for (let index = -1; index < 1; index = index+0.1) {
-                colorDeValor(index,-1,1);
+            
+            function distanciaEntre(x1,y1,x2,y2){
+                return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
             }
+
+            function pruebecitas(){
+                const p1 = {x:0,y:2};
+                const p2 = {x:Math.SQRT2,y:Math.SQRT2};
+                
+                //console.log( distanciaEntre(0,0,p1.x,p1.y) );
+                //console.log( distanciaEntre(0,0,p2.x,p2.y) );
+
+                const v1 = valorDeLaOnda(0,0,p1.x,p1.y);
+                const v2 = valorDeLaOnda(0,0,p2.x,p2.y);
+                //console.log( v1 + " -- " + v2 );
+            
+            }
+
+            //pruebecitas();
+
             function colorDeValor(wavestate,minwavestate,maxwavestate){
-                console.log(wavestate);
+                //console.log(wavestate);
                 var tope = 255; 
                 wavestate = ((-minwavestate + wavestate) / (maxwavestate - minwavestate) * tope*2)-tope;
                 var ret = rgb(tope,tope,tope);
@@ -95,7 +110,7 @@
                 if(wavestate<0){
                     ret = rgb(tope,tope+wavestate,tope+wavestate);
                 }
-                console.log(wavestate,ret);
+                //console.log(wavestate,ret);
                 return ret;
             }
 
@@ -109,7 +124,7 @@
                 return colorDeValor(wavestate,-(altavocesx.length),altavocesx.length);
             }
     
-            //tick();
+            tick();
             
         </script>
     </body>

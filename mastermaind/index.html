@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>  
+        <script>
+            // valoracion : 0 - nada , 1 - mal , 2 - bien
+            function traza(s) {
+                console.log("traza: "+ s);
+            }
+            function out(s) {
+                console.log("out: "+ s);
+            }
+            function checkOne(Nuevo,Viejo,LaValoracionDelViejo) {
+                
+            }
+            function valora(Nuevo,Meta){
+                ret = [];
+                for (let index = 0; index < Nuevo.length; index++) {
+                    const elementNuevo = Nuevo[index];
+                    if(elementNuevo == Meta[index]){
+                        //traza("un 2 sale de posición " + index + " , porque " + elementNuevo + "==" + Meta[index] + "ya que m:" + Meta + " y n:" + Nuevo);
+                        ret.push(2);
+                    }else{
+                        for (let index2 = 0; index2 < Meta.length; index2++) {
+                            const elementMeta = Meta[index2];
+                            if(elementMeta == elementNuevo){
+                                ret.push(1)
+                            }
+                        }
+                    }
+                }
+                return ret;
+            }
+            pruevasPaVerSiFufa();
+            function pruevasPaVerSiFufa() {
+                traza("n:1,1,1,1 m:2,2,2,2 v:" + valora([1,1,1,1],[2,2,2,2]));
+                traza("n:1,1,1,2 m:2,2,2,2 v:" + valora([1,1,1,2],[2,2,2,2]));
+                traza("n:3,1,2,2 m:2,2,2,2 v:" + valora([3,1,2,2],[2,2,2,2]));
+                traza("n:3,5,4,7 m:5,7,4,3 v:" + valora([3,5,4,7],[5,7,4,3]));
+            
+            }
+        </script>
+    </body>
+</html>
