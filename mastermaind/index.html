@@ -1,46 +1,173 @@
 <html>
-    <head>
-        <style>
-        </style>
-    </head>
-    <body>  
-        <script>
-            // valoracion : 0 - nada , 1 - mal , 2 - bien
-            function traza(s) {
-                console.log("traza: "+ s);
+
+<head>
+    <style>
+    </style>
+</head>
+
+<body>
+    <input id="input"> </input>
+    <Button onclick="InputValoracionBoton() ">Input Manual Valoracion</Button>
+    <br>
+    <input id="input2"> </input>
+    <Button onclick="AutoEvalue() ">Auto Evalue</Button>
+    1marrón - 2rojo - 3naranja - 4verde - 5azul - 6blanco - 7negro - 8amarillo
+    <br>
+    <Simpletext id="consola"></Simpletext>
+
+    <script>
+        // valoracion : 0 - nada , 1 - mal , 2 - bien
+        var AllowReppetition = true;
+        var longitud = 4;
+        var tablero = [];
+        var valoraciones = [];
+        var colores = [
+            "marrón", "rojo", "naranja", "verde", "azul", "blanco", "negro", "amarillo"
+        ];
+        
+        tablero.push(newConvo([1, 1, 1, 0]))
+        render();
+        function AutoEvalue(params) {
+            InputValoracion( valora( tablero[tablero.length-1] , Array.from(document.getElementById("input2").value )));
+        }
+        function InputValoracionBoton() {
+            InputValoracion(Array.from(document.getElementById("input").value));
+        }
+        function InputValoracion(valoracion) {
+            valoraciones.push(valoracion);
+            tablero.push(newConvo(tablero[tablero.length - 1]));
+            render();
+        }
+        function render(){
+            var outness = "";
+            for (let i = 0; i < tablero[tablero.length-1].length; i++) {
+                const element = tablero[tablero.length-1][i];
+                outness = outness + colores[element-1] + " - ";
             }
-            function out(s) {
-                console.log("out: "+ s);
+            outness = outness + "(" + tablero[tablero.length-1] + ")";
+            out(outness);
+        }
+        function newConvo(lastOne) {
+            var actual = 0;
+            actual = ToNumber(lastOne);
+            var Encontrado = false;
+            while (!Encontrado) {
+                actual++;
+                var x = Array.from(actual + "");
+                traza("voy a probar a ver si el siguiente pue' ser " + x);
+                if (CheckAll(x)) {
+                    Encontrado = true;
+                }
             }
-            function checkOne(Nuevo,Viejo,LaValoracionDelViejo) {
-                
+            return x;
+
+        }
+        function ToNumber(array) {
+            var ret = 0;
+            for (let i = 0; i < array.length; i++) {
+                const element = array[i];
+                ret = ret + element * Math.pow(10, array.length - i - 1)
             }
-            function valora(Nuevo,Meta){
-                ret = [];
-                for (let index = 0; index < Nuevo.length; index++) {
-                    const elementNuevo = Nuevo[index];
-                    if(elementNuevo == Meta[index]){
-                        //traza("un 2 sale de posición " + index + " , porque " + elementNuevo + "==" + Meta[index] + "ya que m:" + Meta + " y n:" + Nuevo);
-                        ret.push(2);
-                    }else{
-                        for (let index2 = 0; index2 < Meta.length; index2++) {
-                            const elementMeta = Meta[index2];
-                            if(elementMeta == elementNuevo){
-                                ret.push(1)
-                            }
+            return ret;
+        }
+        function traza(s) {
+            //console.log("traza: " + s);
+        }
+        function out(s) {
+            console.log("out: " + s);
+            document.getElementById("consola").innerHTML = document.getElementById("consola").innerHTML + "<br>" + s;
+        }
+        function Finished(){
+            alert("Done!!!!");
+        }
+        function CheckAll(nuevo) {
+            for (let k = 0; k < nuevo.length; k++) {
+                const element = nuevo[k];
+                if(element == "0"){
+                    return false;
+                }
+            }
+            if (nuevo.length > longitud) {
+                Finished();
+                return true;
+            }
+            
+            if (algunoSeRepiteEn(nuevo) && !AllowReppetition) {
+                return false;
+            }
+            for (let i = 0; i < tablero.length; i++) {
+                if (!checkOne(nuevo, tablero[i], valoraciones[i])) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        function checkOne(Nuevo, Viejo, LaValoracionDelViejoRespectoAlOriginal) {
+            traza("Te comento, voy a devolver " + (LaValoracionDelViejoRespectoAlOriginal.sort().equals(valora(Viejo, Nuevo).sort())) + " porque las valoraciones son " + LaValoracionDelViejoRespectoAlOriginal.sort() + " y " + valora(Viejo, Nuevo).sort() + " notas el resquemor ehhhhhh...");
+            return LaValoracionDelViejoRespectoAlOriginal.sort().equals(valora(Viejo, Nuevo).sort());
+        }
+        // Warn if overriding existing method 
+        if (Array.prototype.equals)
+            console.warn("Overriding existing Array.prototype.equals. Possible causes: New API defines the method, there's a framework conflict or you've got double inclusions in your code."); // attach the .equals method to Array's prototype to call it on any array
+        Array.prototype.equals = function (array) { // if the other array is a falsy value, return 
+            if (!array)
+                return false; // compare lengths - can save a lot of time 
+            if (this.length != array.length)
+                return false;
+            for (var i = 0, l = this.length; i < l; i++) { // Check if we have nested arrays 
+                if (this[i] instanceof Array && array[i] instanceof Array) { // recurse into the nested arrays 
+                    if (!this[i].equals(array[i])) return false;
+                } else if (this[i] != array[i]) { // Warning - two different object instances will never be equal: {x:20} != {x:20} 
+                    return false;
+                }
+            }
+            return true;
+        } // Hide method from for-in loops 
+        Object.defineProperty(Array.prototype, "equals", { enumerable: false });
+
+        function algunoSeRepiteEn(ArrayToCheck) {
+            for (let i = 0; i < ArrayToCheck.length; i++) {
+                for (let j = 0; j < ArrayToCheck.length; j++) {
+                    if (i != j && ArrayToCheck[i] == ArrayToCheck[j]) {
+                        //traza("Se repite algo");
+                        return true;
+                    }
+                }
+            }
+            //traza("No se repite algo");
+            return false;
+        }
+        function valora(Nuevo, Meta) {
+            ret = [];
+            for (let index = 0; index < Nuevo.length; index++) {
+                const elementNuevo = Nuevo[index];
+                if (elementNuevo == Meta[index]) {
+                    //traza("un 2 sale de posición " + index + " , porque " + elementNuevo + "==" + Meta[index] + "ya que m:" + Meta + " y n:" + Nuevo);
+                    ret.push("2");
+                } else {
+                    for (let index2 = 0; index2 < Meta.length; index2++) {
+                        const elementMeta = Meta[index2];
+                        if (elementMeta == elementNuevo) {
+                            ret.push("1");
+                            break;
                         }
                     }
                 }
-                return ret;
             }
-            pruevasPaVerSiFufa();
-            function pruevasPaVerSiFufa() {
-                traza("n:1,1,1,1 m:2,2,2,2 v:" + valora([1,1,1,1],[2,2,2,2]));
-                traza("n:1,1,1,2 m:2,2,2,2 v:" + valora([1,1,1,2],[2,2,2,2]));
-                traza("n:3,1,2,2 m:2,2,2,2 v:" + valora([3,1,2,2],[2,2,2,2]));
-                traza("n:3,5,4,7 m:5,7,4,3 v:" + valora([3,5,4,7],[5,7,4,3]));
-            
-            }
-        </script>
-    </body>
+            return ret;
+        }
+        //pruevasPaVerSiFufa();
+        function pruevasPaVerSiFufa() {
+            out("n:1,1,1,1 m:2,2,2,2 v:" + valora([1, 1, 1, 1], [2, 2, 2, 2]));
+            out("n:1,1,1,2 m:2,2,2,2 v:" + valora([1, 1, 1, 2], [2, 2, 2, 2]));
+            out("n:3,1,2,2 m:2,2,2,2 v:" + valora([3, 1, 2, 2], [2, 2, 2, 2]));
+            out("n:3,5,4,7 m:5,7,4,3 v:" + valora([3, 5, 4, 7], [5, 7, 4, 3]));
+            out("n:1,1,2,3 m:6,7,1,1 v:" + valora([1, 1, 2, 3], [6, 7, 1, 1]));
+            out("n:1,1,2,3 m:6,1,1,7 v:" + valora([1, 1, 2, 3], [6, 1, 1, 7]));
+
+
+        }
+    </script>
+</body>
+
 </html>
