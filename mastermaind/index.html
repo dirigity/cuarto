@@ -13,8 +13,15 @@
     <Button onclick="AutoEvalue() ">Auto Evalue</Button>
     1marrón - 2rojo - 3naranja - 4verde - 5azul - 6blanco - 7negro - 8amarillo
     <br>
-    <Simpletext id="consola"></Simpletext>
-
+    <table>
+        <tr>    
+            <td><Simpletext id="consola"></Simpletext></td>
+            <td><br></td>
+            <td><Simpletext id="consola2"></Simpletext></td>
+        </tr>
+        
+    </table>
+    
     <script>
         // valoracion : 0 - nada , 1 - mal , 2 - bien
         var AllowReppetition = true;
@@ -24,8 +31,7 @@
         var colores = [
             "marrón", "rojo", "naranja", "verde", "azul", "blanco", "negro", "amarillo"
         ];
-        
-        tablero.push(newConvo([1, 1, 1, 0]))
+        tablero.push(newConvo([Math.round(Math.random()*8)+1, Math.round(Math.random()*8)+1, Math.round(Math.random()*8)+1, Math.round(Math.random()*8)]))
         render();
         function AutoEvalue(params) {
             InputValoracion( valora( tablero[tablero.length-1] , Array.from(document.getElementById("input2").value )));
@@ -39,13 +45,22 @@
             render();
         }
         function render(){
-            var outness = "";
+            var outness = ""; //valoraciones[valoraciones.length-2] + " - ";
             for (let i = 0; i < tablero[tablero.length-1].length; i++) {
                 const element = tablero[tablero.length-1][i];
                 outness = outness + colores[element-1] + " - ";
             }
             outness = outness + "(" + tablero[tablero.length-1] + ")";
             out(outness);
+
+            var outnesss = ""; //valoraciones[valoraciones.length-2] + " - ";
+            for (let i = 0; i < valoraciones.length; i++) {
+                const element = valoraciones[i];
+                outnesss = outnesss + element + "<br>";
+            }
+            
+            out2(outnesss);
+
         }
         function newConvo(lastOne) {
             var actual = 0;
@@ -53,7 +68,11 @@
             var Encontrado = false;
             while (!Encontrado) {
                 actual++;
+                if(actual>9999){
+                    actual = 1111;
+                }
                 var x = Array.from(actual + "");
+                
                 traza("voy a probar a ver si el siguiente pue' ser " + x);
                 if (CheckAll(x)) {
                     Encontrado = true;
@@ -71,40 +90,49 @@
             return ret;
         }
         function traza(s) {
-            //console.log("traza: " + s);
+            console.log("traza: " + s);
         }
         function out(s) {
             console.log("out: " + s);
             document.getElementById("consola").innerHTML = document.getElementById("consola").innerHTML + "<br>" + s;
         }
-        function Finished(){
-            alert("Done!!!!");
+        function out2(s) {
+            document.getElementById("consola2").innerHTML = s;
         }
         function CheckAll(nuevo) {
             for (let k = 0; k < nuevo.length; k++) {
                 const element = nuevo[k];
                 if(element == "0"){
+                    //console.log("contiene un 0");
+                    return false;
+                }
+            }
+            for (let k = 0; k < nuevo.length; k++) {
+                const element = nuevo[k];
+                if(element == "9"){
+                    //console.log("contiene un 9");
                     return false;
                 }
             }
             if (nuevo.length > longitud) {
-                Finished();
                 return true;
             }
             
             if (algunoSeRepiteEn(nuevo) && !AllowReppetition) {
+                console.log("se repite alguno");
                 return false;
             }
             for (let i = 0; i < tablero.length; i++) {
                 if (!checkOne(nuevo, tablero[i], valoraciones[i])) {
+                    console.log("no encaja con lo de atras");
                     return false;
                 }
             }
             return true;
         }
         function checkOne(Nuevo, Viejo, LaValoracionDelViejoRespectoAlOriginal) {
-            traza("Te comento, voy a devolver " + (LaValoracionDelViejoRespectoAlOriginal.sort().equals(valora(Viejo, Nuevo).sort())) + " porque las valoraciones son " + LaValoracionDelViejoRespectoAlOriginal.sort() + " y " + valora(Viejo, Nuevo).sort() + " notas el resquemor ehhhhhh...");
-            return LaValoracionDelViejoRespectoAlOriginal.sort().equals(valora(Viejo, Nuevo).sort());
+            //traza("Te comento, voy a devolver " + (LaValoracionDelViejoRespectoAlOriginal.sort().equals(valora(Viejo, Nuevo).sort())) + " porque las valoraciones son " + LaValoracionDelViejoRespectoAlOriginal.sort() + " y " + valora(Viejo, Nuevo).sort() + " notas el resquemor ehhhhhh...");
+            return LaValoracionDelViejoRespectoAlOriginal.sort().equals( valora(Viejo, Nuevo).sort());
         }
         // Warn if overriding existing method 
         if (Array.prototype.equals)
@@ -145,11 +173,11 @@
                     //traza("un 2 sale de posición " + index + " , porque " + elementNuevo + "==" + Meta[index] + "ya que m:" + Meta + " y n:" + Nuevo);
                     ret.push("2");
                 } else {
-                    for (let index2 = 0; index2 < Meta.length; index2++) {
+                    loop1 : for (let index2 = 0; index2 < Meta.length; index2++) {
                         const elementMeta = Meta[index2];
                         if (elementMeta == elementNuevo) {
                             ret.push("1");
-                            break;
+                            break loop1;
                         }
                     }
                 }

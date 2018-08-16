@@ -1,0 +1,190 @@
+<html>
+    <head>
+        <style>
+            canvas {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                margin: 0;
+                padding: 1;
+            }
+       </style>
+   </head>
+   <body>  
+        <canvas id="canvas" width="3000" height="1000"></canvas>
+        <script>
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+            var fondo = [];
+            var pantalla = [];
+            var PixelSize = 1;
+            var fondoWidth = 120;
+            var numeroColumnasPorRepeticion = fondoWidth/PixelSize;
+            var repeticionesDelFondo = canvas.width/fondoWidth;
+            var pixelesALoAlto = canvas.height/PixelSize;
+            var mapaProfundidades1=[
+                [0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0],
+                [0,0,1,1,0,0,1,1,0,0],
+                [0,0,1,1,0,0,1,1,0,0],
+                [0,0,1,1,0,0,1,1,0,0],
+                [0,0,1,1,0,0,1,1,0,0],
+                [0,0,1,1,0,0,1,1,0,0],
+                [0,0,1,1,0,0,1,1,0,0],
+                [0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0],
+                
+            ]
+            var mapaProfundidades = []
+            var size = 800;
+            for (let y = 0; y < size; y++) {
+                let row = []
+                for (let x = 0; x < size; x++) {
+                    var centro = size/2;
+                    const h = Math.round(Math.sqrt((y-centro)*(y-centro)+(x-centro)*(x-centro))/10);
+                    row.push(10-h);
+                }
+                mapaProfundidades.push(row);
+            }
+            console.log(mapaProfundidades);
+            
+            
+            function drawXYcuadr(x, y, grosor, color) {
+                if(color) 
+                  ctx.fillStyle = color; 
+                else{ 
+                    ctx.fillStyle = "#555555";
+                    //var r = Math.round(Math.random()*255);
+                    //var g = Math.round(Math.random()*255);
+                    //var b = Math.round(Math.random()*255);
+                    //ctx.fillStyle = rgb(r,g,b);
+                }
+                ctx.fillRect(x, y, grosor, grosor);
+            }
+
+            function createFondo() {
+                for (let row = 0; row < pixelesALoAlto; row++) {
+                    let repetible = [];
+                    for (let index = 0; index < numeroColumnasPorRepeticion; index++) {
+                        var r = Math.round(Math.random()*255);
+                        var g = Math.round(Math.random()*255);
+                        var b = Math.round(Math.random()*255);
+
+                        repetible.push(rgb(r,g,b));
+                        
+                    }
+                    fondo.push(repetible);
+                }
+            }
+            
+            function render(tudiarrai) {
+                console.log("me han pedio que pinte:");
+                console.log(tudiarrai);
+                for (let row = 0; row < tudiarrai.length; row++) {
+                    const element = Array.from(tudiarrai[row]);
+                    for (let x = 0; x < element.length; x++) {
+                        pixel = element[x];
+                        drawXYcuadr(x*PixelSize,row*PixelSize,PixelSize,pixel);                        
+                    }
+                }
+            }
+
+            function rgb(r,g,b) {
+                var r_ = check(decToHex(r));
+                var g_ = check(decToHex(g));
+                var b_ = check(decToHex(b));
+                return "#"+r_+g_+b_;
+            }
+
+            function decToHex(n) {
+                if(n<0){
+                    n = 0xFFFFFFFF + n + 1;
+                }
+                return Math.round(n).toString(16).toUpperCase();
+            }
+
+            function check(n){
+                //console.log(n)
+                if(n.length>2){
+                    return "FF";
+                }else if (n.length<2){
+                    return "0"+n;
+
+                }else return n
+            }
+            
+            createPantalla();
+            function createPantallaworkless(){
+                createFondo();
+                pantalla = fondo.slice(0);
+                for (let index = 0; index < repeticionesDelFondo; index++) {
+                    for (let y = 0; y < pantalla.length; y++) {
+                        pantalla[y] = pantalla[y].concat(fondo.slice(0)[y]);
+                    }
+                }
+                //render(pantalla); // ahora tengo el fondo plano, voy a meter profundidad
+                for (let y = 0; y < mapaProfundidades.length; y++) {
+                    const row = mapaProfundidades[y];
+                    for (let x = 0; x < row.length; x++) {
+                        const deepness = row[x];
+                        var desplazamientoy = Math.round(pixelesALoAlto/2-mapaProfundidades.length/2);
+                        var desplazamientox = Math.round(numeroColumnasPorRepeticion*repeticionesDelFondo/2-mapaProfundidades[0].length/2);
+       
+                        pantalla[y+desplazamientoy][x+desplazamientox]=pantalla[y+desplazamientoy][x+numeroColumnasPorRepeticion+desplazamientox-deepness]; 
+                        
+                    }  
+                }
+                render(pantalla);
+                
+            }
+            function createPantalla(){
+                createFondo();
+                pantalla = fondo.slice(0);
+                
+                for (let index = 0; index < repeticionesDelFondo-1; index++) {
+                    var initialx = index * numeroColumnasPorRepeticion;
+                    for (let y = 0; y < pantalla.length; y++) {
+                        var row = fondo[y];
+                        for (let x = 0; x < row.length; x++) {
+                            var pixelBuffer = pantalla[y][x+initialx+profundidadEnPantalla(x+initialx,y)];
+                            if(!pixelBuffer){
+                                pixelBuffer = row[x-numeroColumnasPorRepeticion+profundidadEnPantalla(x+initialx,y)];
+                                console.log("salto:"+pixelBuffer);
+                            }
+                            //console.log("x:"+x+"("+row.length+")", "y:"+y+"("+fondo.length+")")
+                            if(profundidadEnPantalla(x+initialx,y)!=0){
+                                //console.log(profundidadEnPantalla(x+initialx,y));
+                            }
+                            row[x]=pixelBuffer;
+                            
+                        }
+                        fondo[y]=row;
+                        
+                    }
+                    console.log(fondo);
+                    //meto fondo en pantalla;
+                    for (let y = 0; y < pantalla.length; y++) {
+                        pantalla[y] = pantalla[y].concat(fondo.slice(0)[y]);
+                    }
+                }
+                render(pantalla);
+            }
+            function profundidadEnPantalla(x,y) {
+                var desply = Math.round(pixelesALoAlto/2-mapaProfundidades.length/2);
+                var desplx = Math.round(numeroColumnasPorRepeticion*repeticionesDelFondo/2-mapaProfundidades[0].length/2);
+                var ret;
+                var ret1 = mapaProfundidades[y-desply]
+                if(ret1){
+                    ret = ret1[x-desplx];
+                }
+                if(!ret){
+                    ret = 0;
+                }
+                return ret;
+            }
+        </script>
+    </body>
+</html>
