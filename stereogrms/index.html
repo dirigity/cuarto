@@ -8,49 +8,82 @@
                 padding: 0;
             }
             body{
-                margin: 0;
-                padding: 1;
+                width: 100%;
+                height: 100%;
+                margin: 0px;
+                padding: 0px;
             }
        </style>
    </head>
-   <body>  
-        <canvas id="canvas" width="3000" height="1000"></canvas>
+   <body onload="load()">  
+        <canvas id="canvas" width="1920" height="1080"></canvas>
+        <canvas id="buffer" width="1920" height="1080"></canvas>
+        <img style="display:none" id="mapa" src="5394470202_309d6fe655_b.jpg"></img>
         <script>
             var canvas = document.getElementById("canvas");
             var ctx = canvas.getContext("2d");
+            var ImageBuffer = document.getElementById("buffer");
+            var bufferCtx = ImageBuffer.getContext("2d");
             var fondo = [];
             var pantalla = [];
             var PixelSize = 1;
-            var fondoWidth = 120;
+            var fondoWidth = 150;
             var numeroColumnasPorRepeticion = fondoWidth/PixelSize;
             var repeticionesDelFondo = canvas.width/fondoWidth;
             var pixelesALoAlto = canvas.height/PixelSize;
-            var mapaProfundidades1=[
-                [0,0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0,0],
-                [0,0,1,1,0,0,1,1,0,0],
-                [0,0,1,1,0,0,1,1,0,0],
-                [0,0,1,1,0,0,1,1,0,0],
-                [0,0,1,1,0,0,1,1,0,0],
-                [0,0,1,1,0,0,1,1,0,0],
-                [0,0,1,1,0,0,1,1,0,0],
-                [0,0,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,0,0,0,0,0],
-                
-            ]
             var mapaProfundidades = []
-            var size = 800;
-            for (let y = 0; y < size; y++) {
-                let row = []
-                for (let x = 0; x < size; x++) {
-                    var centro = size/2;
-                    const h = Math.round(Math.sqrt((y-centro)*(y-centro)+(x-centro)*(x-centro))/10);
-                    row.push(10-h);
-                }
-                mapaProfundidades.push(row);
-            }
-            console.log(mapaProfundidades);
+            var size = 1600;
+            var radius = 700;
             
+            function mathPatern(){
+                for (let y = 0; y < size; y++) {
+                    let row = []
+                    for (let x = 0; x < size; x++) {
+                        var centro = size/2;
+                        var h;
+                        h = Math.round(-10*Math.cos(Math.sqrt((y-centro)*(y-centro)+(x-centro)*(x-centro))/40));
+                        row.push(10-h);
+                    }
+                    mapaProfundidades.push(row);
+                }
+            }
+            
+            function load() {
+                ctx.canvas.width = window.innerWidth;
+                ctx.canvas.height = window.innerHeight;
+                bufferCtx.canvas.width = window.innerWidth;
+                bufferCtx.canvas.height = window.innerHeight;
+                imagePatern();
+                console.log(mapaProfundidades);
+                createPantalla();
+            }
+            
+            function imagePatern() {
+                var img = document.getElementById("mapa");
+                bufferCtx.fillStyle = "#000000";
+                bufferCtx.fillRect(0, 0, ImageBuffer.width, ImageBuffer.height);
+                var imgWidth = img.width;
+                var imgHeight = img.height;
+                reduccionNecesaria = imgHeight/ImageBuffer.height;
+                
+                var desplx = canvas.width/2-imgWidth/2;
+                var desply = canvas.height/2-imgHeight/2;
+
+
+                bufferCtx.drawImage(img,desplx,desply);
+                for (let y = 0; y < ImageBuffer.height; y++) {
+                    //console.log("y:"+y);
+                    var row = [];
+                    for (let x = 0; x < ImageBuffer.width; x++) {
+                        //console.log("x:"+x);
+                        var c = bufferCtx.getImageData(x,y,1,1).data;
+                        
+                        //console.log(c);
+                        row.push(Math.round(c[0]/7));
+                    }
+                    mapaProfundidades.push(row);
+                }
+            }
             
             function drawXYcuadr(x, y, grosor, color) {
                 if(color) 
@@ -72,9 +105,7 @@
                         var r = Math.round(Math.random()*255);
                         var g = Math.round(Math.random()*255);
                         var b = Math.round(Math.random()*255);
-
                         repetible.push(rgb(r,g,b));
-                        
                     }
                     fondo.push(repetible);
                 }
@@ -116,7 +147,6 @@
                 }else return n
             }
             
-            createPantalla();
             function createPantallaworkless(){
                 createFondo();
                 pantalla = fondo.slice(0);
@@ -140,6 +170,7 @@
                 render(pantalla);
                 
             }
+
             function createPantalla(){
                 createFondo();
                 pantalla = fondo.slice(0);
@@ -152,7 +183,7 @@
                             var pixelBuffer = pantalla[y][x+initialx+profundidadEnPantalla(x+initialx,y)];
                             if(!pixelBuffer){
                                 pixelBuffer = row[x-numeroColumnasPorRepeticion+profundidadEnPantalla(x+initialx,y)];
-                                console.log("salto:"+pixelBuffer);
+                                //console.log("salto:"+pixelBuffer);
                             }
                             //console.log("x:"+x+"("+row.length+")", "y:"+y+"("+fondo.length+")")
                             if(profundidadEnPantalla(x+initialx,y)!=0){
@@ -164,7 +195,6 @@
                         fondo[y]=row;
                         
                     }
-                    console.log(fondo);
                     //meto fondo en pantalla;
                     for (let y = 0; y < pantalla.length; y++) {
                         pantalla[y] = pantalla[y].concat(fondo.slice(0)[y]);
@@ -172,18 +202,18 @@
                 }
                 render(pantalla);
             }
+
             function profundidadEnPantalla(x,y) {
-                var desply = Math.round(pixelesALoAlto/2-mapaProfundidades.length/2);
-                var desplx = Math.round(numeroColumnasPorRepeticion*repeticionesDelFondo/2-mapaProfundidades[0].length/2);
+                
                 var ret;
-                var ret1 = mapaProfundidades[y-desply]
+                var ret1 = mapaProfundidades[Math.round(y/PixelSize)]
                 if(ret1){
-                    ret = ret1[x-desplx];
+                    ret = ret1[Math.round(x/PixelSize)];
                 }
                 if(!ret){
                     ret = 0;
                 }
-                return ret;
+                return ret*2;
             }
         </script>
     </body>
