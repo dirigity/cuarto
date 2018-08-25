@@ -1,0 +1,141 @@
+<html>
+    <head>
+        <style>
+            table,th,td{
+                border: 1px solid black
+            }
+        </style>
+    </head>
+    <body>  
+
+
+        <button onclick="ariba()">ᐃ</button>
+        <button onclick="abajo()">ᐁ</button>
+        <button onclick="izdquierda()">ᐊ</button>
+        <button onclick="derecha()">ᐅ</button>
+        <button onclick="removeLastOrder()">x</button>
+        <button onclick="go()">GO!!</button>
+        <br><br>
+        <lista id="lista"></lista>
+        <br>
+        <canvas id="canvas" width="300" height="300"></canvas>
+
+        <script>
+            var instrucciones = [];
+            var x=0;
+            var y=0;
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+            function drawXYcuadr(x, y, grosor, color) {
+                if(color) 
+                  ctx.fillStyle = color; 
+                else 
+                  ctx.fillStyle = "#555555";
+                ctx.fillRect(x, y, grosor, grosor);
+            }
+
+            function ariba() {
+                instrucciones.push("ᐃ");
+                renderInstructionPile();
+            }
+            function abajo() {
+                instrucciones.push("ᐁ");
+                renderInstructionPile();
+            }
+            function izdquierda() {
+                instrucciones.push("ᐊ");
+                renderInstructionPile();
+            }
+            function derecha() {
+                instrucciones.push("ᐅ");
+                renderInstructionPile();
+            }
+            function removeLastOrder() {
+                instrucciones.pop();
+                renderInstructionPile();
+            }
+            function renderInstructionPile() {
+                document.getElementById("lista").innerHTML = "";
+                var tabla = document.createElement("table");
+                for (let i = 0; i < instrucciones.length; i++) {
+                    const element = instrucciones[i];
+                    var field = document.createElement("tr").appendChild(document.createElement("th"));
+                    field.innerHTML = element;
+                    if(index-2==i){
+                        field.style.backgroundColor = fondo;
+                        field.style.color = frente;
+
+                    }
+                    tabla.appendChild(field);
+                    
+                }
+                document.getElementById("lista").appendChild(tabla);
+            }
+            var index;
+            function go(){
+                index = 0;
+                x = 0;
+                y = 0;
+                run();
+            }
+            var fondo = "black";
+            var frente = "white";
+            function run() {
+                console.log(x,y);
+                drawXYcuadr(0,0,1000);
+                drawXYcuadr(x*10,y*10,10,"#000000");
+                if (instrucciones[index]=="ᐅ") {
+                    if(x+1<30){
+                        x++;
+                        fondo = "black";
+                        frente = "white";
+                    }else{
+                        fondo = "red";
+                        frente = "yellow";
+                    }
+                }
+                if (instrucciones[index]=="ᐊ") {
+                    if(x-1>=0){
+                        x--;
+                        fondo = "black";
+                        frente = "white";
+                    }else{
+                        fondo = "red";
+                        frente = "yellow";
+                    }
+                }
+                if (instrucciones[index]=="ᐁ") {
+                    if(y+1<30){
+                        y++;
+                        fondo = "black";
+                        frente = "white";
+                    }else{
+                        fondo = "red";
+                        frente = "yellow";
+                    }
+                }
+                if (instrucciones[index]=="ᐃ") {
+                    if(y-1>=0){
+                        y--;
+                        fondo = "black";
+                        frente = "white";
+                    }else{
+                        fondo = "red";
+                        frente = "yellow";
+                    }
+                }
+                index++;
+                renderInstructionPile();
+                if (instrucciones[index-1]) {
+                    setTimeout(() => {
+                        run();
+                    }, 100);
+                }else{
+                    index = null;
+                }
+            }
+        </script>
+    </body>
+</html>
+
+
