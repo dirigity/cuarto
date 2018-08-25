@@ -26,11 +26,28 @@
             var bufferCtx = ImageBuffer.getContext("2d");
             var fondo = [];
             var pantalla = [];
-            var PixelSize = 1;
-            var fondoWidth = 10000;
+            var PixelSize = 2;
+            var fondoWidth = 1920/2;
+            var numeroColumnasPorRepeticion = fondoWidth/PixelSize;
+            console.log(numeroColumnasPorRepeticion);
+            var repeticionesDelFondo = canvas.width/fondoWidth;
             var pixelesALoAlto = canvas.height/PixelSize;
             var mapaProfundidades = []
-           
+            var size = 1600;
+            var radius = 700;
+            
+            function mathPatern(){
+                for (let y = 0; y < size; y++) {
+                    let row = []
+                    for (let x = 0; x < size; x++) {
+                        var centro = size/2;
+                        var h;
+                        h = Math.round(-10*Math.cos(Math.sqrt((y-centro)*(y-centro)+(x-centro)*(x-centro))/40));
+                        row.push(10-h);
+                    }
+                    mapaProfundidades.push(row);
+                }
+            }
             
             function load() {
                 ctx.canvas.width = window.innerWidth;
@@ -81,7 +98,21 @@
                 }
                 ctx.fillRect(x, y, grosor, grosor);
             }
-          
+
+            function createFondo() {
+                for (let row = 0; row < pixelesALoAlto; row++) {
+                    let repetible = [];
+                    for (let index = 0; index < numeroColumnasPorRepeticion; index++) {
+                        var r = Math.round(Math.random()*255);
+                        var g = Math.round(Math.random()*255);
+                        var b = Math.round(Math.random()*255);
+                        repetible.push(rgb(r,g,b));
+                    }
+                    fondo.push(repetible);
+                }
+                console.log(fondo);
+            }
+            
             function render(tudiarrai) {
                 console.log("me han pedio que pinte:");
                 console.log(tudiarrai);
@@ -117,31 +148,63 @@
 
                 }else return n
             }
-            var jorepore;
-            function createPantalla(){
-                console.log(pantalla);
-                for (let y = 0; y < canvas.height/PixelSize; y++) {
-                    pantalla.push([]);
-                    for (let x = 0; x < canvas.width/PixelSize; x++) {
-                        pantalla[y].push([]);
-                        if(x-fondoWidth-profundidadEnPantalla(x,y)<0){
-                            jorepore++;
-                            if( x < 310 ){
-                                pantalla[y][x] = rgb(255,255,255);
-                            }else{
-                                var r = Math.round(Math.random()*255);
-                                var g = Math.round(Math.random()*255);
-                                var b = Math.round(Math.random()*255);
-                                pantalla[y][x] = rgb(r,g,b);
-                            }
-                        }else{ 
-                            pantalla[y][x] = pantalla[y][x-fondoWidth-profundidadEnPantalla(x,y)];
-                        }
-                        
+            
+            function createPantallaworkless(){
+                createFondo();
+                pantalla = fondo.slice(0);
+                for (let index = 0; index < repeticionesDelFondo; index++) {
+                    for (let y = 0; y < pantalla.length; y++) {
+                        pantalla[y] = pantalla[y].concat(fondo.slice(0)[y]);
                     }
                 }
+                //render(pantalla); // ahora tengo el fondo plano, voy a meter profundidad
+                for (let y = 0; y < mapaProfundidades.length; y++) {
+                    const row = mapaProfundidades[y];
+                    for (let x = 0; x < row.length; x++) {
+                        const deepness = row[x];
+                        var desplazamientoy = Math.round(pixelesALoAlto/2-mapaProfundidades.length/2);
+                        var desplazamientox = Math.round(numeroColumnasPorRepeticion*repeticionesDelFondo/2-mapaProfundidades[0].length/2);
+       
+                        pantalla[y+desplazamientoy][x+desplazamientox]=pantalla[y+desplazamientoy][x+numeroColumnasPorRepeticion+desplazamientox-deepness]; 
+                        
+                    }  
+                }
                 render(pantalla);
-                console.log(jorepore);
+                
+            }
+
+            function createPantalla(){
+                createFondo();
+                pantalla = fondo.slice(0);
+                console.log(pantalla);
+                for (let index = 0; index < repeticionesDelFondo-1; index++) {
+                    var initialx = index * numeroColumnasPorRepeticion;
+                    for (let y = 0; y < pantalla.length; y++) {
+                        var row = fondo[y];
+                        for (let x = 0; x < row.length; x++) {
+                            var pixelBuffer = pantalla[y][x+initialx+profundidadEnPantalla(x+initialx,y)];
+                            if(!pixelBuffer){
+                                pixelBuffer = row[x-numeroColumnasPorRepeticion+profundidadEnPantalla(x+initialx,y)];
+                                //console.log("salto:"+pixelBuffer);
+                            }
+                            //console.log("x:"+x+"("+row.length+")", "y:"+y+"("+fondo.length+")")
+                            if(profundidadEnPantalla(x+initialx,y)!=0){
+                                //console.log(profundidadEnPantalla(x+initialx,y));
+                            }
+                            row[x]=pixelBuffer;
+                            
+                        }
+                        fondo[y]=row;
+                        
+                    }
+                    //meto fondo en pantalla;
+                    for (let y = 0; y < pantalla.length; y++) {
+                        pantalla[y] = pantalla[y].concat(fondo.slice(0)[y]);
+                    }
+                    console.log(pantalla);
+
+                }
+                render(pantalla);
             }
 
             function profundidadEnPantalla(x,y) {

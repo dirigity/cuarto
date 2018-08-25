@@ -1,0 +1,206 @@
+<html>
+    <head>
+        <style>
+            canvas {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+            }
+            body{
+                width: 100%;
+                height: 100%;
+                margin: 0px;
+                padding: 10px;
+            }
+            boton{
+                border: 2px solid black;
+                border-radius: 5px;
+                margin: 10px;
+
+            }
+        </style>
+    </head>
+    <body>  
+        <div id="config">
+            <boton id="reboteRaro" style="background-color: gray" onclick="Fisicasdivertidas()"> Fisicas divertidas </boton><boton onclick="FisicasRaras()"id="reboteFisico" > Fisicas Correctas </boton> <br> <br>
+            <boton onclick="load()"> GO!! </boton>
+        </div>
+
+        <canvas id="canvas" style = "display:none"width="1920" height="1080"></canvas>
+        
+        <script>
+
+            function Fisicasdivertidas() {
+                document.getElementById("reboteRaro").style.backgroundColor = "gray"
+                document.getElementById("reboteFisico").style.backgroundColor = "white"
+                tipoDeRebote = false;
+            }
+            function FisicasRaras() {
+                document.getElementById("reboteRaro").style.backgroundColor = "white"
+                document.getElementById("reboteFisico").style.backgroundColor = "gray"
+                tipoDeRebote = true;
+
+            }
+
+            var tipoDeRebote = false;
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+            var Pelota = {
+                x : 0,
+                y : 0,
+                vx : 0,
+                vy : 0,
+                radius : 23
+            };
+            var barraIzd = 0;
+            var barraDer = 0;
+            var velocidadTope = 10;
+            var distanciaAlBordeDeLasBarras = 1/50;
+            var distanciaObjetiva = distanciaAlBordeDeLasBarras*canvas.width;
+            var barraHeight = 400;  
+            var desplazamiento = 20;
+            var lost;
+            
+            window.onkeydown = function(e) {
+                var code = e.key;
+                if(code=="s"){
+                    barraIzd = barraIzd + desplazamiento;
+                }
+                if(code=="w"){
+                    barraIzd = barraIzd - desplazamiento;
+                }
+                if(code=="i"){
+                    barraDer = barraDer - desplazamiento;
+                }
+                if(code=="k"){
+                    barraDer = barraDer + desplazamiento;
+                }
+            
+            
+            }
+
+            function load() {
+                document.getElementById("config").style.display="none";
+                document.getElementById("canvas").style.display="block";
+                lost = false;
+                ctx.canvas.width = window.innerWidth;
+                ctx.canvas.height = window.innerHeight;
+                barraDer = canvas.height/2;
+                barraIzd = canvas.height/2;
+                Pelota.x = canvas.width/2;
+                Pelota.y = canvas.height/2;
+                newDirection(1);
+                tick();
+
+            }
+
+            function newDirection(direcionX) {
+                Pelota.vy = (Math.random()*velocidadTope*(2/3));
+                Pelota.vx = Math.sqrt(Math.pow(velocidadTope,2)-Math.pow(Pelota.vy,2));
+                
+                Pelota.vy = direcionX*Pelota.vy;
+                if (Math.random()*2>1) {
+                    Pelota.vx = -Pelota.vx;
+                }
+            }
+            
+
+            function tick() {
+                //calculos
+                if(Pelota.y + Pelota.vy - Pelota.radius < 0 || Pelota.y + Pelota.vy + Pelota.radius > canvas.height){
+                    Pelota.vy = -Pelota.vy
+                }else{
+                    Pelota.y = Pelota.y + Pelota.vy;
+                }
+                
+                if(Pelota.vx<0){
+                    if(Pelota.x + Pelota.vx - Pelota.radius < distanciaObjetiva){
+                        if(Pelota.y < barraIzd+barraHeight/2 && Pelota.y > barraIzd-barraHeight/2){
+                            if(tipoDeRebote)Pelota.vx = -Pelota.vx;
+                            else newDirection(1);
+                        }else{
+                            //alert("<- looser ");
+                            lost = true
+                        }
+                    }else{
+                        Pelota.x = Pelota.x + Pelota.vx;
+                    }
+                }else {
+                    if(Pelota.x + Pelota.vx + Pelota.radius > canvas.width-distanciaObjetiva){
+                        if(Pelota.y < barraDer+barraHeight/2 && Pelota.y > barraDer-barraHeight/2){
+                            if(tipoDeRebote)Pelota.vx = -Pelota.vx;
+                            else newDirection(-1);
+                        }else{
+                            //alert("  looser ->");
+                            lost = true
+
+                        }
+                    }else{
+                        Pelota.x = Pelota.x + Pelota.vx;
+                    }
+                }
+
+                //render
+                ctx.fillStyle = rgb(255,255,255); 
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                for (let x_ = 0; x_  < Pelota.radius*2; x_++) {
+                    for (let y_ = 0; y_  < Pelota.radius*2; y_++) { 
+                        var x = x_+Pelota.x-Pelota.radius;
+                        var y = y_+Pelota.y-Pelota.radius;   
+                        color = rgb(255,255,255);
+                        if (Pelota.radius > Math.sqrt(Math.pow(x-Pelota.x,2) + Math.pow(y-Pelota.y,2))) {
+                            color = rgb(255,0,0); 
+                        }
+                        drawXYcuadr(x,y,1,color);  
+                    }
+                }
+                ctx.fillStyle = "#555555";
+                ctx.fillRect(distanciaObjetiva, barraIzd-barraHeight/2, 3, barraHeight);
+                ctx.fillRect(canvas.width-distanciaObjetiva, barraDer-barraHeight/2, 3, barraHeight);
+                
+                //retick
+                if(lost){
+                    load();
+                }else setTimeout(() => {
+                    tick();
+                }, 10);
+                
+
+            }
+
+            function drawXYcuadr(x, y, grosor, color) {
+                if(color) 
+                    ctx.fillStyle = color; 
+                else{ 
+                    ctx.fillStyle = "#555555";
+                }
+                ctx.fillRect(x, y, grosor, grosor);
+            }
+
+            function rgb(r,g,b) {
+                var r_ = check(decToHex(r));
+                var g_ = check(decToHex(g));
+                var b_ = check(decToHex(b));
+                return "#"+r_+g_+b_;
+            }
+
+            function decToHex(n) {
+                if(n<0){
+                    n = 0xFFFFFFFF + n + 1;
+                }
+                return Math.round(n).toString(16).toUpperCase();
+            }
+
+            function check(n){
+                //console.log(n)
+                if(n.length>2){
+                    return "FF";
+                }else if (n.length<2){
+                    return "0"+n;
+
+                }else return n
+            }
+            
+        </script>
+    </body>
+</html>

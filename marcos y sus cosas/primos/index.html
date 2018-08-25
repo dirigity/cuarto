@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <style>
+            
+
+        </style>
+    </head>
+    <body>  
+        <input id="input">
+        <button onclick="diloporlapantalla()">di el valor por la pantalla</button><br>
+        <enelsitiodondesale id="textfield">      </enelsitiodondesale>
+
+        <script>
+            var input = document.getElementById("input"); 
+            var textfield = document.getElementById("textfield");
+            function diloporlapantalla() {
+                var valor = parseInt(input.value);
+                var larespuestadelmetodo = esestenumerprimo(valor);
+                var relanzarbucle = true;
+                while(relanzarbucle == true){
+                    valor=valor+1;
+                    if (esestenumerprimo(valor)==true) {
+                        relanzarbucle = false;
+                        
+                    }
+                }
+                textfield.innerHTML = valor;
+
+
+            }
+
+            function esestenumerprimo(numero) {
+                for (let i= 2; i < numero;i++) {
+                    console.log("voy a probar:"+numero+" partido de:"+i);
+                    if(numero%i == 0){
+                        return false
+                    }
+                }
+                return true; 
+            }
+
+
+            
+
+
+        </script>
+    </body>
+</html>
+
