@@ -2,6 +2,9 @@
 
 <head>
     <style>
+        button{
+            
+        }
     </style>
 </head>
 
@@ -10,14 +13,44 @@
     <button onclick="Add()">+</button>
     <script>
         var DataBase = [];
+        
+        document.onkeydown = checkKey;
+
+            function checkKey(e) {
+                e = e || window.event;
+                //console.log(e);
+                if (e.key == "Enter") {
+                    refreshNames();
+                }
+            }
+        
+        function refreshNames(params) {
+            BufferOldDataBase = DataBase.slice(0);
+            for (let i = 0; i < DataBase.length; i++) {
+                const element = DataBase[i];
+                var name = document.getElementById("Name"+i).value;
+                if(name != ""){
+                    element[0]=name;
+                }
+                var formula = document.getElementById("Formula"+i).value;
+                if(formula != ""){
+                    element[1]=formula;
+                }
+            }
+            render();
+        }
+
+        
+        
         function Add() {
             var New = [];
             New.push(getNewName());
-            New.push();
-            New.push("NaN");
+            New.push("InputFormula");
+            New.push("");
             DataBase.push(New);
             render();
         }
+
         function render() {
             var parent = document.getElementById("Parent");
             parent.innerHTML = "";
@@ -27,18 +60,31 @@
                 name.placeholder = element[0];
                 name.id = "Name" + i;
                 parent.appendChild(name);
-                parent.innerHTML = parent.innerHTML + " = ";
+                parent.innerHTML = parent.innerHTML + " -> ";
 
                 var formula = document.createElement("input");
                 formula.placeholder = element[1];
                 formula.id = "Formula" + i;
                 parent.appendChild(formula);
                 parent.innerHTML = parent.innerHTML + " = ";
+                
+                element[2] = solve(element[1]);
+                parent.innerHTML = parent.innerHTML + element[2] + "  ";
 
-                parent.innerHTML = parent.innerHTML + element[2] + "<br> ";
+                var removeButton = document.createElement("button");
+                removeButton.setAttribute("onclick","remove("+i+")");
+                removeButton.innerHTML = "-"
+                parent.appendChild(removeButton);
+
+
+                parent.innerHTML = parent.innerHTML + "<br> ";
 
 
             }
+        }
+        function remove(i) {
+            DataBase.splice(i,1);
+            render();
         }
         function getNewName() {
             var ret = -1;
@@ -48,7 +94,7 @@
                 rep = false;
                 for (let i = 0; i < DataBase.length; i++) {
                     const element = DataBase[i];
-                    //console.log("gona check:" + element[0] + "-y-" + "UnNamed" + ret);
+                    ////console.log("gona check:" + element[0] + "-y-" + "UnNamed" + ret);
                     if (element[0] == "UnNamed" + ret) {
                         rep = true;
                         break;
@@ -58,16 +104,16 @@
             return "UnNamed" + ret;
         }
 
-        console.log((2 / (2 - 1)) + 3, solve("(2/(2-1))+3"));
-        console.log((2 / 2) + 3, solve("(2/2)+3"));
-        console.log((5 - 1) + (3 * 5), solve("(5-1)+(3*5)"));
-        console.log((2 - 1) + 3, solve("(2-1)+3"));
-        console.log(((2 - 1)) - 1 - 6, solve("((2-1))-1-6"));
-        console.log(1 + 2 + 3 + 4 + 5, solve("1+2+3+4+5"));
-        console.log(5 * 2 - 245.3, solve("5*2-245.3"));
+        //console.log((2 / (2 - 1)) + 3, solve("(2/(2-1))+3"));
+        //console.log((2 / 2) + 3, solve("(2/2)+3"));
+        //console.log((5 - 1) + (3 * 5), solve("(5-1)+(3*5)"));
+        //console.log((2 - 1) + 3, solve("(2-1)+3"));
+        //console.log(((2 - 1)) - 1 - 6, solve("((2-1))-1-6"));
+        //console.log(1 + 2 + 3 + 4 + 5, solve("1+2+3+4+5"));
+        //console.log(5 * 2 - 245.3, solve("5*2-245.3"));
 
 
-        //console.log(,solve(""));
+        ////console.log(,solve(""));
 
         function solve(operation) {
             var parentesistest = 0;
@@ -78,27 +124,27 @@
                     const element = operation.substr(i, 1);
                     if (element == "(") {
                         parentesistest++;
-                        //console.log("le he sumado y se ha quedado en: "+parentesistest);
+                        ////console.log("le he sumado y se ha quedado en: "+parentesistest);
                         if (parentesistest == 0) {
                             seTerminaAntesDeTerminar = false
-                            //console.log("no lo puedo quitar");
+                            ////console.log("no lo puedo quitar");
                         }
                     }
                     if (element == ")") {
                         parentesistest--;
-                        //console.log("le he sumado y se ha quedado en: "+parentesistest);
+                        ////console.log("le he sumado y se ha quedado en: "+parentesistest);
                         if (parentesistest == 0 && i != operation.length - 1) {
                             seTerminaAntesDeTerminar = false
-                            //console.log("no lo puedo quitar");
+                            ////console.log("no lo puedo quitar");
                         }
 
                     }
                 }
 
                 if (seTerminaAntesDeTerminar) {
-                    //console.log("voy a quitar parentesis a: "+operation);
+                    ////console.log("voy a quitar parentesis a: "+operation);
                     operation = operation.substr(1, operation.length - 2);
-                    //console.log("resultado: "+operation);
+                    ////console.log("resultado: "+operation);
                 } else {
                     break;
                 }
@@ -114,7 +160,7 @@
 
             for (let d = 0; d < operation.length; d++) {
                 const element = operation.substr(d, 1);
-                //console.log("me aseguro que hay un bucle y element es:" + element + "  porque es el index: " + d + " de: " + operation);
+                ////console.log("me aseguro que hay un bucle y element es:" + element + "  porque es el index: " + d + " de: " + operation);
                 if (element == "(") {
                     parentesistest2++;
                 }
@@ -123,7 +169,7 @@
                 }
 
                 if (element == "+" || element == "-") {
-                    console.log("Queda un algo xungo en:" + d);
+                    //console.log("Queda un algo xungo en:" + d);
                     if (parentesistest2 == 0) {
                         mirandoSumas = false;
                     }
@@ -173,9 +219,9 @@
                     if (i < 0) {
                         if (parentesis == 0) {
                             rep = false;
-                            //console.log("voy a parsear: "+operation + " y va a salir: "+parseFloat(operation))
+                            ////console.log("voy a parsear: "+operation + " y va a salir: "+parseFloat(operation))
                             var ret = parseFloat(operation);
-                            if(ifNaN(ret)){
+                            if(isNaN(ret)){
                                 for (let i = 0; i < DataBase.length; i++) {
                                     const name = DataBase[i][0];
                                     if(name == operation){
@@ -191,7 +237,7 @@
                     }
                 }
             }
-            console.log("operación:" + operation, "op1:" + operation.substr(0, i), operator, "op2:" + operation.substr(i + 1));
+            //console.log("operación:" + operation, "op1:" + operation.substr(0, i), operator, "op2:" + operation.substr(i + 1));
 
             const operando1 = solve(operation.substr(0, i));
             const operando2 = solve(operation.substr(i + 1));
@@ -210,7 +256,7 @@
                 resultado = operando1 / operando2;
             }
 
-            console.log(operando1, operator, operando2, "=", resultado);
+            //console.log(operando1, operator, operando2, "=", resultado);
             return resultado;
         }
     </script>
