@@ -1,0 +1,118 @@
+<html>
+    <head>
+        <style>
+            canvas {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                width: 100%;
+                height: 100%;
+                margin: 0px;
+                padding: 0px;
+            }
+        </style>
+    </head>
+    <body>  
+        <canvas width="350" height = "100" id="canvas"></canvas>
+        <script>
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+            var pelotitas = [];
+            var numeroDePelotitas = 130;
+            drawCircle(50,50,30,rgb(20,20,20));
+            
+            function createNewPelotita() {
+                var ret = [];
+                //posy
+                ret.push(Math.random()*50+25);
+                //speed
+                ret.push(1+Math.random()*5);
+                //posx
+                ret.push(0);
+                return ret;
+            }
+            
+            tick();
+
+            function tick() {
+                ctx.fillStyle = "#FFFFFF";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                while (numeroDePelotitas>pelotitas.length) {
+                    pelotitas.push(createNewPelotita())
+                }
+
+                for (let i = 0; i < pelotitas.length; i++) {
+                    const element = pelotitas[i];
+                    var posy = element[0];
+                    var speed = element[1];
+                    var posx = element[2];
+                    var color = rgb(225,225-posx,10);
+                    var radious = ((225-posx)/20);
+                    drawCircle(posx,posy,radious,color);
+                    element[2] = element[2] + element[1];
+                    if(posx>=225){
+                        pelotitas.splice(i,1);
+                    }
+                }
+                setTimeout(() => {
+                    tick();
+                }, 1);
+            }
+
+
+            function drawCircle(_x,_y,_radius,color_) {
+                for (let x_ = 0; x_  < _radius*2; x_++) {
+                    for (let y_ = 0; y_  < _radius*2; y_++) { 
+                        var x = x_+_x-_radius;
+                        var y = y_+_y-_radius;   
+                        if (_radius > Math.sqrt(Math.pow(x-_x,2) + Math.pow(y-_y,2))) {
+                            drawXYcuadr(x,y,1,color_);   
+                        }
+                        
+                    }
+                }
+            }
+
+
+            function drawXYcuadr(x, y, grosor, color) {
+                if(color) 
+                    ctx.fillStyle = color; 
+                else{ 
+                    ctx.fillStyle = "#555555";
+                }
+                ctx.fillRect(x, y, grosor, grosor);
+                //console.log("Draw dot in x:"+x+" y:"+y);
+            }
+
+            function rgb(r,g,b) {
+                var r_ = check(decToHex(r));
+                var g_ = check(decToHex(g));
+                var b_ = check(decToHex(b));
+                return "#"+r_+g_+b_;
+            }
+
+            function decToHex(n) {
+                if(n<0){
+                    n = 0xFFFFFFFF + n + 1;
+                }
+                return Math.round(n).toString(16).toUpperCase();
+            }
+
+            function check(n){
+                //console.log(n)
+                if(n.length>2){
+                    return "FF";
+                }else if (n.length<2){
+                    return "0"+n;
+
+                }else return n
+            }
+            
+        </script>
+    </body>
+</html>
+
+

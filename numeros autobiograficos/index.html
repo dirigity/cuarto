@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body onload="NextNumber()">  
+        <script>
+            var number = 0;
+            function NextNumber(){
+                number++
+                while (!isAutoBiografic(number)&&number<9999999999) {
+                    number++
+                    console.log(number);
+                }
+                alert("el numero " + number + " es autobiogr&aacute;fico");
+                NextNumber();
+            }
+            function isAutoBiografic(n_){
+                var n = n_+"";
+                var n2 = "";
+                var histogram = [];
+                for (let i = 0; i < n.length; i++) {
+                    const char = n.substr(i,1);
+                    
+                    while (parseInt(char)+1>histogram.length) {
+                        histogram.push(0);
+                    }
+                    histogram[parseInt(char)]++;
+                }
+                for (let i = 0; i < histogram.length; i++) {
+                    const element = histogram[i];
+                    n2 = n2+element+"";
+                }
+                for (let i = 0; i < n.length; i++) {
+                    const char = n.substr(i,1);
+                    let char2 = histogram[i];
+                    if(!char2){
+                        char2=0;
+                    }
+                    if(char != char2){
+                        return false;
+                    }
+                }
+                return true;
+            }
+            function esCapicua(n) {
+                var numero = n.toString().split("");
+                var ret = true;
+                for (var i = 0; i < numero.length; i++) {
+                    if (numero[i] != numero[numero.length - 1 - i]) {
+                        ret = false;
+                    }
+                }
+                return ret;
+            }
+        </script>
+    </body>
+</html>
+
+
