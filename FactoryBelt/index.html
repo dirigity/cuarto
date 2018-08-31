@@ -1,0 +1,374 @@
+<html>
+    <head>
+        <style>
+            body{
+                width: 100%;
+                height: 100%;
+                margin: 0px;
+                padding: 0px;
+            }
+            #InGameStuff{
+                border: 0px solid black;
+                margin: 0px;
+                width: 100%;
+                height: 100%;
+                display: none;
+            }
+            table{
+                margin: 0px;
+                width: 100%;
+            }
+            td{
+                border: 1px solid black;
+                padding: 10px;
+                width: 50%;
+                font-size: 150%;
+                height: 10%;
+            }
+
+
+
+            .sidenav {
+                height: 100%;
+                width: 0;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                right: 0;
+                background-color: #FFFFFF;
+                overflow-x: hidden;
+                transition: 0.5s;
+                padding-top: 60px;
+                border: 1px solid black;
+            }
+
+            a {
+                padding: 8px 8px 8px 32px;
+                text-decoration: none;
+                font-size: 25px;
+                color: #000000;
+                display: block;
+                transition: 0.3s;
+            }
+
+            a:hover {
+                color:black;
+                text-shadow: 1px 1px black;
+                
+            }
+            red{
+                color: red;
+            }
+            green{
+                color: green;
+            }
+
+            .closebtn {
+                position: absolute;
+                top: 0;
+                right: 25px;
+                font-size: 36px;
+                margin-left: 50px;
+            }
+
+            @media screen and (max-height: 450px) {
+            .sidenav {padding-top: 15px;}
+            .sidenav a {font-size: 18px;}
+            }
+
+            .aboveDimmer {
+                Z-INDEX: 301; 
+            }
+            #dimmer {
+                transition: 0.3s;
+                Z-INDEX: 300; 
+                POSITION: fixed; 
+                BACKGROUND-COLOR: #000000; 
+                WIDTH: 100%; 
+                FLOAT: left; 
+                HEIGHT: 100%; 
+                VISIBILITY: hidden; 
+                TOP: 0px; 
+                LEFT: 0px;
+                opacity: 0.0;
+            }
+
+            /* Modal Content */
+            .dialogBox {
+                margin-left:20%;
+                margin-right:20%;
+                TOP: 10%; 
+                transition: 0.3s;
+                position: fixed;
+                background-color: white;
+                padding: 20px;
+                border: 1px solid black;
+                width: 60%;
+                
+                height: 70%;
+                visibility: hidden;
+            }
+            canvas{
+                width: 100%;
+                height: 90%;
+            }
+
+        </style>
+    </head>
+    <body onkeypress="keyPress(event)" onload="justLoaded()">  
+        <DIV id=dimmer onclick="backToNormal()"></DIV>
+        <img style="display:none" id="floor" src="suelo.jpeg">
+        <img style="display:none" id="belt" src="belt.jpg">
+
+
+        <div id="WelcomePage">
+            <button style="font-size:100px;background-color:white;border:0px solid black;margin-left:auto;margin-right:auto;display:block;margin-top:10%;">
+                FactoryBelt        
+            </title>    
+            <button onclick = "NewGame()" type="button" style="margin-left:auto;margin-right:auto;display:block;margin-top:2%;">
+                    New Game
+            </button>
+            <!-- <button type="button" style="margin-left:auto;margin-right:auto;display:block;margin-top:0.5%;">
+                    Load Game
+            </button> -->
+        </div>
+        <div id="InGameStuff">
+            <table >
+                <tr>
+                    <td>
+                        moneyYouHave
+                    </td>
+                    <td>
+                        moneyYouEarn
+                    </td>
+                    <td>
+                        <img  onclick="openNav()" width = "30" height="30" src="Hamburger_icon.svg.png">
+                    </td>
+                </tr>
+            </table>
+            <canvas id="MainCanvasDisplay"></canvas>
+
+        </div>
+        
+        <div class = "dialogBox" id="dialogBox" style="Z-INDEX: 301;">
+            <a class="closebtn" onclick="backToNormal()">&times;</a>
+            <strong id = "tituloDialogo" style="font-size:400%">qwerty</strong>
+            <div id = "SitioAndeSeEscribe" style="Z-INDEX: 301; overflow: auto; width: 100%; height: 80%;margin-top:3%;border:1px solid black" >
+                    
+            </div>
+        </div>
+
+
+        <div id="principal" class="sidenav" style="Z-INDEX: 301">
+            <a class="closebtn" onclick="leaveNav()">&times;</a>
+            <a onclick="ShowRecepies()">Recepies</a>
+            <a href="#">Build</a>
+            <a onclick="ShowMisions()">Misions</a>
+            <a onclick="openOptions()">Game Options</a>
+        </div>
+        <div id="options" class="sidenav" style="Z-INDEX: 302">
+            <a class="closebtn" onclick="closeOptions()">&times;</a>
+            <a id="soundBotton" onclick="togleSound()">sound:<green>ON<green></a>
+        </div>
+
+        
+        <script>
+            var enabledSound = true;
+            var canvas = document.getElementById("MainCanvasDisplay");
+            var ctx = canvas.getContext("2d");
+            var tablero = [];
+            var dimmed = 0;
+            var modal = document.getElementById("dialogBox");
+            var zoom = 50;
+            var speed = 1;
+            var time = 0;
+            var camarax=0;
+            var camaray=0;
+            var ratonx = 0;
+            var ratony = 0;
+            var hoveringx;
+            var hoveringy;
+
+            function keyPress(e) {
+                console.log(dimmed,e);
+                if(dimmed == 0){
+                    if(e.key=="s"){
+                        camaray=camaray-4;
+                    }
+                    if(e.key=="w"){
+                        camaray=camaray+4;
+                    }
+                    if(e.key=="a"){
+                        camarax=camarax+4;
+                    }
+                    if(e.key=="d"){
+                        camarax=camarax-4;
+                    }
+                    if(e.key=="q"){
+                        zoom--;
+                    }
+                    if(e.key=="e"){
+                        zoom++;
+                    }
+                }
+            }
+
+            function tick(){
+                ctx.fillRect(0, 0, canvas.height, canvas.width);
+                canvas.height = canvas.clientHeight;
+                canvas.width = canvas.clientWidth;
+                for (let x = 0; x < tablero.length; x++) {
+                    const columna = tablero[x];
+                    for (let y = 0; y < columna.length; y++) {
+                        const element = columna[y];
+                        var x_ = x*zoom+camarax;
+                        var y_ = y*zoom+camaray;
+                        drawXYrect(ratonx,ratony,10);
+                        
+                        if(element[0]=="empty"){
+                            drawImageXYRotSize(document.getElementById("floor"), x_, y_,0,zoom);
+                            //ctx.drawImage(document.getElementById("floor"), x_, y_,zoom,zoom);
+                        }else if(element[0]=="belt"){
+                            ctx.drawImage(document.getElementById("belt"), x_, y_,zoom,zoom);
+                        }
+                        if(ratonx>x_&&ratonx<x_+zoom&&ratony>y_&&ratony<y_+zoom){
+                            drawXYrect(x_, y_, zoom, "#99FF003F");
+                            hoveringx = x;
+                            hoveringy = y;
+                        }
+                    }
+                }
+                setTimeout(() => {
+                    time++
+                    if(time>10000){
+                        time = 0;
+                    }
+                    tick();
+                }, speed);
+            }           
+            function justLoaded() {
+                for (let x = 0; x < 10; x++) {
+                    let wip = [];
+                    for (let y = 0; y < 10; y++) {
+                        wip.push(["empty"]);
+                    }
+                    tablero.push(wip);
+                }
+                canvas.height = canvas.clientHeight+"px";
+                canvas.width = canvas.clientWidth+"px";
+                document.getElementById("WelcomePage").style.display="block";
+                document.getElementById("InGameStuff").style.display="none";
+                closeDialog();
+                LightsOn(); 
+            }
+            canvas.addEventListener('mousemove',function onMouseover(e){
+                ratonx = e.clientX;
+                ratony = e.clientY-canvas.height/9; 
+            });
+            function NewGame() {
+                
+                document.getElementById("WelcomePage").style.display="none";
+                document.getElementById("InGameStuff").style.display="block";
+                tick();
+            }     
+            function backToNormal() {
+                closeNav();
+                LightsOn();
+                closeDialog();
+
+            }
+            function openNav() {
+                document.getElementById("principal").style.width = "250px";
+                LightsOff();
+            }
+            function closeNav() {
+                closeOptions();
+                document.getElementById("principal").style.width = "0";
+            }
+            function leaveNav() {
+                closeOptions();
+                document.getElementById("principal").style.width = "0";
+                LightsOn();
+            }
+            function openOptions() {
+                document.getElementById("options").style.width = "250px";
+            }
+            function closeOptions() {
+                document.getElementById("options").style.width = "0";
+            }
+            function togleSound() {
+                if(enabledSound){
+                    enabledSound=false;
+                    document.getElementById("soundBotton").innerHTML="sound:<red>OFF<red>"
+                }else{
+                    enabledSound=true;
+                    document.getElementById("soundBotton").innerHTML="sound:<green>ON<green>"
+                }
+            }       
+            function LightsOn() {
+                speed = 1;
+                var dimmer = document.getElementById("dimmer");
+                dimmer.style.opacity = 0.0;
+                dimmer.style.visibility = "hidden";
+            }
+            function LightsOff() {
+                var dimmer = document.getElementById("dimmer");
+                dimmer.style.opacity = 0.7;
+                dimmer.style.visibility = "visible";
+                speed = 10;
+            }
+            function toggleLights(){
+                if(dimmed == 0) {
+                    dimmed = 1;
+                    LightsOff();
+                }else {
+                    dimmed = 0;
+                    LightsOn();
+                }
+            }  
+            function closeDialog() {
+                modal.style.opacity = 0.0;
+                modal.style.visibility = "hidden";
+                LightsOn();
+            }
+            function ShowRecepies() {
+                closeNav();
+                openEmptyDialog("Recepies");
+            }
+            function ShowMisions() {
+                closeNav();
+                openEmptyDialog("Misions");
+            }
+            function openEmptyDialog(titulo){
+                document.getElementById("tituloDialogo").innerHTML=titulo;
+                modal.style.opacity = 1;
+                modal.style.visibility = "visible";
+                document.getElementById("SitioAndeSeEscribe").innerHTML = "";
+                return document.getElementById("SitioAndeSeEscribe");
+            }
+            function drawXYrect(x, y, grosor, color) {
+                //console.log("fufo?")
+                if(color) 
+                  ctx.fillStyle = color; 
+                else 
+                  ctx.fillStyle = "#555555";
+                ctx.fillRect(x, y, grosor, grosor);
+            }
+            function drawImageXYRotSize(img,x,y,rot,s) {
+
+                var width = s;
+                var height = s;
+                x=x+width / 2;
+                y=y+height / 2;
+                //console.log(width,height,x,y);
+
+                ctx.translate(x, y);
+                ctx.rotate(rot);
+                ctx.drawImage(img, -width / 2, -height / 2, width, height);
+                ctx.rotate(-rot);
+                ctx.translate(-x, -y);
+            }
+
+        </script>
+    </body>
+</html>
