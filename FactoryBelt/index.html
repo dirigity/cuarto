@@ -126,6 +126,13 @@
         <img style="display:none" id="Seller" src="Seller.jpg">
         <img style="display:none" id="Crafter" src="Crafter.jpg">
         <img style="display:none" id="Remove" src="suelo.jpeg">
+        <img style="display:none" id="Arrow" src="arrow.png">
+        <img style="display:none" id="Copper" src="Copper.png">
+        <img style="display:none" id="Coal" src="coal.png">
+        <img style="display:none" id="Iron" src="iron.png">
+
+
+        
 
 
 
@@ -144,7 +151,8 @@
         <div id="InGameStuff">
             <table >
                 <tr>
-                    <td>
+                    <td id="MoneyDisplay">
+
                     </td>
                     <td>
                     </td>
@@ -201,9 +209,17 @@
             var inventario = [10,10,10,10];
             var hovering = undefined;
             var sellected = undefined;
+            var material = [];
+            var money = 0;
+            var RecepyIn = [
+                ["Coal","Iron"]
+            ]
+            var RecepyOut = [
+                "Copper"
+            ]
 
             function keyPress(e) {
-                console.log(dimmed,e);
+                //console.log(dimmed,e);
                 if(dimmed == 0){
                     if(e.key=="s"){
                         camaray=camaray-4;
@@ -225,7 +241,6 @@
                     }
                 }
             }
-            
             function CanvasClicked(){
                 console.log("click");
                 if(buildMode){
@@ -233,36 +248,127 @@
                         sellected = hovering;
                     }else if(hoveringx&&sellected){
                         if(sellected=="Remove"){
+                            AddItem(tablero[hoveringx][hoveringy][0]);
                             tablero[hoveringx][hoveringy]=["empty"];
                         }else if(sellected=="BuildCrafter"){
                             if(inventario[3]>0){
                                 AddItem(tablero[hoveringx][hoveringy][0]);
                                 inventario[3]--;
-                                tablero[hoveringx][hoveringy]=["Crafter",0];
+                                tablero[hoveringx][hoveringy]=["Crafter",0,time,undefined,[]];
                             }
                         }else if(sellected=="BuildSeller"){
                             if(inventario[2]>0){
                                 AddItem(tablero[hoveringx][hoveringy][0]);
                                 inventario[2]--;
-                                tablero[hoveringx][hoveringy]=["Seller",0];
+                                tablero[hoveringx][hoveringy]=["Seller",0,time];
                             }
                         }else if(sellected=="BuildCreator"){
                             if(inventario[1]>0){
                                 AddItem(tablero[hoveringx][hoveringy][0]);
                                 inventario[1]--;
-                                tablero[hoveringx][hoveringy]=["Creator",0];
+                                tablero[hoveringx][hoveringy]=["Creator",0,time,undefined];
                             }
                         }else if(sellected=="BuildBelt"){
                             if(inventario[0]>0){
                                 AddItem(tablero[hoveringx][hoveringy][0]);
                                 inventario[0]--;
-                                tablero[hoveringx][hoveringy]=["Belt",0];
+                                tablero[hoveringx][hoveringy]=["Belt",0,time];
                             }
+                        }
+                    }
+                }else{
+                    if(hoveringx){
+                        if(tablero[hoveringx][hoveringy][0]!="empty"){
+                            LightsOff();
+                            var objetName = tablero[hoveringx][hoveringy][0];
+                            var box = openEmptyDialog(objetName);
+                            if(objetName=="Belt"){
+                                box.innerHTML="This objets are used to transport stuff from one place to another, you can turn it around in build mode."
+                            }else if(objetName=="Creator"){
+                                if(tablero[hoveringx][hoveringy][3]){
+                                    box.innerHTML="This objets are used to input materials to your circuit, choose the maerial you want this particular creator to produce below (It's set to produce " + tablero[hoveringx][hoveringy][3] + "), you can turn it around in build mode.<br>";
+                                }else{
+                                    box.innerHTML="This objets are used to input materials to your circuit, choose the maerial you want this particular creator to produce below (You haven't set it up yet), you can turn it around in build mode.<br>";
+                                }
+                                var botonCobre = document.createElement("button");
+                                botonCobre.innerHTML = "Copper";
+                                botonCobre.addEventListener("click", function(){
+                                    Set("Copper",hoveringx,hoveringy)
+                                });
+                                var botonHierro = document.createElement("button");
+                                botonHierro.innerHTML = "Iron";
+                                botonHierro.addEventListener("click", function(){
+                                    Set("Iron",hoveringx,hoveringy)
+                                });
+                                var botonCarbon = document.createElement("button");
+                                botonCarbon.innerHTML = "Coal";
+                                botonCarbon.addEventListener("click", function(){
+                                    Set("Coal",hoveringx,hoveringy)
+                                });
+                                box.appendChild(botonCobre);
+                                box.appendChild(botonHierro);
+                                box.appendChild(botonCarbon);
+
+                            }else if(objetName=="Seller"){
+                                box.innerHTML="This objets are used to sell stuff, When stuff is dropped in you recive money for it"
+                            }else if(objetName=="Crafter"){
+                                
+                                if(RecepyOut[tablero[hoveringx][hoveringy][3]] != undefined){
+                                    box.innerHTML="This objets are used to craft using other stuff, you can turn it around in build mode. Select what product you want to craft in thsi objet by clicking in is recepy.(Right now it is programed to craft "+ RecepyOut[tablero[hoveringx][hoveringy][3]] +" ) Make sure you suply all the needed ingridients to a crafter, if you don't it wont produce anything"
+                                }else{
+                                    box.innerHTML="This objets are used to craft using other stuff, you can turn it around in build mode. Select what product you want to craft in thsi objet by clicking in is recepy.(Right now it isn't programed yet) Make sure you suply all the needed ingridients to a crafter, if you don't it wont produce anything"
+                                }
+                                
+                                
+                                
+                                for (let recepie = 0; recepie < RecepyIn.length; recepie++) {
+                                    const ins = RecepyIn[recepie];
+                                    const out = RecepyOut[recepie];
+                                    let br = document.createElement("br");
+                                    let button = document.createElement("button");
+                                    button.innerHTML="select:";
+                                    button.addEventListener("click",function(){
+                                        RecepieSet(recepie,hoveringx,hoveringy)
+                                    });
+                                    let t = document.createElement("t");
+                                    t.innerHTML=" " + ins[0] + " + " + ins[1] + " = " + out;
+                                    box.appendChild(br);
+                                    box.appendChild(button);
+                                    box.appendChild(t);
+
+
+                                }
+                            
+                            
+                            
+                            }
+                            
                         }
                     }
                 }
             }
+            function RecepieSet(recepie,x,y) {
+                //console.log("traza");
+                                        
+                if(tablero[x][y][0]=="Crafter"){
+                    tablero[x][y][3]=recepie;
+                }
+                backToNormal();
+            }
+            function writeDownANewItemInACrafter(item,x,y) {
+                if(tablero[x][y][0]=="Crafter"){
+                    console.log(x,y,tablero[x][y])
+                    tablero[x][y][4].push(item);
+                }
+            }
+            function Set(Material,x,y) {
+                //console.log("traza");
 
+                if(tablero[x][y][0]=="Creator"){
+                    tablero[x][y][3]=Material;
+                }
+                backToNormal();
+            }
             function AddItem(item) {
                 if(item=="Belt"){
                     inventario[0]++;
@@ -274,12 +380,13 @@
                     inventario[3]++;
                 }
             }
-
             function tick(){
+                document.getElementById("MoneyDisplay").innerHTML = money;
                 ctx.fillRect(0, 0, canvas.height, canvas.width);
                 canvas.height = canvas.clientHeight;
                 canvas.width = canvas.clientWidth;
                 var enAlgunaCasilla = false;
+                
                 for (let x = 0; x < tablero.length; x++) {
                     const columna = tablero[x];
                     for (let y = 0; y < columna.length; y++) {
@@ -287,18 +394,108 @@
                         var x_ = x*zoom+camarax;
                         var y_ = y*zoom+camaray;
                         drawXYrect(ratonx,ratony,10);
-                        
+
                         if(element[0]=="empty"){
                             drawImageXYRotSize(document.getElementById("floor"), x_, y_,0,zoom);
                         }else if(element[0]=="Belt"){
-                            drawImageXYRotSize(document.getElementById("belt"), x_, y_,element[1]*Math.PI/2,zoom);
+                            var FichaAtras;
+                            var FichaDerd;
+                            var FichaIzda;
+
+                            if(element[1]==0){
+                                FichaAtras=tablero[x][y+1];
+                                FichaDerd=tablero[x+1][y];
+                                FichaIzda=tablero[x-1][y];
+                            }else if (element[1]==1){
+                                FichaAtras=tablero[x-1][y];
+                                FichaDerd=tablero[x][y+1];
+                                FichaIzda=tablero[x][y-1];
+                            }else if (element[1]==2){
+                                FichaAtras=tablero[x][y-1];
+                                FichaDerd=tablero[x-1][y];
+                                FichaIzda=tablero[x+1][y];
+                            }else if (element[1]==3){
+                                FichaAtras=tablero[x+1][y];
+                                FichaDerd=tablero[x][y-1];
+                                FichaIzda=tablero[x][y+1];
+                            }
+
+                            var VDC1 = element[1]+1;
+                            if(VDC1>3){
+                                VDC1=VDC1-4;
+                            }
+                            var VDC2 = element[1]+3;
+                            if(VDC2>3){
+                                VDC2=VDC2-4;
+                            }
+                            var atras = FichaAtras[0]!="Seller"&&FichaAtras[1]==element[1];
+                            var izquierda = FichaIzda[0]!="Seller"&&FichaIzda[1]==VDC1;
+                            var derecha = FichaDerd[0]!="Seller"&&FichaDerd[1]==VDC2;
+                            
+                            if      (atras == true  && izquierda == true  && derecha == true){
+                                drawImageXYRotSize(document.getElementById("belt3to1Bend"), x_, y_,element[1]*Math.PI/2,zoom);
+                            }else if(atras == true  && izquierda == false && derecha == true){
+                                drawImageXYRotSize(document.getElementById("Belt2to1"), x_, y_,(element[1]+2)%4*Math.PI/2,zoom);
+                            }else if(atras == true  && izquierda == true  && derecha == false){
+                                drawImageXYRotSize(document.getElementById("Belt2to1"), x_, y_,(element[1])%4*Math.PI/2,zoom);
+                            }else if(atras == true  && izquierda == false && derecha == false){
+                                drawImageXYRotSize(document.getElementById("belt"), x_, y_,element[1]*Math.PI/2,zoom);
+                            }else if(atras == false && izquierda == false && derecha == true){
+                                drawImageXYRotSize(document.getElementById("BeltBend"), x_, y_,(element[1]+1)%4*Math.PI/2,zoom);
+                            }else if(atras == false && izquierda == true  && derecha == false){
+                                drawImageXYRotSize(document.getElementById("BeltBend"), x_, y_,(element[1])%4*Math.PI/2,zoom);
+                            }else if(atras == false && izquierda == false && derecha == false){
+                                drawImageXYRotSize(document.getElementById("belt"), x_, y_,element[1]*Math.PI/2,zoom);
+                            }else if(atras == false && izquierda == true && derecha == true){
+                                drawImageXYRotSize(document.getElementById("Belt2to1"), x_, y_,(element[1]+1)%4*Math.PI/2,zoom);
+                            }
+                        
                         }else if(element[0]=="Crafter"){
                             drawImageXYRotSize(document.getElementById("Crafter"), x_, y_,element[1]*Math.PI/2,zoom);
+                            if(time%100==0&&element[3]!=undefined){
+                                var uno;
+                                var dos;
+                                for (let i = 0; i < element[4].length; i++) {
+                                    const element2 = element[4][i];
+                                    if(element2 == RecepyIn[element[3]][0]){
+                                        uno=i;
+                                        console.log("tengo el 1");
+                                    }
+                                    if(element2 == RecepyIn[element[3]][1]){
+                                        dos=i;
+                                        console.log("tengo el 2");
+
+                                    }     
+                                }
+                                if(uno&&dos){
+                                    element[4].splice(uno,1);
+                                    if(uno>dos){
+                                        element[4].splice(dos,1);
+                                    }else{
+                                        element[4].splice(dos-1,1);
+                                    }
+                                    console.log("traza",RecepyOut[element[3]]);
+                                    createMaterial(x,y,RecepyOut[element[3]]);
+                                }
+                            }
+                        
                         }else if(element[0]=="Seller"){
                             drawImageXYRotSize(document.getElementById("Seller"), x_, y_,element[1]*Math.PI/2,zoom);
                         }else if(element[0]=="Creator"){
                             drawImageXYRotSize(document.getElementById("Creator"), x_, y_,element[1]*Math.PI/2,zoom);
+                            if(time%100==0&&element[3]!=undefined){
+                                createMaterial(x,y,element[3]);
+                            }
+                        
                         }
+
+                        if(element[2]&&time-element[2]<40){
+                            //console.log(time-element[2]);
+                            drawImageXYRotSize(document.getElementById("Arrow"), x_, y_,element[1]*Math.PI/2,zoom);
+                        }else{
+                            element[2] = undefined;
+                        }
+
                         if(ratonx>=x_&&ratonx<x_+zoom&&ratony>y_&&ratony<y_+zoom){
                             bordeDeAbajo=canvas.height;
                             if(buildMode){
@@ -415,18 +612,79 @@
                     
 
                 }
+                for (let i = 0; i < material.length; i++) {
+                    const element = material[i];
+                    element[5]++;
+                    var MovementSpeed = 50;
+                    var x_ = element[1]*zoom+camarax+zoom/4+zoom*element[3]/MovementSpeed;
+                    var y_ = element[2]*zoom+camaray+zoom/4+zoom*element[4]/MovementSpeed;
+
+                    drawImageXYRotSize(document.getElementById(element[0]),x_,y_,0,zoom/2)
+
+                    if(tablero[element[1]][element[2]][1]==0){
+                        element[4]--;
+                    }else if(tablero[element[1]][element[2]][1]==1){
+                        element[3]++;
+                    }else if(tablero[element[1]][element[2]][1]==2){
+                        element[4]++;
+                    }else if(tablero[element[1]][element[2]][1]==3){
+                        element[3]--;
+                    }
+                    if(MovementSpeed<Math.abs(element[4])||MovementSpeed<Math.abs(element[3])){
+                        element[4]=0;
+                        element[3]=0;
+                        element[5]=0;
+                        if(tablero[element[1]][element[2]][1]==0){
+                            element[2]--;
+                        }else if(tablero[element[1]][element[2]][1]==1){
+                            element[1]++;
+                        }else if(tablero[element[1]][element[2]][1]==2){
+                            element[2]++;
+                        }else if(tablero[element[1]][element[2]][1]==3){
+                            element[1]--;
+                        }
+                        if(tablero[element[1]][element[2]][0]=="Seller"){
+                            if(material[i][0]=="Coal"){
+                                money=money+10;
+                            }else if(material[i][0]=="Iron"){
+                                money=money+10;
+                            }else if(material[i][0]=="Copper"){
+                                money=money+100;
+                            }
+
+                            material.splice(i,1);
+                            //console.log("selled",material.length,i);
+                        }
+                        if(tablero[element[1]][element[2]][0]=="Crafter"){
+                            writeDownANewItemInACrafter(element[0],element[1],element[2]);
+                            material.splice(i,1);
+                        }
+                    }
+                    if(element[5]>1000){
+                        material.splice(i,1);
+                        //console.log("Decayed",material.length,i);
+                    }
+
+                }
+
+
                 setTimeout(() => {
                     time++
                     tick();
                 }, speed);
             } 
+            function createMaterial(x,y,name) {
+                //console.log(material);
+                material.push([name,x,y,0,0,0])
+            }
             canvas.oncontextmenu = function() {
                 
                 if(buildMode&&hoveringx&&tablero[hoveringx][hoveringy][0]!="empty"){
                     tablero[hoveringx][hoveringy][1]++
-                    if (tablero[hoveringx][hoveringy][1]>=5) {
+                    if (tablero[hoveringx][hoveringy][1]>=4) {
                         tablero[hoveringx][hoveringy][1]=0;
                     }
+                    tablero[hoveringx][hoveringy][2]=time;
                 }
                 return false;
             };          
