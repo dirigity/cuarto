@@ -27,6 +27,7 @@
             var tall = 30;
             var indiceDeRebotamiento = 2;
             var particulas = [];
+            var randomNumber = 333333;
             window.onkeyup = function(e) { keys[e.keyCode] = false; }
             window.onkeydown = function(e) { keys[e.keyCode] = true; }
             
@@ -60,7 +61,7 @@
                 if(keys[32]==true){
                     ay =-0.05
                     for (let i = 0; i < 2; i++) {
-                        var angulo = -((Math.random()*Math.PI/2)+Math.PI*1.25);
+                        var angulo = -((Math.random()*Math.PI/4)+Math.PI*(1.25+0.125));
                         var vx2 = Math.cos(angulo)*10;
                         var vy2 = Math.sin(angulo)*10;
                         particulas.push([0,100+tall/2,y+tall,vx2,vy2]);
@@ -77,8 +78,8 @@
                     element[1]=element[1]+element[3];
                     element[2]=element[2]+element[4];
                     console.log(ay,vy,element[1],element[2]);
-                    drawXYrect(element[1],element[2],10,rgb(255,element[0],0));
-                    if(element[0]>100){
+                    drawXYrect(element[1]-5,element[2]-5,10,rgba(255,element[0]*5,0,255-element[0]));
+                    if(element[0]>225){
                         particulas.splice(i,1);
                         i--;
                     }
@@ -94,14 +95,16 @@
                 }, 1);
             }
 
-            function rgb(r,g,b) {
+            function rgba(r,g,b,a) {
                 var r_ = check(decToHex(r));
                 var g_ = check(decToHex(g));
                 var b_ = check(decToHex(b));
-                return "#"+r_+g_+b_;
+                var a_ = check(decToHex(a));
+                return "#"+r_+g_+b_+a_;
             }
 
             function decToHex(n) {
+                
                 if(n<0){
                     n = 0xFFFFFFFF + n + 1;
                 }
@@ -116,6 +119,26 @@
                     return "0"+n;
 
                 }else return n
+            }
+
+            function random(x, y) {
+                randomNumber = parseInt(((randomNumber * getClosestPrime(10000) + "").substr(3, 10)));
+
+                return ((randomNumber % (y - x)) + x);
+            }
+            function getClosestPrime(x) {
+                let finished = false;
+                while (!finished) {
+                    x++
+                    if (Primo(x)) finished = true;
+                }
+                return x;
+            }
+            function Primo(x) {
+                for (let d = 2; d < x; d++) {
+                    if (x % d == 0) return false;
+                }
+                return true;
             }
         </script>
     </body>
