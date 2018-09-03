@@ -93,7 +93,7 @@
                 }
                 //console.log(keys[32],ay);
                 if(keys[32]==true){
-                    ay =-0.01
+                    ay =-0.1
 
                     for (let i = 0; i < 1; i++) {
                         var angulo = -((Math.random()*Math.PI/4)+Math.PI*(1.25+0.125));
@@ -104,7 +104,7 @@
 
                     
                 }else{
-                    ay = 0.01
+                    ay = 0.1
                 }
 
                 for (let i = 0; i < particulas.length; i++) {
@@ -123,13 +123,13 @@
 
                 drawXYrect(100,y,tall,null,"senior");
 
-                if(Math.random()*obstaculeTall*4<1){
+                if(Math.random()*obstaculeTall*2<1){
                     incomingStuff.push([canvas.width+obstaculeTall,random(0,canvas.height)]);
                     console.log("new one");
                 }
                 for (let i = 0; i < incomingStuff.length; i++) {
                     const element = incomingStuff[i];
-                    element[0]--;
+                    element[0]=element[0]-2;
                     //console.log(incomingStuff);
 
                     if(element[0] < -obstaculeTall){
@@ -163,7 +163,7 @@
 
                 setTimeout(() => {
                     tick();
-                }, 1);
+                }, 10);
             }
 
             function distancia(x1,y1,x2,y2) {
