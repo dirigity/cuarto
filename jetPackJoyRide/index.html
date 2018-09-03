@@ -25,25 +25,59 @@
             var ay = 1;;
             var keys = {};
             var tall = 30;
-            var indiceDeRebotamiento = 2;
+            var obstaculeTall = 40;
+            var indiceDeRebotamiento = 5;
             var particulas = [];
+            var seed = 3333;
             var randomNumber = 333333;
+            var incomingStuff = [];
+            var score = 0;
             window.onkeyup = function(e) { keys[e.keyCode] = false; }
             window.onkeydown = function(e) { keys[e.keyCode] = true; }
+            window.onmousedown = function(e){ keys[32] = true; }
+            window.onmouseup = function(e){ keys[32] = false; }
             
-            function drawXYrect(x, y, grosor, color) {
+            function drawXYrect(x, y, grosor, color,traza) {
                 //console.log("fufo?")
                 if(color) 
                   ctx.fillStyle = color; 
                 else 
                   ctx.fillStyle = "#555555";
                 ctx.fillRect(x, y, grosor, grosor);
+                //if(traza) console.log(traza,x,y,grosor,ctx.fillStyle);
+
             }
+
+            function drawXYcircle(x, y, grosor, color,traza) {
+                //console.log("fufo?")
+                if(color) 
+                  ctx.fillStyle = color; 
+                else 
+                  ctx.fillStyle = "#555555";
+                ctx.beginPath();
+                ctx.arc(x, y, grosor, 0, 2 * Math.PI, false);
+                ctx.fill();
+                
+                //if(traza) console.log(traza,x,y,grosor,ctx.fillStyle);
+
+            }
+            
+            function resetRandomizer(params) {
+                randomNumber = seed;
+            }
+
             tick();
+            console.log(incomingStuff);
             function tick(){
+
+                score = score + 0.01;
+
                 ctx.fillRect(0, 0, canvas.height, canvas.width);
                 canvas.height = canvas.clientHeight;
                 canvas.width = canvas.clientWidth;
+
+                
+
                 vy = vy + ay;
                 if(y+vy<=canvas.height-30){
                     if(y+vy>=0){
@@ -59,17 +93,18 @@
                 }
                 //console.log(keys[32],ay);
                 if(keys[32]==true){
-                    ay =-0.05
-                    for (let i = 0; i < 2; i++) {
+                    ay =-0.01
+
+                    for (let i = 0; i < 1; i++) {
                         var angulo = -((Math.random()*Math.PI/4)+Math.PI*(1.25+0.125));
-                        var vx2 = Math.cos(angulo)*10;
-                        var vy2 = Math.sin(angulo)*10;
+                        var vx2 = Math.cos(angulo);
+                        var vy2 = Math.sin(angulo);
                         particulas.push([0,100+tall/2,y+tall,vx2,vy2]);
                     }
 
                     
                 }else{
-                    ay = 0.1
+                    ay = 0.01
                 }
 
                 for (let i = 0; i < particulas.length; i++) {
@@ -77,22 +112,62 @@
                     element[0]=element[0]+5;
                     element[1]=element[1]+element[3];
                     element[2]=element[2]+element[4];
-                    console.log(ay,vy,element[1],element[2]);
-                    drawXYrect(element[1]-5,element[2]-5,10,rgba(255,element[0]*5,0,255-element[0]));
+                    //console.log(ay,vy,element[1],element[2]);
+                    drawXYcircle(element[1],element[2]-5,10,rgba(255,255-element[0],0,255-element[0]),"particula");
                     if(element[0]>225){
                         particulas.splice(i,1);
                         i--;
                     }
                 }
+
+
+                drawXYrect(100,y,tall,null,"senior");
+
+                if(Math.random()*obstaculeTall*4<1){
+                    incomingStuff.push([canvas.width+obstaculeTall,random(0,canvas.height)]);
+                    console.log("new one");
+                }
+                for (let i = 0; i < incomingStuff.length; i++) {
+                    const element = incomingStuff[i];
+                    element[0]--;
+                    //console.log(incomingStuff);
+
+                    if(element[0] < -obstaculeTall){
+                        console.log("romeved one");
+
+                        incomingStuff.splice(i,1);
+                        i--;
+                    }else{
+                        drawXYcircle(element[0],element[1],obstaculeTall,rgba(255,0,100,255),"Obs")
+                        if(distancia(element[0],element[1],100,y)<obstaculeTall){
+                            chushed();
+                        }
+                        if(distancia(element[0],element[1],100+tall,y)<obstaculeTall){
+                            chushed();
+                        }
+                        if(distancia(element[0],element[1],100,y+tall)<obstaculeTall){
+                            chushed();
+                        }
+                        if(distancia(element[0],element[1],100+tall,y+tall)<obstaculeTall){
+                            chushed();
+                        }
+                    }
+                    
+                }
+
+
                 
                 //console.log("posy:"+y+" vely:"+vy);
                 
-                drawXYrect(100,y,tall);
 
 
                 setTimeout(() => {
                     tick();
                 }, 1);
+            }
+
+            function distancia(x1,y1,x2,y2) {
+                return Math.sqrt(Math.pow(x1-x2,2)+Math.pow(y1-y2,2))
             }
 
             function rgba(r,g,b,a) {
@@ -101,6 +176,15 @@
                 var b_ = check(decToHex(b));
                 var a_ = check(decToHex(a));
                 return "#"+r_+g_+b_+a_;
+            }
+
+            function chushed() {
+                alert("You crushed. Your score is " + Math.round(score));
+                y=canvas.height;
+                score = 0;
+                vy = 0;
+                incomingStuff.splice(0,incomingStuff.length);
+                
             }
 
             function decToHex(n) {
