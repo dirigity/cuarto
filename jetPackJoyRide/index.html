@@ -98,7 +98,7 @@
                     for (let i = 0; i < 1; i++) {
                         var angulo = -((Math.random()*Math.PI/4)+Math.PI*(1.25+0.125));
                         var vx2 = Math.cos(angulo);
-                        var vy2 = Math.sin(angulo);
+                        var vy2 = Math.sin(angulo)+vy;
                         particulas.push([0,100+tall/2,y+tall,vx2,vy2]);
                     }
 
