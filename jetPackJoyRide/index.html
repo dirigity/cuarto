@@ -1,3 +1,4 @@
+
 <html>
     <head>
         <style>
@@ -45,9 +46,7 @@
                   ctx.fillStyle = "#555555";
                 ctx.fillRect(x, y, grosor, grosor);
                 //if(traza) console.log(traza,x,y,grosor,ctx.fillStyle);
-
             }
-
             function drawXYcircle(x, y, grosor, color,traza) {
                 //console.log("fufo?")
                 if(color) 
@@ -59,7 +58,6 @@
                 ctx.fill();
                 
                 //if(traza) console.log(traza,x,y,grosor,ctx.fillStyle);
-
             }
             
             function resetRandomizer(params) {
@@ -69,15 +67,11 @@
             tick();
             console.log(incomingStuff);
             function tick(){
-
                 score = score + 0.01;
-
                 ctx.fillRect(0, 0, canvas.height, canvas.width);
                 canvas.height = canvas.clientHeight;
                 canvas.width = canvas.clientWidth;
-
                 
-
                 vy = vy + ay;
                 if(y+vy<=canvas.height-30){
                     if(y+vy>=0){
@@ -94,19 +88,16 @@
                 //console.log(keys[32],ay);
                 if(keys[32]==true){
                     ay =-0.1
-
                     for (let i = 0; i < 1; i++) {
                         var angulo = -((Math.random()*Math.PI/4)+Math.PI*(1.25+0.125));
                         var vx2 = Math.cos(angulo);
                         var vy2 = Math.sin(angulo)+vy;
                         particulas.push([0,100+tall/2,y+tall,vx2,vy2]);
                     }
-
                     
                 }else{
                     ay = 0.1
                 }
-
                 for (let i = 0; i < particulas.length; i++) {
                     const element = particulas[i];
                     element[0]=element[0]+5;
@@ -119,26 +110,30 @@
                         i--;
                     }
                 }
-
-
                 drawXYrect(100,y,tall,null,"senior");
-
-                if(Math.random()*obstaculeTall*2<1){
-                    incomingStuff.push([canvas.width+obstaculeTall,random(0,canvas.height)]);
-                    console.log("new one");
+                
+                if(Math.random()*100<4){
+                    var y2;
+		    var ConceptoNoNombrable = 5;
+		    var numeroRandomConTendenciaALoAlto = Math.tanh(Math.random()*ConceptoNoNombrable)/Math.tanh(ConceptoNoNombrable);
+                    if(Math.random()*10<5){
+                        y2 = (numeroRandomConTendenciaALoAlto*canvas.height/2)+canvas.height/2;
+                    }else{
+                        y2 = -(numeroRandomConTendenciaALoAlto*canvas.height/2)+canvas.height/2;
+                    } 
+                    incomingStuff.push([canvas.width+obstaculeTall,y2]);
+                    console.log("new one",y2);
                 }
                 for (let i = 0; i < incomingStuff.length; i++) {
                     const element = incomingStuff[i];
                     element[0]=element[0]-2;
                     //console.log(incomingStuff);
-
                     if(element[0] < -obstaculeTall){
-                        console.log("romeved one");
-
+                        console.log("removed one");
                         incomingStuff.splice(i,1);
                         i--;
                     }else{
-                        drawXYcircle(element[0],element[1],obstaculeTall,rgba(255,0,100,255),"Obs")
+                        drawXYcircle(element[0],element[1],obstaculeTall,rgba(255,0,100,255),"Obs");
                         if(distancia(element[0],element[1],100,y)<obstaculeTall){
                             chushed();
                         }
@@ -154,22 +149,16 @@
                     }
                     
                 }
-
-
                 
                 //console.log("posy:"+y+" vely:"+vy);
                 
-
-
                 setTimeout(() => {
                     tick();
-                }, 10);
+                }, 5);
             }
-
             function distancia(x1,y1,x2,y2) {
                 return Math.sqrt(Math.pow(x1-x2,2)+Math.pow(y1-y2,2))
             }
-
             function rgba(r,g,b,a) {
                 var r_ = check(decToHex(r));
                 var g_ = check(decToHex(g));
@@ -177,7 +166,6 @@
                 var a_ = check(decToHex(a));
                 return "#"+r_+g_+b_+a_;
             }
-
             function chushed() {
                 alert("You crushed. Your score is " + Math.round(score));
                 y=canvas.height;
@@ -186,7 +174,6 @@
                 incomingStuff.splice(0,incomingStuff.length);
                 
             }
-
             function decToHex(n) {
                 
                 if(n<0){
@@ -194,20 +181,16 @@
                 }
                 return Math.round(n).toString(16).toUpperCase();
             }
-
             function check(n){
                 //console.log(n)
                 if(n.length>2){
                     return "FF";
                 }else if (n.length<2){
                     return "0"+n;
-
                 }else return n
             }
-
             function random(x, y) {
                 randomNumber = parseInt(((randomNumber * getClosestPrime(10000) + "").substr(3, 10)));
-
                 return ((randomNumber % (y - x)) + x);
             }
             function getClosestPrime(x) {
@@ -227,5 +210,3 @@
         </script>
     </body>
 </html>
-
-
