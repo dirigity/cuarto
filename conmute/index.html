@@ -16,8 +16,236 @@
         </style>
     </head>
     <body>  
+        <img style="display:none" id="car2" src="red-car-top-view-hi.png">
+        <img style="display:none" id="car" src="car-protagonist.png">
         <canvas id="canvas" width="1920" height="1080"></canvas>
         <script>
+	        var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+            var GotThere = true;
+            var direction = 0;
+            var backupdirection = 0;
+            var direcionVisible = 0;
+            var turnSpeed=1;
+            var Traction = 0.7;
+            var speed = 2;
+            var x = 0;
+            var y = 0;
+            var backupx = 0;
+            var backupy = 0;
+            var CarSize = 0.2;
+            var restart = true;
+            var metax;
+            var metay;
+            var backupmetax = 0;
+            var backupmetay = 0;
+            var keys = [];
+            var random1;
+            var random2;
+            var CarNum = -1;
+            var xs = [];
+            var ys = [];
+            var directions = [];
+            var time = 0;
+
+            window.onkeyup = function(e) { keys[e.keyCode] = false; }
+            window.onkeydown = function(e) { keys[e.keyCode] = true; }
+
+            tick();
+            function tick() {
+                ctx.fillRect(0, 0, canvas.height, canvas.width);
+                canvas.height = canvas.clientHeight;
+                canvas.width = canvas.clientWidth;
+
+                if(GotThere){
+                    time = 0;
+                    CarNum++;
+                    xs.push([]);
+                    ys.push([]);
+                    directions.push([]);
+                    GotThere = false;
+                    var rep = true;
+                    while (rep){
+                    random1 = Math.random()*4;
+                    
+                        if(random1<1){
+                            y = 0;
+                            x = Math.round(Math.random()*canvas.width);
+                            direction = 90;
+                        }else if(random1<2){
+                            x = 0;
+                            y = Math.round(Math.random()*canvas.height);
+                            direction = 0;
+                        }else if(random1<3){
+                            y = canvas.height;
+                            x = Math.round(Math.random()*canvas.width);
+                            direction = -90;
+                        }else if(random1<4){
+                            x = canvas.width;
+                            y = Math.round(Math.random()*canvas.height);
+                            direction = 180;
+                        }
+                        var valido = true;
+                        for (let i = 0; i < xs.length-1; i++) {
+                            const xwip = xs[i][0];
+                            const ywip = ys[i][0];
+                            if(distancia(xwip,ywip,x,y)<200){
+                                valido = false;
+                                console.log("say",x,y,xwip,ywip);
+                            }
+                        }
+                        if (valido) {
+                            rep = false;
+                        }
+                    }
+
+
+
+                    var rep2 = true;
+                    while(rep2){
+                        random2 = Math.random()*4;
+                        if(random2<1){
+                            metay = 0;
+                            metax = Math.round(Math.random()*canvas.width);
+                        }else if(random2<2){
+                            metax = 0;
+                            metay = Math.round(Math.random()*canvas.height);
+                        }else if(random2<3){
+                            metay = canvas.height;
+                            metax = Math.round(Math.random()*canvas.width);
+                        }else if(random2<4){
+                            metax = canvas.width;
+                            metay = Math.round(Math.random()*canvas.height);
+                        }
+                        if(distancia(x,y,metax,metay)>600){
+                            rep2 = false;
+                        }
+                    }
+                    direcionVisible = direction;
+                    backupmetax = metax;
+                    backupmetay = metay;
+                    backupx = x;
+                    backupy = y;
+                    backupdirection = direction;
+
+
+                }else if(restart){
+                    xs[CarNum].splice(0,xs[CarNum].length);
+                    ys[CarNum].splice(0,ys[CarNum].length);
+                    directions[CarNum].splice(0,directions[CarNum].length);
+                    
+                    time = 0;
+                    if(keys[83]){
+                        restart = false;
+                    }
+                    direction = backupdirection;
+                    x = backupx;
+                    y = backupy;
+                    metax = backupmetax;
+                    metay = backupmetay;
+                    direcionVisible = direction;
+                    for (let carn = 0; carn < xs.length; carn++) {
+                        for (let time = 0; time < xs[carn].length; time++) {
+                            const carx = xs[carn][time];
+                            const cary = ys[carn][time];
+                            drawXYrect(carx,cary,2,rgb(255,(carn/xs.length)*255,255-(carn/xs.length)*255));
+                        }
+                    }
+
+
+                }else{
+                    if(keys[32]){
+                        restart = true;
+                    }else{
+                        time++;
+                        if(keys[65]){
+                            direcionVisible = direcionVisible-turnSpeed;
+                        }else if(keys[68]){
+                            direcionVisible = direcionVisible+turnSpeed;
+                        }
+                        if(0>direction-direcionVisible){
+                            direction=direction+turnSpeed*Traction;
+                        }else if(0<direction-direcionVisible){
+                            direction=direction-turnSpeed*Traction;
+                        }
+
+                        if(x + Math.cos((direction/180)*Math.PI)*speed<canvas.width){
+                            if(x + Math.cos((direction/180)*Math.PI)*speed>0){
+                                x = x + Math.cos((direction/180)*Math.PI)*speed;
+                            }else{
+                                x = 0;
+                                direction = direcionVisible;
+                            }
+                        }else{
+                            x = canvas.width;
+                            direction = direcionVisible;
+                        }
+                        if(y + Math.sin((direction/180)*Math.PI)*speed<canvas.height){
+                            if(y + Math.sin((direction/180)*Math.PI)*speed>0){
+                                y = y + Math.sin((direction/180)*Math.PI)*speed;
+                            }else{
+                                y = 0;
+                                direction = direcionVisible;
+                            }
+                        }else{
+                            y = canvas.height;
+                            direction = direcionVisible;
+                        }
+
+                        //x = x + Math.cos((direction/180)*Math.PI)*speed;
+                        //y = y + Math.sin((direction/180)*Math.PI)*speed;
+                        if(distancia(x,y,metax,metay)<50){
+                            GotThere = true;
+                            restart = true;
+                        }
+                    }
+                }
+
+
+
+
+
+
+                ctx.fillStyle = "#000000";
+                ctx.fillRect(metax, metay, 10, 10);
+                ctx.fillRect(metax, metay, -10, -10);
+                xs[CarNum].push(x);
+                ys[CarNum].push(y);
+                directions[CarNum].push(direcionVisible);
+
+                for (let carn = 0; carn < xs.length; carn++) {
+                    const carx = xs[carn][time];
+                    const cary = ys[carn][time];
+                    const card = directions[carn][time];
+                    console.log(carx,cary,card,xs.length);
+                    if(carx!=undefined) drawImageXYRotSize(document.getElementById("car2"),carx,cary,card,CarSize);
+                    if( carn!=xs.length-1 && distancia(carx,cary,x,y)<100){
+                        alert("you crushed");
+                        restart = true;
+
+                    }
+                    
+                }
+                drawImageXYRotSize(document.getElementById("car"),x,y,direcionVisible,CarSize);
+
+                setTimeout(() => {
+                    tick();
+                }, 10);
+            }
+
+            function distancia(x1,y1,x2,y2) {
+                return Math.sqrt(Math.pow(x1-x2,2)+Math.pow(y1-y2,2))
+            }
+
+
+            function drawXYrect(x, y, grosor, color) {
+                //console.log("fufo?")
+                if(color) 
+                  ctx.fillStyle = color; 
+                else 
+                  ctx.fillStyle = "#555555";
+                ctx.fillRect(x, y, grosor, grosor);
+            }
             function rgb(r,g,b) {
                 var r_ = check(decToHex(r));
                 var g_ = check(decToHex(g));
@@ -41,10 +269,20 @@
 
                 }else return n
             }
+            function drawImageXYRotSize(img,x,y,rot,s) {
+                rot = (rot/180)*Math.PI;
+                var width = img.width*s;
+                var height = img.height*s;
+
+                //console.log(width,height,x,y);
+
+                ctx.translate(x, y);
+                ctx.rotate(rot);
+                ctx.drawImage(img, -width / 2, -height / 2, width, height);
+                ctx.rotate(-rot);
+                ctx.translate(-x, -y);
+            }
+
         </script>
     </body>
 </html>
-
-
-
-
